@@ -1,15 +1,14 @@
 "use client"
-import LoadingAnimation from '@/components/loading-animation';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { X, Menu, ChevronDown } from 'lucide-react';
-import {useTranslations} from 'next-intl';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { ChevronDown, Menu, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import LoadingAnimation from "@/components/loading-animation"
 
 export default function Home() {
-  const t = useTranslations('HomePage');
   const [isLoading, setIsLoading] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -25,10 +24,99 @@ export default function Home() {
   if (isLoading) {
     return <LoadingAnimation />
   }
+
   return (
-    <div className="min-h-screen flex flex-col">
-       {/* Header */}
-       <main className="flex-1">
+    <div className="min-h-screen flex flex-col justify-center items-center">
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full border-b bg-white">
+        <div className="container flex h-16 items-center justify-between">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/placeholder.svg?height=40&width=40"
+                alt="Orion Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <span className="hidden md:inline-block font-bold text-sm">Orion Engineering</span>
+            </div>
+            <div className="h-6 w-px bg-gray-200 hidden md:block" />
+            <div className="flex items-center gap-2">
+              <Image
+                src="/placeholder.svg?height=40&width=40"
+                alt="Knoz Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <span className="hidden md:inline-block font-bold text-sm">Knoz Al Najjah</span>
+            </div>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-6">
+            <Link href="#about" className="text-sm font-medium hover:text-gray-900 transition-colors">
+              About
+            </Link>
+            <Link href="#services" className="text-sm font-medium hover:text-gray-900 transition-colors">
+              Services
+            </Link>
+            <Link href="#projects" className="text-sm font-medium hover:text-gray-900 transition-colors">
+              Projects
+            </Link>
+            <Link href="#contact" className="text-sm font-medium hover:text-gray-900 transition-colors">
+              Contact
+            </Link>
+          </nav>
+
+          <Button variant="outline" className="hidden md:flex">
+            Get a Quote
+          </Button>
+
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
+
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="md:hidden border-t">
+            <nav className="flex flex-col p-4 space-y-4 bg-white">
+              <Link
+                href="#about"
+                className="text-sm font-medium hover:text-gray-900 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                href="#services"
+                className="text-sm font-medium hover:text-gray-900 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Services
+              </Link>
+              <Link
+                href="#projects"
+                className="text-sm font-medium hover:text-gray-900 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Projects
+              </Link>
+              <Link
+                href="#contact"
+                className="text-sm font-medium hover:text-gray-900 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
+              <Button className="w-full">Get a Quote</Button>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      <main className="flex-1">
         {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-red-500/10" />
@@ -87,7 +175,7 @@ export default function Home() {
                       parameters of quality and time.
                     </p>
                   </div>
-                  <div className="bg-white p-6 rounded-lg shadow-lg text-black">
+                  <div className="bg-white p-6 rounded-lg shadow-lg">
                     <h4 className="font-bold mb-4 text-red-600">Prequalified by:</h4>
                     <ul className="grid grid-cols-2 gap-2">
                       <li className="flex items-center gap-2 text-sm">
@@ -136,7 +224,7 @@ export default function Home() {
               </TabsContent>
 
               <TabsContent value="knoz" className="mt-0">
-                <div className="grid md:grid-cols-2 gap-10 items-center text-black">
+                <div className="grid md:grid-cols-2 gap-10 items-center">
                   <div>
                     <h3 className="text-2xl font-bold mb-4 text-blue-600">Our Story</h3>
                     <p className="text-gray-700 mb-4">
@@ -167,100 +255,120 @@ export default function Home() {
             </Tabs>
           </div>
         </section>
-         {/* Contact Section */}
-         <section id="contact" className="py-16">
+
+        {/* Services Section */}
+        <section id="services" className="py-16">
           <div className="container">
-            <h2 className="text-3xl font-bold text-center mb-12 ">Contact Us</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
 
-            <div className="grid md:grid-cols-2 gap-10">
-              {/* Orion Contact */}
-              <div className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-red-600 text-black">
-                <h3 className="text-xl font-bold mb-6 text-red-600">Orion Engineering Consultants</h3>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Orion Services */}
+              <div className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-red-600">
+                <h3 className="text-xl font-bold mb-6 text-red-600">Orion Engineering Services</h3>
+                <ul className="space-y-4">
+                  <li className="flex gap-3">
                     <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronDown className="h-4 w-4 text-red-600 rotate-[-90deg]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Address</h4>
-                      <p className="text-sm text-gray-600">Dubai, United Arab Emirates</p>
+                      <h4 className="font-medium">Architecture & Engineering</h4>
+                      <p className="text-sm text-gray-600">
+                        Comprehensive design services for commercial, residential and industrial buildings.
+                      </p>
                     </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
+                  </li>
+                  <li className="flex gap-3">
                     <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronDown className="h-4 w-4 text-red-600 rotate-[-90deg]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Email</h4>
-                      <p className="text-sm text-gray-600">info@orionengineering.com</p>
+                      <h4 className="font-medium">Sustainable Design</h4>
+                      <p className="text-sm text-gray-600">
+                        LEED-certified designs that minimize environmental impact and resource consumption.
+                      </p>
                     </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
+                  </li>
+                  <li className="flex gap-3">
                     <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronDown className="h-4 w-4 text-red-600 rotate-[-90deg]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Phone</h4>
-                      <p className="text-sm text-gray-600">+971 4 123 4567</p>
+                      <h4 className="font-medium">Construction Supervision</h4>
+                      <p className="text-sm text-gray-600">
+                        Expert oversight to ensure projects are completed to the highest standards.
+                      </p>
                     </div>
-                  </div>
-                </div>
-
-                <Button className="w-full bg-red-600 hover:bg-red-700">Contact Orion</Button>
+                  </li>
+                  <li className="flex gap-3">
+                    <div className="h-6 w-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ChevronDown className="h-4 w-4 text-red-600 rotate-[-90deg]" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Project Management</h4>
+                      <p className="text-sm text-gray-600">
+                        End-to-end management of construction projects, ensuring timely delivery.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
-              {/* Knoz Contact */}
-              <div className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-blue-600 text-black">
-                <h3 className="text-xl font-bold mb-6 text-blue-600">Knoz Al Najjah</h3>
-
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-3">
+              {/* Knoz Services */}
+              <div className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-blue-600">
+                <h3 className="text-xl font-bold mb-6 text-blue-600">Knoz Al Najjah Services</h3>
+                <ul className="space-y-4">
+                  <li className="flex gap-3">
                     <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronDown className="h-4 w-4 text-blue-600 rotate-[-90deg]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Address</h4>
-                      <p className="text-sm text-gray-600">Baghdad, Iraq</p>
+                      <h4 className="font-medium">Commercial Construction</h4>
+                      <p className="text-sm text-gray-600">
+                        Building offices, retail spaces, and commercial complexes across Iraq.
+                      </p>
                     </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
+                  </li>
+                  <li className="flex gap-3">
                     <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronDown className="h-4 w-4 text-blue-600 rotate-[-90deg]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Email</h4>
-                      <p className="text-sm text-gray-600">info@knozalnajjah.com</p>
+                      <h4 className="font-medium">Residential Development</h4>
+                      <p className="text-sm text-gray-600">
+                        Creating high-quality housing and residential communities.
+                      </p>
                     </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
+                  </li>
+                  <li className="flex gap-3">
                     <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ChevronDown className="h-4 w-4 text-blue-600 rotate-[-90deg]" />
                     </div>
                     <div>
-                      <h4 className="font-medium">Phone</h4>
-                      <p className="text-sm text-gray-600">+964 7 123 4567</p>
+                      <h4 className="font-medium">Energy Infrastructure</h4>
+                      <p className="text-sm text-gray-600">
+                        Specialized construction for energy sector facilities and infrastructure.
+                      </p>
                     </div>
-                  </div>
-                </div>
-
-                <Button className="w-full bg-blue-600 hover:bg-blue-700">Contact Knoz</Button>
+                  </li>
+                  <li className="flex gap-3">
+                    <div className="h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ChevronDown className="h-4 w-4 text-blue-600 rotate-[-90deg]" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium">Civil Engineering</h4>
+                      <p className="text-sm text-gray-600">
+                        Roads, bridges, and public infrastructure projects throughout Iraq.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
-
-            {/* Contact Form */}
-           
           </div>
         </section>
 
-        {/* feaatured projects */}
-
-         {/* Projects Showcase */}
-         <section id="projects" className="py-16 bg-gray-50">
+        {/* Projects Showcase */}
+        <section id="projects" className="py-16 bg-gray-50">
           <div className="container">
             <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
 
@@ -444,8 +552,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
       </main>
 
-</div>
-  );
+     
+    </div>
+  )
 }
+
