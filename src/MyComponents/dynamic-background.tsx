@@ -20,9 +20,9 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
 
   // Background images
   const backgrounds = [
-    "/placeholder.svg?height=1080&width=1920", // Knoz building (replace with actual image)
-    "/placeholder.svg?height=1080&width=1920", // Orion building (replace with actual image)
-    "/placeholder.svg?height=1080&width=1920", // Combined logos (replace with actual image)
+    "/cost_tracking.jpg", // Knoz building (replace with actual image)
+    "/codewithali.png", // Orion building (replace with actual image)
+    "/saaad.jpg", // Combined logos (replace with actual image)
   ]
 
   // Company text content
