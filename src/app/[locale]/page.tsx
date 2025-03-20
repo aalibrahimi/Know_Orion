@@ -256,6 +256,194 @@ export default function Home() {
            
           </div>
         </section>
+
+        {/* feaatured projects */}
+
+         {/* Projects Showcase */}
+         <section id="projects" className="py-16 bg-gray-50">
+          <div className="container">
+            <h2 className="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Project 1 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg group">
+                <div className="relative h-60">
+                  <div className="absolute inset-0 bg-red-600/20 z-10 group-hover:bg-red-600/0 transition-all duration-300" />
+                  <Image
+                    src="/placeholder.svg?height=300&width=400"
+                    alt="Project 1"
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded z-20">
+                    Orion Engineering
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">LEED Platinum Office Building</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    The Middle East's first LEED Platinum rated building, showcasing sustainable design principles.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Dubai, UAE</span>
+                    <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 p-0">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 2 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg group">
+                <div className="relative h-60">
+                  <div className="absolute inset-0 bg-blue-600/20 z-10 group-hover:bg-blue-600/0 transition-all duration-300" />
+                  <Image
+                    src="/placeholder.svg?height=300&width=400"
+                    alt="Project 2"
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-blue-600 text-white text-xs px-2 py-1 rounded z-20">
+                    Knoz Al Najjah
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">Commercial Complex</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A modern commercial complex featuring retail spaces, offices, and recreational areas.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Baghdad, Iraq</span>
+                    <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 p-0">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 3 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg group">
+                <div className="relative h-60">
+                  <div className="absolute inset-0 bg-red-600/20 z-10 group-hover:bg-red-600/0 transition-all duration-300" />
+                  <Image
+                    src="/placeholder.svg?height=300&width=400"
+                    alt="Project 3"
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded z-20">
+                    Orion Engineering
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">Industrial Warehouse</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A state-of-the-art industrial warehouse designed for optimal logistics operations.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Sharjah, UAE</span>
+                    <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 p-0">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 4 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg group">
+                <div className="relative h-60">
+                  <div className="absolute inset-0 bg-blue-600/20 z-10 group-hover:bg-blue-600/0 transition-all duration-300" />
+                  <Image
+                    src="/placeholder.svg?height=300&width=400"
+                    alt="Project 4"
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-blue-600 text-white text-xs px-2 py-1 rounded z-20">
+                    Knoz Al Najjah
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">Residential Community</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A modern residential community with amenities and green spaces for families.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Basra, Iraq</span>
+                    <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 p-0">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 5 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg group">
+                <div className="relative h-60">
+                  <div className="absolute inset-0 bg-red-600/20 z-10 group-hover:bg-red-600/0 transition-all duration-300" />
+                  <Image
+                    src="/placeholder.svg?height=300&width=400"
+                    alt="Project 5"
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded z-20">
+                    Orion Engineering
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">Commercial Tower</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A modern commercial tower with innovative design and energy-efficient systems.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Dubai, UAE</span>
+                    <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-700 p-0">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project 6 */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg group">
+                <div className="relative h-60">
+                  <div className="absolute inset-0 bg-blue-600/20 z-10 group-hover:bg-blue-600/0 transition-all duration-300" />
+                  <Image
+                    src="/placeholder.svg?height=300&width=400"
+                    alt="Project 6"
+                    fill
+                    className="object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3 bg-blue-600 text-white text-xs px-2 py-1 rounded z-20">
+                    Knoz Al Najjah
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">Infrastructure Project</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    A major infrastructure development improving connectivity and urban mobility.
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-gray-500">Erbil, Iraq</span>
+                    <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700 p-0">
+                      View Details
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center mt-10">
+              <Button variant="outline" className="mx-2">
+                View All Orion Projects
+              </Button>
+              <Button variant="outline" className="mx-2">
+                View All Knoz Projects
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
 
 </div>
