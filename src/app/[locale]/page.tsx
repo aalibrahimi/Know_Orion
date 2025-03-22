@@ -34,20 +34,9 @@ export default function Home() {
       <header className="sticky top-0 z-50 w-full border-b bg-white text-black">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
               <Image
-                src="/placeholder.svg?height=40&width=40"
-                alt="Orion Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-              <span className="hidden md:inline-block font-bold text-sm">Orion Engineering</span>
-            </div>
-            <div className="h-6 w-px bg-gray-200 hidden md:block" />
-            <div className="flex items-center gap-2">
-              <Image
-                src="/placeholder.svg?height=40&width=40"
+                src="/knoz_logo.jpg"
                 alt="Knoz Logo"
                 width={40}
                 height={40}
@@ -55,6 +44,19 @@ export default function Home() {
               />
               <span className="hidden md:inline-block font-bold text-sm">Knoz Al Najjah</span>
             </div>
+            <div className="h-6 w-px bg-gray-200 hidden md:block" />
+            <div className="flex items-center gap-2">
+              <Image
+                 src="/orion_logo.png"
+                alt="Orion Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <span className="hidden md:inline-block font-bold text-sm">Orion Engineering</span>
+            </div>
+           
+           
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -72,7 +74,7 @@ export default function Home() {
             </Link>
           </nav>
 
-          <Button variant="outline" className="hidden md:flex">
+          <Button variant="outline" className="hidden md:flex text-white">
             Get a Quote
           </Button>
 
@@ -119,7 +121,7 @@ export default function Home() {
         )}
       </header>
 
-      <main className="flex-1 text-black">
+      <main className="flex-1 text-black ">
         {/* Scroll indicator */}
         <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-20 text-black text-center">
           <p className="text-sm mb-2 animate-pulse">Scroll Down</p>
@@ -129,10 +131,10 @@ export default function Home() {
         </div>
 
         {/* Main content starts after the dynamic background sections */}
-        <div className="pt-[300vh  ] text-black"></div>
+        <div className="pt-[300vh  ] text-black "></div>
 
         {/* About Section */}
-        <section id="about" className="py-16 bg-gray-50 text-black">
+        <section id="about" className="py-16 bg-gray-50 text-black flex justify-center ">
           <div className="container">
             <FadeInSection>
               <h2 className="text-3xl font-bold text-center mb-12 text-black">
@@ -274,7 +276,7 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-16">
+        <section id="services" className="py-16 flex justify-center ">
           <div className="container">
             <FadeInSection>
               <h2 className="text-3xl font-bold text-center mb-12">
@@ -290,7 +292,7 @@ export default function Home() {
               </h2>
             </FadeInSection>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8  ">
               {/* Orion Services */}
               <FadeInSection direction="left" delay={200}>
                 <div className="bg-white p-8 rounded-lg shadow-lg border-t-4 border-red-600">
@@ -401,7 +403,7 @@ export default function Home() {
         </section>
 
         {/* Projects Showcase */}
-        <section id="projects" className="py-16 bg-gray-50">
+        <section id="projects" className="py-16 bg-gray-50 flex justify-center ">
           <div className="container">
             <FadeInSection>
               <h2 className="text-3xl font-bold text-center mb-12">
@@ -608,7 +610,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-16">
+        <section id="contact" className="py-16 flex justify-center ">
           <div className="container">
             <FadeInSection>
               <h2 className="text-3xl font-bold text-center mb-12">
@@ -767,84 +769,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <h3 className="font-bold text-lg mb-4">Orion Engineering</h3>
-              <p className="text-gray-400 text-sm mb-4">
-                Providing comprehensive and specialist services of the highest quality in Architecture, Engineering,
-                Planning, Construction Supervision and Project Management.
-              </p>
-            </div>
 
-            <div>
-              <h3 className="font-bold text-lg mb-4">Knoz Al Najjah</h3>
-              <p className="text-gray-400 text-sm mb-4">
-                One of Iraq's leading construction companies specializing in delivering complex construction projects
-                across multiple sectors.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>
-                  <Link href="#about" className="hover:text-white transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#services" className="hover:text-white transition-colors">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#projects" className="hover:text-white transition-colors">
-                    Projects
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#contact" className="hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-bold text-lg mb-4">Contact Information</h3>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li>Dubai, UAE & Baghdad, Iraq</li>
-                <li>info@orionengineering.com</li>
-                <li>info@knozalnajjah.com</li>
-                <li>+971 4 123 4567 / +964 7 123 4567</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Orion Engineering & Knoz Al Najjah. All rights reserved.
-            </p>
-            <div className="mt-4 md:mt-0">
-              <ul className="flex space-x-4">
-                <li>
-                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </DynamicBackground>
   )
 }
