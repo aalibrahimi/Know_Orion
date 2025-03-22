@@ -597,11 +597,11 @@ export default function Home() {
             </div>
 
             <FadeInSection delay={700}>
-              <div className="flex justify-center mt-10">
-                <Button variant="outline" className="mx-2">
+              <div className="flex justify-center mt-10 ">
+                <Button variant="outline" className="mx-2 text-white bg-red-500 hover:bg-red-700 ">
                   View All Orion Projects
                 </Button>
-                <Button variant="outline" className="mx-2">
+                <Button variant="outline" className="mx-2 text-white hover:bg-color-white bg-blue-500 hover:bg-blue-600 ">
                   View All Knoz Projects
                 </Button>
               </div>
@@ -705,66 +705,6 @@ export default function Home() {
               </FadeInSection>
             </div>
 
-            {/* Contact Form */}
-            <FadeInSection delay={600}>
-              <div className="mt-16 max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-6 text-center">Send Us a Message</h3>
-
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Name
-                      </label>
-                      <input
-                        id="name"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="Your email"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium">
-                      Which company are you interested in?
-                    </label>
-                    <select
-                      id="company"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <option value="">Select a company</option>
-                      <option value="orion">Orion Engineering Consultants</option>
-                      <option value="knoz">Knoz Al Najjah</option>
-                      <option value="both">Both Companies</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      placeholder="Your message"
-                    />
-                  </div>
-
-                  <Button className="w-full">Submit Message</Button>
-                </form>
-              </div>
-            </FadeInSection>
           </div>
         </section>
       </main>
