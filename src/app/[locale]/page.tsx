@@ -270,6 +270,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Knoz Section */}
+      <section>
+        <ScrollContent contentID="knozy" range={{in: 500, out: 1400}} class="text-4xl font-bold transition-opacity duration-300 flex justify-center">Hehe KNOZ</ScrollContent>
+      </section>
+
 
 
 
