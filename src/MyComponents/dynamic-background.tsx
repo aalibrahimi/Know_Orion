@@ -16,7 +16,6 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
   // Create refs for each section with threshold to determine when it's in view
   const [section1Ref, section1InView] = useInView({ threshold: 0.5 })
   const [section2Ref, section2InView] = useInView({ threshold: 0.5 })
-  const [section3Ref, section3InView] = useInView({ threshold: 0.5 })
 
   // Background images
   const backgrounds = [
@@ -50,8 +49,7 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
   useEffect(() => {
     if (section1InView) setActiveSection(0)
     else if (section2InView) setActiveSection(1)
-    else if (section3InView) setActiveSection(2)
-  }, [section1InView, section2InView, section3InView])
+  }, [section1InView, section2InView])
 
   // Apply parallax effect to background
   useEffect(() => {
@@ -86,21 +84,6 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
         ))}
       </div>
 
-      {/* Dynamic text content that changes with scroll */}
-      <div className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full max-w-4xl px-4">
-        {companyContent.map((content, index) => (
-          <div
-            key={index}
-            className={`transition-all duration-1000 ease-in-out absolute top-0 left-0 w-full
-              ${activeSection === index ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"}`}
-          >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">{content.title}</h1>
-            <h2 className="text-xl md:text-2xl font-medium mb-4">{content.subtitle}</h2>
-            <p className="text-lg md:text-xl">{content.description}</p>
-          </div>
-        ))}
-      </div>
-
       {/* Sections that trigger background changes */}
       <div className="relative z-0">
         {/* First section - Knoz */}
@@ -121,17 +104,10 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
           <div className="h-screen"></div>
         </section>
 
-        {/* Third section - Combined */}
-        <section
-          ref={section3Ref}
-          className="min-h-screen flex items-center justify-center"
-          style={{ backgroundColor: "transparent" }}
-        >
-          <div className="h-screen"></div>
-        </section>
-
         {/* Main content */}
-        <div className="bg-white relative z-10">{children}</div>
+        {/* <div className="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10 w-full h-full"> */}
+        <div className="bg-transparent z-10 absolute top-0 left-0 w-full h-full">{children}</div>
+        {/* </div> */}
       </div>
     </div>
   )

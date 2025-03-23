@@ -33,9 +33,9 @@ export default async function LocaleLayout({
             disableTransitionOnChange
           >
             <div className="flex min-h-screen flex-col">
-              <Navbar />
+              {/* <Navbar /> */}
               <main className="flex-1 w-full">{children}</main>
-              <Footer />
+              {/* <Footer /> */}
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>
