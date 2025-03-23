@@ -143,31 +143,6 @@ export default function Home() {
                 </span>
             </div>
 
-{/*  <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2">
-              <Image
-                src="/knoz_logo.jpg"
-                alt="Knoz Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-              <span className="hidden md:inline-block font-bold text-sm">Knoz Al Najjah</span>
-            </div>
-            <div className="h-6 w-px bg-gray-200 hidden md:block" />
-            <div className="flex items-center gap-2">
-              <Image
-                 src="/orion_logo.png"
-                alt="Orion Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-              <span className="hidden md:inline-block font-bold text-sm">Orion Engineering</span>
-            </div>
-           
-           
-          </div> */}
             <nav className="hidden md:flex items-center gap-8">
               {["About Us", "Vision", "Services", "Projects", "Contact"].map((item, index) => (
                 <Link
