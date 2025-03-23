@@ -6,6 +6,8 @@ import DynamicBackground from "@/MyComponents/dynamic-background"
 import ScrollContent from "@/MyComponents/scrollContent"
 import { Link } from "@/i18n/navigation"
 import { Award, Briefcase, Building2, Mail, MapPin, Phone, Users, ChevronDown, ArrowRight, Zap, Shield, Facebook, Twitter, Instagram, Linkedin, ArrowUpRight, Clock, CheckCircle, Globe } from 'lucide-react'
+import Image from "next/image"
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -109,24 +111,63 @@ export default function Home() {
           <div className="container flex h-24 items-center justify-between px-6 mx-auto">
             <div className="flex items-center gap-2">
               <div className="text-4xl font-bold text-white flex items-center">
-                <span className="relative">
-                  Knoz
+              <Image
+                src="/knoz_logo.jpg"
+                alt="Knoz Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <span className="hidden md:inline-block font-bold text-sm">Knoz Al 
                   <span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full gap-4"
                     style={{ width: scrollY > 100 ? "100%" : "0%" }}
                   ></span>
                 </span>
-                <span className="text-white/70 mx-2">|</span>
-                <span className="relative">
-                  Orion
-                  <span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
-                    style={{ width: scrollY > 100 ? "100%" : "0%" }}
-                  ></span>
-                </span>
+                
+                
               </div>
+              <div className="h-6 w-px  bg-gray-200 hidden md:block" />
+              <Image
+                 src="/orion_logo.png"
+                alt="Orion Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+                <span className="hidden md:inline-block font-bold text-sm">Orion Engineering
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
+                    style={{ width: scrollY > 100 ? "100%" : "0%" }}
+                  ></span>
+                </span>
             </div>
 
+{/*  <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
+              <Image
+                src="/knoz_logo.jpg"
+                alt="Knoz Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <span className="hidden md:inline-block font-bold text-sm">Knoz Al Najjah</span>
+            </div>
+            <div className="h-6 w-px bg-gray-200 hidden md:block" />
+            <div className="flex items-center gap-2">
+              <Image
+                 src="/orion_logo.png"
+                alt="Orion Logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+              />
+              <span className="hidden md:inline-block font-bold text-sm">Orion Engineering</span>
+            </div>
+           
+           
+          </div> */}
             <nav className="hidden md:flex items-center gap-8">
               {["About Us", "Vision", "Services", "Projects", "Contact"].map((item, index) => (
                 <Link
