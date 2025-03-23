@@ -16,12 +16,17 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
   // Create refs for each section with threshold to determine when it's in view
   const [section1Ref, section1InView] = useInView({ threshold: 0.5 })
   const [section2Ref, section2InView] = useInView({ threshold: 0.5 })
+  const [section3Ref, section3InView] = useInView({ threshold: 0.5 })
+  const [section4Ref, section4InView] = useInView({ threshold: 0.5 })
+  const [section5Ref, section5InView] = useInView({ threshold: 0.5 })
 
   // Background images
   const backgrounds = [
-    "/cost_tracking.jpg", // Knoz building (replace with actual image)
-    "/codewithali.png", // Orion building (replace with actual image)
-    "/saaad.jpg", // Combined logos (replace with actual image)
+    "/hero_building.jpg", // Knoz building (replace with actual image)
+    "/thirteen.jpg", // Orion building (replace with actual image)
+    "/orion_hero2.jpg", // Combined logos (replace with actual image)
+    "/orion_hero1.jpg", // Combined logos (replace with actual image)
+    "/orion_hero3.jpg", // Combined logos (replace with actual image)
   ]
 
   // Company text content
@@ -49,7 +54,10 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
   useEffect(() => {
     if (section1InView) setActiveSection(0)
     else if (section2InView) setActiveSection(1)
-  }, [section1InView, section2InView])
+    else if (section3InView) setActiveSection(2)
+    else if (section4InView) setActiveSection(3)
+    else if (section5InView) setActiveSection(4)
+  }, [section1InView, section2InView, section3InView, section4InView, section5InView])
 
   // Apply parallax effect to background
   useEffect(() => {
@@ -86,7 +94,7 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
 
       {/* Sections that trigger background changes */}
       <div className="relative z-0">
-        {/* First section - Knoz */}
+        {/* First section - Hero */}
         <section
           ref={section1Ref}
           className="min-h-screen flex items-center justify-center"
@@ -95,9 +103,36 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
           <div className="h-screen"></div>
         </section>
 
-        {/* Second section - Orion */}
+        {/* Second section - Knoz */}
         <section
           ref={section2Ref}
+          className="min-h-screen flex items-center justify-center"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div className="h-screen"></div>
+        </section>
+
+        {/* Third section - Orion */}
+        <section
+          ref={section3Ref}
+          className="min-h-screen flex items-center justify-center"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div className="h-screen"></div>
+        </section>
+
+        {/* Fourth section - Orion */}
+        <section
+          ref={section4Ref}
+          className="min-h-screen flex items-center justify-center"
+          style={{ backgroundColor: "transparent" }}
+        >
+          <div className="h-screen"></div>
+        </section>
+
+        {/* Fifth section - Orion */}
+        <section
+          ref={section5Ref}
           className="min-h-screen flex items-center justify-center"
           style={{ backgroundColor: "transparent" }}
         >

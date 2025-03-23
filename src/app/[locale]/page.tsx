@@ -94,7 +94,7 @@ export default function Home() {
                 left: `${Math.random() * 100}%`,
                 opacity: Math.random() * 0.5 + 0.1,
                 transform: `translateY(${parallaxOffset * (Math.random() * 0.5 + 0.5)}px)`,
-                transition: "transform 0.3s ease-out",
+                transition: "transform 0.5s ease-out",
               }}
             />
           ))}
@@ -111,36 +111,36 @@ export default function Home() {
           <div className="container flex h-24 items-center justify-between px-6 mx-auto">
             <div className="flex items-center gap-2">
               <div className="text-4xl font-bold text-white flex items-center">
-              <Image
-                src="/knoz_logo.jpg"
-                alt="Knoz Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
-              />
-              <span className="hidden md:inline-block font-bold text-sm">Knoz Al 
+                <Image
+                  src="/knoz.png"
+                  alt="Knoz Logo"
+                  width={100}
+                  height={100}
+                  className="h-auto w-15"
+                />
+                <span className="hidden md:inline-block font-bold text-xl pl-[10px]">Knoz Al 
                   <span
                     className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full gap-4"
                     style={{ width: scrollY > 100 ? "100%" : "0%" }}
                   ></span>
                 </span>
-                
-                
               </div>
-              <div className="h-6 w-px  bg-gray-200 hidden md:block" />
+
+              <div className="h-8 w-px  bg-gray-200 hidden md:block" />
+
               <Image
                  src="/orion_logo.png"
                 alt="Orion Logo"
-                width={40}
-                height={40}
-                className="h-10 w-10"
+                width={100}
+                height={100}
+                className="h-auto w-10"
               />
-                <span className="hidden md:inline-block font-bold text-sm">Orion Engineering
-                  <span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
-                    style={{ width: scrollY > 100 ? "100%" : "0%" }}
-                  ></span>
-                </span>
+              <span className="hidden md:inline-block font-bold text-xl">Orion Engineering
+                <span
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
+                  style={{ width: scrollY > 100 ? "100%" : "0%" }}
+                ></span>
+              </span>
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
@@ -246,14 +246,14 @@ export default function Home() {
       </section>
 
       {/* Knoz Section */}
-      <section>
-        <ScrollContent contentID="knozy" range={{in: 500, out: 1400}} class="text-4xl font-bold transition-opacity duration-300 flex justify-center">Hehe KNOZ</ScrollContent>
+      <section className="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center">
+        <ScrollContent contentID="knozy" range={{in: 500, out: 1500}} class="text-4xl font-bold transition-opacity duration-300 flex justify-center">Hehe KNOZ</ScrollContent>
       </section>
 
-
-
-
-
+      {/* Orion Section */}
+      <section className="relative h-screen w-full overflow-hidden flex flex-col justify-center items-center">
+        <ScrollContent contentID="oreo" range={{in: 1500, out: 2500}} class="text-4xl font-bold transition-opacity duration-300 flex justify-center">Hehe ORION</ScrollContent>
+      </section>
 
 
     
