@@ -134,10 +134,7 @@ export default function Home() {
         {/* Navbar */}
         <header
           className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300"
-          style={{
-            backgroundColor: scrollY > 50 ? "rgba(0,0,0,0.8)" : "transparent",
-            backdropFilter: scrollY > 50 ? "blur(10px)" : "none",
-          }}
+         
         >
           <div className="container flex h-24 items-center justify-between px-6 mx-auto">
             <div className="flex items-center gap-2">
@@ -283,25 +280,25 @@ export default function Home() {
       </section>
 
       {/* Knoz Section */}
-      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24">
+      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 ">
         <ScrollContent
           contentID="knoz_title"
           range={{ in: 500, out: 1500 }}
-          class="text-5xl font-bold mb-16 text-center w-full"
+          class="text-5xl font-bold mb-16 text-center w-full "
           direction="left"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-2">Knoz Al-Najah</h2>
           <p className="text-lg text-gray-400">Building Excellence Since 1995</p>
         </ScrollContent>
 
-        <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6">
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6 ">
           <ScrollContent
             contentID="knoz_content"
             range={{ in: 500, out: 1500 }}
             class="w-full h-auto"
             direction="left"
           >
-            <Card className="bg-black/40 border-gray-800 text-white shadow-lg">
+            <Card className="bg-black border-white text-white shadow-lg">
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/30 px-3 py-1">
@@ -401,7 +398,7 @@ export default function Home() {
             direction="right"
           >
             <div className="space-y-6">
-              <div className="bg-black/40 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+              <div className="bg-black rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
                 <Image
                   src="/orion_hero3.jpg"
                   alt="Knoz Al-Najah Project"
@@ -410,8 +407,8 @@ export default function Home() {
                   quality={100}
                   className="w-full h-auto object-cover"
                 />
-                <div className="p-4">
-                  <h3 className="text-xl font-semibold">Palm Island Residential Complex</h3>
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold py-2">Palm Island Residential Complex</h3>
                   <p className="text-gray-400">Award-winning luxury development in Dubai</p>
                 </div>
               </div>
@@ -425,7 +422,7 @@ export default function Home() {
               </Alert>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                <div className="bg-black rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
                   <div className="rounded-full bg-green-500/20 p-3 mb-2">
                     <CheckCircle className="h-6 w-6 text-green-400" />
                   </div>
@@ -433,7 +430,7 @@ export default function Home() {
                   <p className="text-sm text-gray-400">Completed Projects</p>
                 </div>
                 
-                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                <div className="bg-black rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
                   <div className="rounded-full bg-orange-500/20 p-3 mb-2">
                     <Globe className="h-6 w-6 text-orange-400" />
                   </div>
@@ -466,7 +463,7 @@ export default function Home() {
             direction="left"
           >
             <div className="space-y-6">
-              <div className="bg-black/40 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+              <div className="bg-black rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
                 <Image
                   src="/orion_hero1.jpg"
                   alt="Orion Engineering Project"
@@ -490,7 +487,7 @@ export default function Home() {
               </Alert>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                <div className="bg-black rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
                   <div className="rounded-full bg-purple-500/20 p-3 mb-2">
                     <Shield className="h-6 w-6 text-purple-400" />
                   </div>
@@ -498,7 +495,7 @@ export default function Home() {
                   <p className="text-sm text-gray-400">Years of Expertise</p>
                 </div>
                 
-                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                <div className="bg-black rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
                   <div className="rounded-full bg-blue-500/20 p-3 mb-2">
                     <Users className="h-6 w-6 text-blue-400" />
                   </div>
@@ -515,7 +512,7 @@ export default function Home() {
             class="w-full h-auto"
             direction="right"
           >
-            <Card className="bg-black/40 border-gray-800 text-white shadow-lg">
+            <Card className="bg-black border-white text-white shadow-lg">
               <CardHeader>
                 <div className="flex items-center gap-2 mb-2">
                   <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30 px-3 py-1">
@@ -632,7 +629,7 @@ export default function Home() {
             class="w-full h-auto"
             direction="left"
           >
-            <Card className="bg-black/40 border-gray-800 text-white shadow-lg">
+            <Card className="bg-black border-white text-white shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl md:text-3xl">Get in Touch</CardTitle>
                 <CardDescription className="text-gray-400 text-lg">Fill out the form below and our team will contact you shortly</CardDescription>
@@ -694,7 +691,7 @@ export default function Home() {
             direction="right"
           >
             <div className="space-y-6">
-              <div className="bg-black/40 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+              <div className="bg-black rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
                 <Image
                   src="/orion_serviceInterior.jpg"
                   alt="Our Office"
