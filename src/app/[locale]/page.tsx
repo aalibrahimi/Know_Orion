@@ -1,75 +1,95 @@
-"use client"
+"use client";
 
-import { useEffect, useState, useRef } from "react"
-import LoadingAnimation from "@/components/loading-animation"
-import DynamicBackground from "@/MyComponents/dynamic-background"
-import ScrollContent from "@/MyComponents/scrollContent"
-import { Link } from "@/i18n/navigation"
-import { Award, Briefcase, Building2, Mail, MapPin, Phone, Users, ChevronDown, ArrowRight, Zap, Shield, Facebook, Twitter, Instagram, Linkedin, ArrowUpRight, Clock, CheckCircle, Globe } from 'lucide-react'
-import Image from "next/image"
-
+import { useEffect, useState, useRef } from "react";
+import LoadingAnimation from "@/components/loading-animation";
+import DynamicBackground from "@/MyComponents/dynamic-background";
+import ScrollContent from "@/MyComponents/scrollContent";
+import { Link } from "@/i18n/navigation";
+import {
+  Award,
+  Briefcase,
+  Building2,
+  Mail,
+  MapPin,
+  Phone,
+  Users,
+  ChevronDown,
+  ArrowRight,
+  Zap,
+  Shield,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  ArrowUpRight,
+  Clock,
+  CheckCircle,
+  Globe,
+} from "lucide-react";
+import Image from "next/image";
+import GradientText from "@/MyComponents/GradientText";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [scrollY, setScrollY] = useState(0)
-  const [activeHeadline, setActiveHeadline] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
+  const [activeHeadline, setActiveHeadline] = useState(0);
   const headlines = [
     "Building the future together",
     "Two visions, one powerful mission",
     "Excellence in construction, redefined",
-  ]
-  const heroRef = useRef(null)
+  ];
+  const heroRef = useRef(null);
 
   useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2500)
+      setIsLoading(false);
+    }, 2500);
 
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      setScrollY(window.scrollY);
 
       // Change headline based on scroll position
-      const scrollPosition = window.scrollY
+      const scrollPosition = window.scrollY;
       if (scrollPosition < 300) {
-        setActiveHeadline(0)
+        setActiveHeadline(0);
       } else if (scrollPosition < 600) {
-        setActiveHeadline(1)
+        setActiveHeadline(1);
       } else {
-        setActiveHeadline(2)
+        setActiveHeadline(2);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     // Headline rotation timer
     const headlineTimer = setInterval(() => {
       if (window.scrollY < 100) {
         // Only auto-rotate when near top
-        setActiveHeadline((prev) => (prev + 1) % headlines.length)
+        setActiveHeadline((prev) => (prev + 1) % headlines.length);
       }
-    }, 4000)
+    }, 4000);
 
     return () => {
-      clearTimeout(timer)
-      clearInterval(headlineTimer)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      clearTimeout(timer);
+      clearInterval(headlineTimer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
       behavior: "smooth",
-    })
-  }
+    });
+  };
 
   if (isLoading) {
-    return <LoadingAnimation />
+    return <LoadingAnimation />;
   }
 
-  const parallaxOffset = scrollY * 0.5
-  const opacityValue = Math.max(0, 1 - scrollY / 700)
+  const parallaxOffset = scrollY * 0.5;
+  const opacityValue = Math.max(0, 1 - scrollY / 700);
 
   return (
     <DynamicBackground>
@@ -93,7 +113,9 @@ export default function Home() {
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 opacity: Math.random() * 0.5 + 0.1,
-                transform: `translateY(${parallaxOffset * (Math.random() * 0.5 + 0.5)}px)`,
+                transform: `translateY(${
+                  parallaxOffset * (Math.random() * 0.5 + 0.5)
+                }px)`,
                 transition: "transform 0.5s ease-out",
               }}
             />
@@ -118,7 +140,8 @@ export default function Home() {
                   height={100}
                   className="h-auto w-15"
                 />
-                <span className="hidden md:inline-block font-bold text-xl pl-[10px]">Knoz Al 
+                <span className="hidden md:inline-block font-bold text-xl pl-[10px]">
+                  Knoz Al
                   <span
                     className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full gap-4"
                     style={{ width: scrollY > 100 ? "100%" : "0%" }}
@@ -129,13 +152,14 @@ export default function Home() {
               <div className="h-8 w-px  bg-gray-200 hidden md:block" />
 
               <Image
-                 src="/orion_logo.png"
+                src="/orion_logo.png"
                 alt="Orion Logo"
                 width={100}
                 height={100}
                 className="h-auto w-10"
               />
-              <span className="hidden md:inline-block font-bold text-xl">Orion Engineering
+              <span className="hidden md:inline-block font-bold text-xl">
+                Orion Engineering
                 <span
                   className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
                   style={{ width: scrollY > 100 ? "100%" : "0%" }}
@@ -144,16 +168,18 @@ export default function Home() {
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
-              {["About Us", "Vision", "Services", "Projects", "Contact"].map((item, index) => (
-                <Link
-                  key={index}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="text-lg font-medium text-white hover:text-white/80 transition-colors relative group"
-                >
-                  {item}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              ))}
+              {["About Us", "Vision", "Services", "Projects", "Contact"].map(
+                (item, index) => (
+                  <Link
+                    key={index}
+                    href={`#${item.toLowerCase().replace(" ", "-")}`}
+                    className="text-lg font-medium text-white hover:text-white/80 transition-colors relative group"
+                  >
+                    {item}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                )
+              )}
             </nav>
 
             <div className="md:hidden">
@@ -187,7 +213,9 @@ export default function Home() {
                 className="text-5xl md:text-7xl font-bold text-white transition-all duration-1000 absolute left-0 right-0"
                 style={{
                   opacity: activeHeadline === index ? 1 : 0,
-                  transform: `translateY(${activeHeadline === index ? 0 : 100}px)`,
+                  transform: `translateY(${
+                    activeHeadline === index ? 0 : 100
+                  }px)`,
                 }}
               >
                 {headline}
@@ -202,8 +230,8 @@ export default function Home() {
               transform: `translateY(${parallaxOffset * 0.2}px)`,
             }}
           >
-            A strategic merger of two construction industry leaders, creating unparalleled expertise and innovation in
-            building solutions.
+            A strategic merger of two construction industry leaders, creating
+            unparalleled expertise and innovation in building solutions.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -214,7 +242,7 @@ export default function Home() {
               Our Projects
             </button>
           </div>
-          
+
           {/* Social Media Icons */}
           <div className="flex justify-center gap-6 mt-8">
             {[
@@ -245,77 +273,138 @@ export default function Home() {
         </div>
       </section>
 
- {/* Knoz Section */}
-<section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
-  <ScrollContent 
-    contentID="knozy" 
-    range={{in: 500, out: 1500}} 
-    class="text-4xl font-bold flex justify-center"
-    direction="left"
-  >
-    Hehe KNOZ
-  </ScrollContent>
-  
-  <ScrollContent 
-    contentID="knozy_bg" 
-    range={{in: 500, out: 1500}} 
-    class="w-full h-auto"
-    direction="right"
-  >
-    <div className="bg-black w-full h-auto rounded-2xl">
-      <Image src="/orion_hero3.jpg" alt="Orionhehe" width={1000} height={1000} quality={100} className="w-full h-auto" />
-    </div>
-  </ScrollContent>
-</section>
+      {/* Knoz Section */}
+      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+        <ScrollContent
+          contentID="knozy"
+          range={{ in: 500, out: 1500 }}
+          class="text-4xl font-bold flex justify-center"
+          direction="left"
+        >
+          Hehe KNOZ
+        </ScrollContent>
 
-{/* Orion Section */}
-<section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
-  <ScrollContent 
-    contentID="oreo" 
-    range={{in: 1500, out: 2500}} 
-    class="text-4xl font-bold flex justify-center"
-    direction="left"
-  >
-    Hehe ORION
-  </ScrollContent>
-  
-  <ScrollContent 
-    contentID="oreo_bg" 
-    range={{in: 1500, out: 2500}} 
-    class="w-full h-auto"
-    direction="right"
-  >
-    <div className="bg-black w-full h-auto rounded-2xl">
-      <Image src="/orion_hero1.jpg" alt="Orionhehe2" width={1000} height={1000} quality={100} className="w-full h-auto" />
-    </div>
-  </ScrollContent>
-</section>
+        <ScrollContent
+          contentID="knozy_bg"
+          range={{ in: 500, out: 1500 }}
+          class="w-full h-auto"
+          direction="right"
+        >
+          <div className="bg-black w-full h-auto rounded-2xl">
+            <Image
+              src="/orion_hero3.jpg"
+              alt="Orionhehe"
+              width={1000}
+              height={1000}
+              quality={100}
+              className="w-full h-auto"
+            />
+          </div>
+        </ScrollContent>
+      </section>
 
-{/* Contact Section */}
-<section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
-  <ScrollContent 
-    contentID="contacto" 
-    range={{in: 2500, out: 3500}} 
-    class="text-4xl font-bold flex justify-center"
-    direction="left"
-  >
-    Hehe CONTACTO
-  </ScrollContent>
-  
-  <ScrollContent 
-    contentID="contacto_bg" 
-    range={{in: 2500, out: 3500}} 
-    class="w-full h-auto"
-    direction="right"
-  >
-    <div className="bg-black w-full h-auto rounded-2xl">
-      <Image src="/orion_serviceInterior.jpg" alt="Orionhehe3" width={1000} height={1000} quality={100} className="w-full h-auto" />
-    </div>
-  </ScrollContent>
-</section>
+      {/* Orion Section */}
+      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+        <ScrollContent
+          contentID="oreo"
+          range={{ in: 1500, out: 2500 }}
+          class="text-4xl font-bold flex justify-center"
+          direction="left"
+        >
+          Hehe ORION
+        </ScrollContent>
 
+        <ScrollContent
+          contentID="oreo_bg"
+          range={{ in: 1500, out: 2500 }}
+          class="w-full h-auto"
+          direction="right"
+        >
+          <div className="bg-black w-full h-auto rounded-2xl">
+            <Image
+              src="/orion_hero1.jpg"
+              alt="Orionhehe2"
+              width={1000}
+              height={1000}
+              quality={100}
+              className="w-full h-auto"
+            />
+          </div>
+        </ScrollContent>
+      </section>
 
-    
+      {/* Contact Section */}
+      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+        <ScrollContent
+          contentID="contacto"
+          range={{ in: 2500, out: 3500 }}
+          class="text-4xl font-bold flex justify-center"
+          direction="left"
+        >
+          <div className="grid grid-rows-2">
+            <p>Hehe CONTACTO</p>
+          </div>
+        </ScrollContent>
+
+        <ScrollContent
+          contentID="contacto_bg"
+          range={{ in: 2500, out: 3500 }}
+          class="w-full h-auto"
+          direction="right"
+        >
+          <div className="bg-black w-full h-auto rounded-2xl">
+            <Image
+              src="/orion_serviceInterior.jpg"
+              alt="Orionhehe3"
+              width={1000}
+              height={1000}
+              quality={100}
+              className="w-full h-auto"
+            />
+          </div>
+        </ScrollContent>
+      </section>
+
+      {/* Footer */}
+      <section className="absolute flex flex-col p-15 h-10 w-full overflow-hidden justify-center items-center bottom-[100px]">
+        <ScrollContent
+          contentID="footer"
+          range={{ in: 2500, out: 3500 }}
+          class="w-full h-auto flex justify-center items-center text-sm text-gray-300"
+          direction="left"
+        >
+          © 2025 Knoz Al-Najah & Orion Engineering Consultants. All rights
+          reserved.
+        </ScrollContent>
+
+        <ScrollContent
+          contentID="footer_cwa"
+          range={{ in: 2500, out: 3500 }}
+          class="w-full h-auto"
+          direction="left"
+        >
+          {/* CodeWithAli Branding - Same Line */}
+          <div className="mt-6 flex items-center justify-center gap-2 ">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <Link
+              href="https://codewithali.com/"
+              draggable={false}
+              className="font-semibold"
+            >
+              <img
+                src="/codewithali.png"
+                className="h-10 w-auto mix-blend-screen isolate inline"
+                alt="CodeWithAli Logo"
+                draggable={false}
+              />
+              <p className="text-slate-400 text-sm inline">
+                CodeWithAli
+                <GradientText>CodeWithAli</GradientText>
+              </p>
+            </Link>
+          </div>
+        </ScrollContent>
+      </section>
     </DynamicBackground>
-  )
+  );
 }
