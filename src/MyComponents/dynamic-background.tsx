@@ -18,7 +18,6 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
   const [section2Ref, section2InView] = useInView({ threshold: 0.5 })
   const [section3Ref, section3InView] = useInView({ threshold: 0.5 })
   const [section4Ref, section4InView] = useInView({ threshold: 0.5 })
-  const [section5Ref, section5InView] = useInView({ threshold: 0.5 })
 
   // Background images
   const backgrounds = [
@@ -56,8 +55,7 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
     else if (section2InView) setActiveSection(1)
     else if (section3InView) setActiveSection(2)
     else if (section4InView) setActiveSection(3)
-    else if (section5InView) setActiveSection(4)
-  }, [section1InView, section2InView, section3InView, section4InView, section5InView])
+  }, [section1InView, section2InView, section3InView, section4InView])
 
   // Apply parallax effect to background
   useEffect(() => {
@@ -124,15 +122,6 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
         {/* Fourth section - Orion */}
         <section
           ref={section4Ref}
-          className="min-h-screen flex items-center justify-center"
-          style={{ backgroundColor: "transparent" }}
-        >
-          <div className="h-screen"></div>
-        </section>
-
-        {/* Fifth section - Orion */}
-        <section
-          ref={section5Ref}
           className="min-h-screen flex items-center justify-center"
           style={{ backgroundColor: "transparent" }}
         >
