@@ -245,25 +245,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Knoz Section */}
-      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
-        <ScrollContent contentID="knozy" range={{in: 500, out: 1500}} class="text-4xl font-bold transition-opacity duration-300 flex justify-center">Hehe KNOZ</ScrollContent>
-        <ScrollContent contentID="knozy_bg" range={{in: 500, out: 1500}} class="transition-opacity duration-300">
-          <div className="bg-black w-full h-auto rounded-2xl">
-            <Image src="/orion_hero3.jpg" alt="Orionhehe" width={1000} height={1000} quality={100} className="w-full h-auto" />
-          </div>
-        </ScrollContent>
-      </section>
+ {/* Knoz Section */}
+<section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+  <ScrollContent 
+    contentID="knozy" 
+    range={{in: 500, out: 1500}} 
+    class="text-4xl font-bold flex justify-center"
+    direction="left"
+  >
+    Hehe KNOZ
+  </ScrollContent>
+  
+  <ScrollContent 
+    contentID="knozy_bg" 
+    range={{in: 500, out: 1500}} 
+    class="w-full h-auto"
+    direction="right"
+  >
+    <div className="bg-black w-full h-auto rounded-2xl">
+      <Image src="/orion_hero3.jpg" alt="Orionhehe" width={1000} height={1000} quality={100} className="w-full h-auto" />
+    </div>
+  </ScrollContent>
+</section>
 
-      {/* Orion Section */}
-      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
-        <ScrollContent contentID="oreo" range={{in: 1500, out: 2500}} class="text-4xl font-bold transition-opacity duration-300 flex justify-center">Hehe ORION</ScrollContent>
-        <ScrollContent contentID="oreo_bg" range={{in: 1500, out: 2500}} class="transition-opacity duration-300">
-          <div className="bg-black w-full h-auto rounded-2xl">
-            <Image src="/orion_hero1.jpg" alt="Orionhehe2" width={1000} height={1000} quality={100} className="w-full h-auto" />
-          </div>
-        </ScrollContent>
-      </section>
+{/* Orion Section */}
+<section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+  <ScrollContent 
+    contentID="oreo" 
+    range={{in: 1500, out: 2500}} 
+    class="text-4xl font-bold flex justify-center"
+    direction="left"
+  >
+    Hehe ORION
+  </ScrollContent>
+  
+  <ScrollContent 
+    contentID="oreo_bg" 
+    range={{in: 1500, out: 2500}} 
+    class="w-full h-auto"
+    direction="right"
+  >
+    <div className="bg-black w-full h-auto rounded-2xl">
+      <Image src="/orion_hero1.jpg" alt="Orionhehe2" width={1000} height={1000} quality={100} className="w-full h-auto" />
+    </div>
+  </ScrollContent>
+</section>
 
 
     
