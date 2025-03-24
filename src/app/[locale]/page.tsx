@@ -291,6 +291,29 @@ export default function Home() {
   </ScrollContent>
 </section>
 
+{/* Contact Section */}
+<section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+  <ScrollContent 
+    contentID="contacto" 
+    range={{in: 2500, out: 3500}} 
+    class="text-4xl font-bold flex justify-center"
+    direction="left"
+  >
+    Hehe CONTACTO
+  </ScrollContent>
+  
+  <ScrollContent 
+    contentID="contacto_bg" 
+    range={{in: 2500, out: 3500}} 
+    class="w-full h-auto"
+    direction="right"
+  >
+    <div className="bg-black w-full h-auto rounded-2xl">
+      <Image src="/orion_serviceInterior.jpg" alt="Orionhehe3" width={1000} height={1000} quality={100} className="w-full h-auto" />
+    </div>
+  </ScrollContent>
+</section>
+
 
     
     </DynamicBackground>
