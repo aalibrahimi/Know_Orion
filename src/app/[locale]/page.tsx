@@ -29,6 +29,15 @@ import {
 import Image from "next/image";
 import GradientText from "@/MyComponents/GradientText";
 
+// Import shadcn components
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [scrollY, setScrollY] = useState(0);
@@ -106,7 +115,7 @@ export default function Home() {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute rounded-full bg-white/10 backdrop-blur-sm"
+              className="absolute rounded-full bg-white/10 "
               style={{
                 width: `${Math.random() * 100 + 50}px`,
                 height: `${Math.random() * 100 + 50}px`,
@@ -149,7 +158,7 @@ export default function Home() {
                 </span>
               </div>
 
-              <div className="h-8 w-px  bg-gray-200 hidden md:block" />
+              <div className="h-8 w-px bg-gray-200 hidden md:block" />
 
               <Image
                 src="/orion_logo.png"
@@ -235,12 +244,12 @@ export default function Home() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <button className="px-8 py-4 bg-white text-black rounded-full font-bold flex items-center gap-2 hover:bg-white/90 transition-all transform hover:scale-105">
+            <Button className="px-8 py-6 rounded-full font-bold flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-all transform hover:scale-105">
               Discover Our Vision <ArrowRight className="h-5 w-5" />
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-bold flex items-center gap-2 hover:bg-white/10 transition-all">
+            </Button>
+            <Button variant="outline" className="px-8 py-6 border-2 border-white text-white rounded-full font-bold flex items-center gap-2 hover:bg-white/10 transition-all">
               Our Projects
-            </button>
+            </Button>
           </div>
 
           {/* Social Media Icons */}
@@ -255,7 +264,7 @@ export default function Home() {
                 key={index}
                 href="#"
                 aria-label={social.name}
-                className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-110 backdrop-blur-sm"
+                className="bg-white/10 p-3 rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-110 "
               >
                 {social.icon}
               </a>
@@ -274,95 +283,485 @@ export default function Home() {
       </section>
 
       {/* Knoz Section */}
-      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24">
         <ScrollContent
-          contentID="knozy"
+          contentID="knoz_title"
           range={{ in: 500, out: 1500 }}
-          class="text-4xl font-bold flex justify-center"
+          class="text-5xl font-bold mb-16 text-center w-full"
           direction="left"
         >
-          Hehe KNOZ
+          <h2 className="text-4xl md:text-5xl font-bold mb-2">Knoz Al-Najah</h2>
+          <p className="text-lg text-gray-400">Building Excellence Since 1995</p>
         </ScrollContent>
 
-        <ScrollContent
-          contentID="knozy_bg"
-          range={{ in: 500, out: 1500 }}
-          class="w-full h-auto"
-          direction="right"
-        >
-          <div className="bg-black w-full h-auto rounded-2xl">
-            <Image
-              src="/orion_hero3.jpg"
-              alt="Orionhehe"
-              width={1000}
-              height={1000}
-              quality={100}
-              className="w-full h-auto"
-            />
-          </div>
-        </ScrollContent>
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6">
+          <ScrollContent
+            contentID="knoz_content"
+            range={{ in: 500, out: 1500 }}
+            class="w-full h-auto"
+            direction="left"
+          >
+            <Card className="bg-black/40 border-gray-800 text-white shadow-lg">
+              <CardHeader>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge variant="outline" className="bg-blue-500/10 text-blue-400 border-blue-500/30 px-3 py-1">
+                    Established Leader
+                  </Badge>
+                  <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30 px-3 py-1">
+                    30+ Years Experience
+                  </Badge>
+                </div>
+                <CardTitle className="text-2xl md:text-3xl">Heritage of Excellence</CardTitle>
+                <CardDescription className="text-gray-400 text-lg">A regional leader in construction and development</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p>
+                  For over three decades, Knoz Al-Najah has been at the forefront of the Middle Eastern construction industry, 
+                  delivering iconic structures that define the region's skyline. Our commitment to quality, innovation, and 
+                  client satisfaction has established us as the partner of choice for complex, high-profile projects.
+                </p>
+                
+                <Tabs defaultValue="services" className="mt-6">
+                  <TabsList className="grid grid-cols-3 bg-gray-800/50">
+                    <TabsTrigger value="services">Services</TabsTrigger>
+                    <TabsTrigger value="projects">Key Projects</TabsTrigger>
+                    <TabsTrigger value="values">Our Values</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="services" className="space-y-4 mt-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {[
+                        { icon: <Building2 className="h-5 w-5" />, title: "Commercial Construction" },
+                        { icon: <Award className="h-5 w-5" />, title: "Luxury Residential" },
+                        { icon: <Shield className="h-5 w-5" />, title: "Infrastructure Development" },
+                        { icon: <Zap className="h-5 w-5" />, title: "Project Management" },
+                      ].map((service, index) => (
+                        <div key={index} className="flex items-start gap-2 p-3 rounded-lg bg-white/5">
+                          <div className="p-2 rounded-full bg-blue-500/20 text-blue-400">{service.icon}</div>
+                          <div>
+                            <h4 className="font-medium">{service.title}</h4>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="projects" className="space-y-4 mt-4">
+                    <div className="grid grid-cols-1 gap-4">
+                      {[
+                        { name: "Al Najah Tower", location: "Dubai, UAE", year: "2019" },
+                        { name: "Royal Garden Residences", location: "Riyadh, KSA", year: "2021" },
+                        { name: "Coastal Highway Extension", location: "Doha, Qatar", year: "2018" },
+                        { name: "Marina Shopping Complex", location: "Abu Dhabi, UAE", year: "2022" },
+                      ].map((project, index) => (
+                        <div key={index} className="flex justify-between p-3 rounded-lg bg-white/5">
+                          <div>
+                            <h4 className="font-medium">{project.name}</h4>
+                            <p className="text-sm text-gray-400">{project.location}</p>
+                          </div>
+                          <Badge variant="outline">{project.year}</Badge>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="values" className="space-y-4 mt-4">
+                    <div className="space-y-3">
+                      {[
+                        { value: "Excellence", desc: "Uncompromising quality in every project" },
+                        { value: "Innovation", desc: "Pioneering new construction methodologies" },
+                        { value: "Integrity", desc: "Transparent business practices and relationships" },
+                        { value: "Sustainability", desc: "Environmental responsibility in all operations" },
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-1" />
+                          <div>
+                            <h4 className="font-medium">{item.value}</h4>
+                            <p className="text-sm text-gray-400">{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </CardContent>
+              <CardFooter className="flex justify-between border-t border-gray-800 pt-4">
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <Users className="h-4 w-4" />
+                  <span>750+ Employees Worldwide</span>
+                </div>
+                <Button variant="ghost" className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10">
+                  Company Profile <ArrowUpRight className="h-4 w-4 ml-1" />
+                </Button>
+              </CardFooter>
+            </Card>
+          </ScrollContent>
+
+          <ScrollContent
+            contentID="knoz_bg"
+            range={{ in: 500, out: 1500 }}
+            class="w-full h-auto"
+            direction="right"
+          >
+            <div className="space-y-6">
+              <div className="bg-black/40 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+                <Image
+                  src="/orion_hero3.jpg"
+                  alt="Knoz Al-Najah Project"
+                  width={1000}
+                  height={800}
+                  quality={100}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold">Palm Island Residential Complex</h3>
+                  <p className="text-gray-400">Award-winning luxury development in Dubai</p>
+                </div>
+              </div>
+              
+              <Alert className="bg-blue-500/10 border border-blue-500/30">
+                <Zap className="h-4 w-4 text-blue-400" />
+                <AlertTitle>Leadership Recognition</AlertTitle>
+                <AlertDescription>
+                  Knoz Al-Najah was awarded "Construction Company of the Year" three consecutive times (2022-2024)
+                </AlertDescription>
+              </Alert>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                  <div className="rounded-full bg-green-500/20 p-3 mb-2">
+                    <CheckCircle className="h-6 w-6 text-green-400" />
+                  </div>
+                  <h4 className="font-semibold">120+</h4>
+                  <p className="text-sm text-gray-400">Completed Projects</p>
+                </div>
+                
+                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                  <div className="rounded-full bg-orange-500/20 p-3 mb-2">
+                    <Globe className="h-6 w-6 text-orange-400" />
+                  </div>
+                  <h4 className="font-semibold">12</h4>
+                  <p className="text-sm text-gray-400">Countries of Operation</p>
+                </div>
+              </div>
+            </div>
+          </ScrollContent>
+        </div>
       </section>
 
       {/* Orion Section */}
-      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 bg-gradient-to-b from-transparent to-black/20">
         <ScrollContent
-          contentID="oreo"
+          contentID="orion_title"
           range={{ in: 1500, out: 2500 }}
-          class="text-4xl font-bold flex justify-center"
-          direction="left"
-        >
-          Hehe ORION
-        </ScrollContent>
-
-        <ScrollContent
-          contentID="oreo_bg"
-          range={{ in: 1500, out: 2500 }}
-          class="w-full h-auto"
+          class="text-5xl font-bold mb-16 text-center w-full"
           direction="right"
         >
-          <div className="bg-black w-full h-auto rounded-2xl">
-            <Image
-              src="/orion_hero1.jpg"
-              alt="Orionhehe2"
-              width={1000}
-              height={1000}
-              quality={100}
-              className="w-full h-auto"
-            />
-          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-2">Orion Engineering Consultants</h2>
+          <p className="text-lg text-gray-400">Engineering Excellence & Innovation</p>
         </ScrollContent>
+
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6">
+          <ScrollContent
+            contentID="orion_bg"
+            range={{ in: 1500, out: 2500 }}
+            class="w-full h-auto"
+            direction="left"
+          >
+            <div className="space-y-6">
+              <div className="bg-black/40 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+                <Image
+                  src="/orion_hero1.jpg"
+                  alt="Orion Engineering Project"
+                  width={1000}
+                  height={800}
+                  quality={100}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold">Smart City Infrastructure Project</h3>
+                  <p className="text-gray-400">Pioneering sustainable urban development</p>
+                </div>
+              </div>
+              
+              <Alert className="bg-purple-500/10 border border-purple-500/30">
+                <Award className="h-4 w-4 text-purple-400" />
+                <AlertTitle>Excellence in Engineering</AlertTitle>
+                <AlertDescription>
+                  Orion's innovative structural design system has been adopted as an industry standard in 7 countries
+                </AlertDescription>
+              </Alert>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                  <div className="rounded-full bg-purple-500/20 p-3 mb-2">
+                    <Shield className="h-6 w-6 text-purple-400" />
+                  </div>
+                  <h4 className="font-semibold">25+</h4>
+                  <p className="text-sm text-gray-400">Years of Expertise</p>
+                </div>
+                
+                <div className="bg-black/40 rounded-xl p-4 border border-gray-800 flex flex-col items-center text-center">
+                  <div className="rounded-full bg-blue-500/20 p-3 mb-2">
+                    <Users className="h-6 w-6 text-blue-400" />
+                  </div>
+                  <h4 className="font-semibold">450+</h4>
+                  <p className="text-sm text-gray-400">Engineering Professionals</p>
+                </div>
+              </div>
+            </div>
+          </ScrollContent>
+
+          <ScrollContent
+            contentID="orion_content"
+            range={{ in: 1500, out: 2500 }}
+            class="w-full h-auto"
+            direction="right"
+          >
+            <Card className="bg-black/40 border-gray-800 text-white shadow-lg">
+              <CardHeader>
+                <div className="flex items-center gap-2 mb-2">
+                  <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30 px-3 py-1">
+                    Engineering Expertise
+                  </Badge>
+                  <Badge variant="outline" className="bg-green-500/10 text-green-400 border-green-500/30 px-3 py-1">
+                    Sustainability Focused
+                  </Badge>
+                </div>
+                <CardTitle className="text-2xl md:text-3xl">Engineering Innovation</CardTitle>
+                <CardDescription className="text-gray-400 text-lg">Transforming concepts into extraordinary structures</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p>
+                  Orion Engineering Consultants has built a reputation for delivering world-class engineering solutions
+                  across diverse sectors. Our team of specialists combines technical expertise with innovative thinking
+                  to overcome complex challenges and create structures that stand the test of time while embracing
+                  sustainable practices.
+                </p>
+                
+                <Tabs defaultValue="expertise" className="mt-6">
+                  <TabsList className="grid grid-cols-3 bg-gray-800/50">
+                    <TabsTrigger value="expertise">Expertise</TabsTrigger>
+                    <TabsTrigger value="innovations">Innovations</TabsTrigger>
+                    <TabsTrigger value="approach">Our Approach</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="expertise" className="space-y-4 mt-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {[
+                        { icon: <Building2 className="h-5 w-5" />, title: "Structural Engineering" },
+                        { icon: <Zap className="h-5 w-5" />, title: "MEP Systems" },
+                        { icon: <Globe className="h-5 w-5" />, title: "Environmental Engineering" },
+                        { icon: <Shield className="h-5 w-5" />, title: "Geotechnical Solutions" },
+                      ].map((service, index) => (
+                        <div key={index} className="flex items-start gap-2 p-3 rounded-lg bg-white/5">
+                          <div className="p-2 rounded-full bg-purple-500/20 text-purple-400">{service.icon}</div>
+                          <div>
+                            <h4 className="font-medium">{service.title}</h4>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="innovations" className="space-y-4 mt-4">
+                    <div className="grid grid-cols-1 gap-4">
+                      {[
+                        { name: "ModuFlex Building System", desc: "Modular construction for rapid deployment" },
+                        { name: "Eco-Conscious Materials Research", desc: "Reducing carbon footprint in construction" },
+                        { name: "Digital Twin Technology", desc: "Real-time monitoring of structural integrity" },
+                        { name: "Seismic Isolation Techniques", desc: "Advanced protection against earthquakes" },
+                      ].map((innovation, index) => (
+                        <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-white/5">
+                          <div className="p-2 rounded-full bg-blue-500/20 text-blue-400">
+                            <Zap className="h-4 w-4" />
+                          </div>
+                          <div>
+                            <h4 className="font-medium">{innovation.name}</h4>
+                            <p className="text-sm text-gray-400">{innovation.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                  <TabsContent value="approach" className="space-y-4 mt-4">
+                    <div className="space-y-3">
+                      {[
+                        { value: "Client-Centered", desc: "Solutions tailored to client needs and vision" },
+                        { value: "Collaborative", desc: "Cross-disciplinary teamwork for integrated design" },
+                        { value: "Data-Driven", desc: "Decisions based on analytical models and simulations" },
+                        { value: "Future-Ready", desc: "Anticipating trends and incorporating adaptability" },
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-1" />
+                          <div>
+                            <h4 className="font-medium">{item.value}</h4>
+                            <p className="text-sm text-gray-400">{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              </CardContent>
+              <CardFooter className="flex justify-between border-t border-gray-800 pt-4">
+                <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <Clock className="h-4 w-4" />
+                  <span>80+ Active Projects Worldwide</span>
+                </div>
+                <Button variant="ghost" className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10">
+                  Engineering Portfolio <ArrowUpRight className="h-4 w-4 ml-1" />
+                </Button>
+              </CardFooter>
+            </Card>
+          </ScrollContent>
+        </div>
       </section>
 
       {/* Contact Section */}
-      <section className="relative grid grid-cols-2 p-15 h-screen w-full overflow-hidden justify-center items-center">
+      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 bg-gradient-to-b from-black/20 to-black/40">
         <ScrollContent
-          contentID="contacto"
+          contentID="contact_title"
           range={{ in: 2500, out: 3500 }}
-          class="text-4xl font-bold flex justify-center"
+          class="text-5xl font-bold mb-16 text-center w-full"
           direction="left"
         >
-          <div className="grid grid-rows-2">
-            <p>Hehe CONTACTO</p>
-          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-2">Contact Our Team</h2>
+          <p className="text-lg text-gray-400">Let's build something extraordinary together</p>
         </ScrollContent>
 
-        <ScrollContent
-          contentID="contacto_bg"
-          range={{ in: 2500, out: 3500 }}
-          class="w-full h-auto"
-          direction="right"
-        >
-          <div className="bg-black w-full h-auto rounded-2xl">
-            <Image
-              src="/orion_serviceInterior.jpg"
-              alt="Orionhehe3"
-              width={1000}
-              height={1000}
-              quality={100}
-              className="w-full h-auto"
-            />
-          </div>
-        </ScrollContent>
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6">
+          <ScrollContent
+            contentID="contact_form"
+            range={{ in: 2500, out: 3500 }}
+            class="w-full h-auto"
+            direction="left"
+          >
+            <Card className="bg-black/40 border-gray-800 text-white shadow-lg">
+              <CardHeader>
+                <CardTitle className="text-2xl md:text-3xl">Get in Touch</CardTitle>
+                <CardDescription className="text-gray-400 text-lg">Fill out the form below and our team will contact you shortly</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="firstName" className="text-sm font-medium">First Name</label>
+                    <Input id="firstName" placeholder="John" className="bg-gray-800/50 border-gray-700" />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="lastName" className="text-sm font-medium">Last Name</label>
+                    <Input id="lastName" placeholder="Doe" className="bg-gray-800/50 border-gray-700" />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                  <Input id="email" type="email" placeholder="john@example.com" className="bg-gray-800/50 border-gray-700" />
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="phone" className="text-sm font-medium">Phone Number</label>
+                  <Input id="phone" placeholder="+1 (555) 000-0000" className="bg-gray-800/50 border-gray-700" />
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="projectType" className="text-sm font-medium">Project Type</label>
+                  <select id="projectType" className="w-full rounded-md bg-gray-800/50 border-gray-700 text-white p-2">
+                    <option>Commercial Construction</option>
+                    <option>Residential Development</option>
+                    <option>Infrastructure Project</option>
+                    <option>Engineering Consultation</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium">Project Details</label>
+                  <Textarea id="message" placeholder="Tell us about your project..." className="bg-gray-800/50 border-gray-700 min-h-32" />
+                </div>
+              </CardContent>
+              <CardFooter className="flex flex-col items-start space-y-4">
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" id="subscribe" className="rounded" />
+                  <label htmlFor="subscribe" className="text-sm text-gray-400">Subscribe to our newsletter for updates</label>
+                </div>
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-6 px-8 rounded-lg font-medium">
+                  Submit Inquiry
+                </Button>
+              </CardFooter>
+            </Card>
+          </ScrollContent>
+
+          <ScrollContent
+            contentID="contact_info"
+            range={{ in: 2500, out: 3500 }}
+            class="w-full h-auto"
+            direction="right"
+          >
+            <div className="space-y-6">
+              <div className="bg-black/40 rounded-2xl overflow-hidden border border-gray-800 shadow-lg">
+                <Image
+                  src="/orion_serviceInterior.jpg"
+                  alt="Our Office"
+                  width={1000}
+                  height={800}
+                  quality={100}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="p-6 space-y-6">
+                  <h3 className="text-2xl font-semibold mb-4">Our Offices</h3>
+                  
+                  <div className="space-y-4">
+                    {[
+                      {
+                        city: "Dubai, UAE", 
+                        address: "Knoz-Orion Tower, Sheikh Zayed Road", 
+                        phone: "+971 4 123 4567",
+                        email: "dubai@knozorion.com"
+                      },
+                      {
+                        city: "Riyadh, KSA", 
+                        address: "King Fahd Road, Al Olaya District", 
+                        phone: "+966 11 987 6543",
+                        email: "riyadh@knozorion.com"
+                      },
+                      {
+                        city: "Doha, Qatar", 
+                        address: "West Bay Business District", 
+                        phone: "+974 4412 3456",
+                        email: "doha@knozorion.com"
+                      }
+                    ].map((office, index) => (
+                      <div key={index} className="p-4 rounded-lg bg-white/5 space-y-2">
+                        <h4 className="font-semibold flex items-center gap-2">
+                          <MapPin className="h-4 w-4 text-red-400" /> {office.city}
+                        </h4>
+                        <p className="text-gray-400 text-sm pl-6">{office.address}</p>
+                        <div className="grid grid-cols-2 gap-2 pl-6">
+                          <p className="text-sm flex items-center gap-1">
+                            <Phone className="h-3 w-3 text-gray-400" /> {office.phone}
+                          </p>
+                          <p className="text-sm flex items-center gap-1">
+                            <Mail className="h-3 w-3 text-gray-400" /> {office.email}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="pt-4 border-t border-gray-800">
+                    <h4 className="font-semibold mb-2">Business Hours</h4>
+                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-400">
+                      <p>Monday - Friday:</p>
+                      <p>8:30 AM - 5:30 PM</p>
+                      <p>Saturday:</p>
+                      <p>9:00 AM - 1:00 PM</p>
+                      <p>Sunday:</p>
+                      <p>Closed</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+         
+            </div>
+          </ScrollContent>
+        </div>
       </section>
 
       {/* Footer */}
@@ -388,7 +787,6 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <Link
               href="https://codewithali.com/"
-              target="_blank"
               draggable={false}
               className="font-semibold"
             >
