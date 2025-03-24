@@ -388,6 +388,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <Link
               href="https://codewithali.com/"
+              target="_blank"
               draggable={false}
               className="font-semibold"
             >
