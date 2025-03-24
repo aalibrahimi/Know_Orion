@@ -16,8 +16,17 @@ const ScrollContent = (props: Props) => {
     const [isVisible, setIsVisible] = useState(false);
     const [progress, setProgress] = useState(0);
     const elementRef = useRef<HTMLDivElement>(null);
+    const [windowWidth, setWindowWidth] = useState(0);
     
     useEffect(() => {
+      // Get initial window width
+      setWindowWidth(window.innerWidth);
+      
+      // Update window width on resize
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+      
       const handleScroll = () => {
         if (!elementRef.current) return;
         
@@ -29,33 +38,32 @@ const ScrollContent = (props: Props) => {
         let newProgress = Math.min(1, Math.max(0, current / total));
         
         // Apply easing function to make animation feel more polished
-        // easeOutCubic: t => 1 - Math.pow(1 - t, 3)
         newProgress = 1 - Math.pow(1 - newProgress, 3);
         
         setProgress(newProgress);
-        setIsVisible(window.scrollY >= props.range.in && window.scrollY < props.range.out);
+        setIsVisible(window.scrollY >= props.range.in);
       };
       
       // Initial check
       handleScroll();
       
-      // Add event listener with passive flag for better performance
+      // Add event listeners
       window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("resize", handleResize, { passive: true });
       
-      // Clean up event listener when component unmounts
+      // Clean up event listeners
       return () => {
         window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("resize", handleResize);
       };
     }, [props.contentID, props.range]);
 
-    // Calculate transform values
-    const slideDistance = 120; // Increased for more dramatic effect
-    const translateX = props.direction === 'right' 
-      ? (1 - progress) * slideDistance 
-      : (1 - progress) * -slideDistance;
+    // Calculate transform values - use full viewport width for initial position
+    const startPosition = props.direction === 'right' ? windowWidth : -windowWidth;
+    const endPosition = 0;
     
-    // Calculate opacity with slight delay for staggered effect
-    const opacityProgress = Math.max(0, (progress - 0.1) * 1.1);
+    // Linear interpolation between start and end positions based on progress
+    const translateX = startPosition + (endPosition - startPosition) * progress;
     
     return (
       <div 
@@ -63,7 +71,7 @@ const ScrollContent = (props: Props) => {
         ref={elementRef}
         className={`${props.class} will-change-transform`}
         style={{
-          opacity: isVisible ? opacityProgress : 0,
+          opacity: isVisible ? progress : 0,
           transform: `translateX(${translateX}px)`,
           transition: "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
         }}
