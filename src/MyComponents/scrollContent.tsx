@@ -41,7 +41,7 @@ const ScrollContent = (props: Props) => {
         newProgress = 1 - Math.pow(1 - newProgress, 3);
         
         setProgress(newProgress);
-        setIsVisible(window.scrollY >= props.range.in);
+        setIsVisible(window.scrollY >= props.range.in && window.scrollY <= props.range.out);
       };
       
       // Initial check
@@ -72,7 +72,7 @@ const ScrollContent = (props: Props) => {
         className={`${props.class} will-change-transform`}
         style={{
           opacity: isVisible ? progress : 0,
-          transform: `translateX(${translateX}px)`,
+          transform: props.direction ? `translateX(${translateX}px)` : '',
           transition: "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
         }}
       >

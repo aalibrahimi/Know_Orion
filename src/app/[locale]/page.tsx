@@ -232,10 +232,11 @@ export default function Home() {
                   alt="Knoz Logo"
                   width={100}
                   height={100}
+                  draggable={false}
                   className="h-auto w-15 transition-transform duration-300 hover:scale-105"
                 />
                 <span className="hidden md:inline-block font-bold text-xl pl-[10px] relative group">
-                  Knoz Al
+                  <Link href="https://knoz.fly.dev/" target="_blank">Knoz Al</Link>
                   <span
                     className="absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
                     style={{ width: isNavbarSolid ? "100%" : "0%" }}
@@ -250,10 +251,11 @@ export default function Home() {
                 alt="Orion Logo"
                 width={100}
                 height={100}
+                draggable={false}
                 className="h-auto w-10 transition-transform duration-300 hover:scale-105"
               />
               <span className="hidden md:inline-block font-bold text-xl relative group">
-                Orion Engineering
+                <Link href="https://www.orionuae.com/" target="_blank">Orion Engineering</Link>
                 <span
                   className="absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
                   style={{ width: isNavbarSolid ? "100%" : "0%" }}
@@ -399,7 +401,6 @@ export default function Home() {
           contentID="knoz_title"
           range={{ in: 500, out: 1500 }}
           class="text-5xl font-bold mb-16 text-center w-full"
-          direction="left"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -684,9 +685,8 @@ export default function Home() {
       <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-32 md:py-40 bg-gradient-to-b from-transparent to-black/20">
         <ScrollContent
           contentID="orion_title"
-          range={{ in: 1500, out: 2500 }}
+          range={{ in: 1500, out: 2800 }}
           class="text-5xl font-bold mb-16 text-center w-full"
-          direction="right"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -714,7 +714,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-12 relative z-10">
-            <ScrollContent contentID="orion_bg" range={{ in: 1500, out: 2500 }} class="w-full h-auto" direction="left">
+            <ScrollContent contentID="orion_bg" range={{ in: 1500, out: 2800 }} class="w-full h-auto" direction="left">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -827,7 +827,7 @@ export default function Home() {
 
             <ScrollContent
               contentID="orion_content"
-              range={{ in: 1500, out: 2500 }}
+              range={{ in: 1500, out: 2800 }}
               class="w-full h-auto"
               direction="right"
             >
@@ -1180,12 +1180,11 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-32 md:py-40 bg-gradient-to-b from-black/20 to-black/40">
+      <section id="contact_section" className="relative min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-32 md:py-40 bg-gradient-to-b from-black/20 to-black/40">
         <ScrollContent
           contentID="contact_title"
-          range={{ in: 2500, out: 3500 }}
+          range={{ in: 2700, out: 4000 }}
           class="text-5xl font-bold mb-16 text-center w-full"
-          direction="left"
         >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1213,7 +1212,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 relative z-10">
             <ScrollContent
               contentID="contact_form"
-              range={{ in: 2500, out: 3500 }}
+              range={{ in: 2700, out: 4000 }}
               class="w-full h-auto"
               direction="left"
             >
@@ -1325,7 +1324,7 @@ export default function Home() {
 
             <ScrollContent
               contentID="contact_info"
-              range={{ in: 2500, out: 3500 }}
+              range={{ in: 2700, out: 4000 }}
               class="w-full h-auto"
               direction="right"
             >
@@ -1401,7 +1400,8 @@ export default function Home() {
                       ))}
                     </div>
 
-                    <div className="pt-5 border-t border-gray-200">
+                    <br />
+                  {/* <div className="pt-5 border-t border-gray-200">
                       <h4 className="font-semibold mb-3 text-lg text-gray-900">Business Hours</h4>
                       <div className="grid grid-cols-2 gap-3 text-sm text-gray-600">
                         <p>Monday - Friday:</p>
@@ -1411,7 +1411,7 @@ export default function Home() {
                         <p>Sunday:</p>
                         <p>Closed</p>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </motion.div>
 
