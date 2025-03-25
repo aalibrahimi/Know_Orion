@@ -247,8 +247,8 @@ export default function Home() {
             },
           }}
         >
-          <span className="text-gray-500 text-sm mb-2">Scroll to explore</span>
-          <ChevronDown className="h-5 w-5 text-gray-500" />
+          <span className="text-white text-md mb-2">Scroll to explore</span>
+          <ChevronDown className="h-5 w-5 text-gray-400" />
         </motion.div>
       </section>
 

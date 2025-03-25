@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Send, Loader2 } from "lucide-react";
-import Image from "next/image";
+"use client";
+
 import {
   Card,
   CardHeader,
@@ -12,53 +10,183 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@radix-ui/react-accordion";
+import { MapPin, Phone, Mail, Loader2, Send } from "lucide-react";
+import { motion } from "motion/react";
+import ScrollContent from "./scrollContent";
+import Image from "next/image";
+import { FormEvent, useEffect, useState } from "react";
+import { useFormDataStore } from "@/stores/store";
 
-const Contact = ({ header = "Get in Touch", desc = "We'd love to hear from you", btnText = "Send Inquiry" }) => {
-  const [formData, setFormData] = useState({
-    FirstName: "",
-    LastName: "",
-    email: "",
-    phone: "",
-    projectType: "",
-    projectDetails: "",
-  });
+interface Props {
+  scrollToTop?: boolean | false;
+  header?: string;
+  desc?: string;
+  btnText?: string;
+}
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState({ type: "", message: "" });
-
-  const setFirstName = (value) => setFormData({ ...formData, FirstName: value });
-  const setLastName = (value) => setFormData({ ...formData, LastName: value });
-  const setEmail = (value) => setFormData({ ...formData, email: value });
-  const setPhone = (value) => setFormData({ ...formData, phone: value });
-  const setProjectType = (value) => setFormData({ ...formData, projectType: value });
-  const setProjectDetails = (value) => setFormData({ ...formData, projectDetails: value });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus({ type: "success", message: "Your message has been sent successfully!" });
-      setIsSubmitting(false);
-    }, 1500);
+export default function Contact({
+  scrollToTop,
+  header,
+  desc,
+  btnText,
+}: Props) {
+  const {
+    FirstName,
+    setFirstName,
+    LastName,
+    setLastName,
+    email,
+    setEmail,
+    phone,
+    setPhone,
+    projectType,
+    setProjectType,
+    projectDetails,
+    setProjectDetails,
+  } = useFormDataStore();
+  const formData = {
+    FirstName,
+    LastName,
+    email,
+    phone,
+    projectType,
+    projectDetails,
   };
 
-  // Animation variants
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
+
+  useEffect(() => {
+    if (scrollToTop) {
+      scrollTo({ top: 0 });
+    }
+
+    setIsMounted(true);
+
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setIsReducedMotion(mediaQuery.matches);
+
+    const handleMediaChange = () => {
+      setIsReducedMotion(mediaQuery.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaChange);
+    };
+  }, []);
+
+  // Apply conditional animation based on device capability and user preference
+  const getAnimationProps = (delay = 0) => {
+    if (!isMounted || isReducedMotion) {
+      return {}; // No animation on SSR or when reduced motion is preferred
+    }
+
+    return {
+      initial: { opacity: 0, y: 10 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true },
+      transition: { duration: 0.3, delay },
+    };
+  };
+
+  const slideFromLeft = {
+    hidden: { x: -100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const slideFromRight = {
+    hidden: { x: 100, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        duration: 0.6,
+      },
+    },
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/send-contact", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.RESEND_KEY}`,
+          "Content-Type": "application/json",
+        },
+        // Need to send content to API
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setProjectType("");
+      setProjectDetails("");
+
+      setStatus({
+        type: "success",
+        message: "Thank You for reaching out!",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatus({
+        type: "error",
+        message:
+          "There was an error submitting your message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-white w-full">
+    <div id="contact" className="flex items-center justify-center min-h-screen">
+      <Image src="/construction_frame2.svg" width={1000} height={1000} className="w-full h-screen absolute z-5" alt="Construction Building Frame" draggable={false} />
+      <section className="relative w-full overflow-hidden py-16 bg-white to-black/40">
       <div className="container mx-auto px-4">
         {/* Section Header - Centered */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={fadeIn}
+          // variants={fadeIn}
           className="text-center max-w-2xl mx-auto mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-black">
@@ -78,7 +206,7 @@ const Contact = ({ header = "Get in Touch", desc = "We'd love to hear from you",
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="w-full lg:w-3/5"
+              className="w-full lg:w-3/5 z-10"
             >
               <form onSubmit={handleSubmit} className="h-full">
                 <Card className="bg-white text-black shadow-xl border-0 rounded-xl overflow-hidden h-full">
@@ -244,7 +372,7 @@ const Contact = ({ header = "Get in Touch", desc = "We'd love to hear from you",
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="w-full lg:w-2/5"
+              className="w-full lg:w-2/5 z-10"
             >
               <div className="space-y-4 h-full flex flex-col">
                 <motion.div
@@ -325,7 +453,6 @@ const Contact = ({ header = "Get in Touch", desc = "We'd love to hear from you",
         </div>
       </div>
     </section>
+    </div>
   );
 };
-
-export default Contact;
