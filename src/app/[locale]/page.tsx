@@ -27,6 +27,7 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import GradientText from "@/MyComponents/GradientText";
 import Contact from "@/MyComponents/Contact";
+import { Footer } from "@/MyComponents/Footer";
 
 type NavItem = {
   label: string;
@@ -425,6 +426,30 @@ export default function Home() {
           </motion.div>
         </motion.div>
 
+
+
+  {/* Stats indicators */}
+  <motion.div 
+      className="flex flex-wrap justify-center gap-8 mt-12"
+      variants={fadeIn}
+      transition={{ delay: 0.4 }}
+    >
+      <div className="flex flex-col items-center">
+        <span className="text-3xl font-bold text-blue-700">45+</span>
+        <span className="text-sm text-gray-600">Years Experience</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <span className="text-3xl font-bold text-red-700">200+</span>
+        <span className="text-sm text-gray-600">Projects Completed</span>
+      </div>
+      <div className="flex flex-col items-center">
+        <span className="text-3xl font-bold text-gray-800">350+</span>
+        <span className="text-sm text-gray-600">Team Members</span>
+      </div>
+    </motion.div>
+
+
+
         {/* Scroll indicator */}
         <motion.div
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
@@ -584,43 +609,7 @@ export default function Home() {
      <Contact />
 
       {/* Footer */}
-      <footer className="py-4 bg-black text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400">
-            <div className="flex items-center">
-              <span className="text-blue-500 font-bold">KNOZ</span>
-              <span className="mx-1 font-bold">|</span>
-              <span className="text-red-500 font-bold">ORION</span>
-            </div>
-
-            <span className="h-4 w-px bg-gray-700 hidden md:block"></span>
-
-            <p>
-              &copy; {new Date().getFullYear()} KNOZ | ORION. All rights
-              reserved.
-            </p>
-
-            <span className="h-4 w-px bg-gray-700 hidden md:block"></span>
-
-            <Link
-              href="https://codewithali.com/"
-              draggable={false}
-              className="font-semibold group transition-all duration-300 hover:scale-105 flex items-center"
-            >
-              <img
-                src="/codewithali.png"
-                className="h-6 w-auto mix-blend-screen isolate mr-2"
-                alt="CodeWithAli Logo"
-                draggable={false}
-              />
-              <p className="text-slate-600 group-hover:hidden">CodeWithAli</p>
-              <p className="text-blue hidden group-hover:inline">
-                <GradientText>CodeWithAli</GradientText>
-              </p>
-            </Link>
-          </div>
-        </div>
-      </footer>
+     <Footer />
     </main>
   );
 }

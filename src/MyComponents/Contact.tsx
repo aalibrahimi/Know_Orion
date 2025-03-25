@@ -133,7 +133,7 @@ export default function Contact() {
                         </label>
                         <select
                           id="projectType"
-                          className="h-9 w-full rounded-md border-gray-300 text-gray-900 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          className="h-9 w-full rounded-md   border border-blue-300 text-gray-900 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                         >
                           <option>Commercial Construction</option>
                           <option>Residential Development</option>

@@ -47,52 +47,43 @@ export function Footer(): React.ReactElement {
   ];
 
   return (
-   <section className="relative flex flex-col w-full overflow-hidden justify-center items-center py-16 bg-white mt-20">
-           <ScrollContent
-             contentID="footer"
-             range={{ in: 2500, out: 3500 }}
-             class="w-full h-auto flex justify-center items-center text-sm text-gray-600 mb-6"
-             direction="left"
-           >
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8 }}
-               viewport={{ once: true }}
-             >
-               © 2025 Knoz Al-Najah & Orion Engineering Consultants. All rights reserved.
-               
-             </motion.div>
-           </ScrollContent>
-   
-           <ScrollContent contentID="footer_cwa" range={{ in: 2500, out: 3500 }} class="w-full h-auto" direction="left">
-             {/* CodeWithAli Branding - Same Line */}
-             <motion.div
-               className="flex items-center justify-center gap-2"
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8, delay: 0.2 }}
-               viewport={{ once: true }}
-             >
-               <Link
-                 href="https://codewithali.com/"
-                 draggable={false}
-                 className="font-semibold group transition-all duration-300 hover:scale-105"
-               >
-                 <img
-                   src="/codewithali.png"
-                   className="h-10 w-auto mix-blend-screen isolate inline"
-                   alt="CodeWithAli Logo"
-                   draggable={false}
-                 />
-                 <p className="text-slate-600 text-sm inline group-hover:hidden">CodeWithAli</p>
-                 <p className="text-sm hidden group-hover:inline">
-                   <GradientText>CodeWithAli</GradientText>
-                 </p>
-               </Link>
-             </motion.div>
-           </ScrollContent>
-         </section>
+    <footer className="py-4 bg-black text-white">
+    <div className="container mx-auto px-4">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-gray-400">
+        <div className="flex items-center">
+          <span className="text-blue-500 font-bold">KNOZ</span>
+          <span className="mx-1 font-bold">|</span>
+          <span className="text-red-500 font-bold">ORION</span>
+        </div>
+
+        <span className="h-4 w-px bg-gray-700 hidden md:block"></span>
+
+        <p>
+          &copy; {new Date().getFullYear()} KNOZ | ORION. All rights
+          reserved.
+        </p>
+
+        <span className="h-4 w-px bg-gray-700 hidden md:block"></span>
+
+        <Link
+          href="https://codewithali.com/"
+          draggable={false}
+          className="font-semibold group transition-all duration-300 hover:scale-105 flex items-center"
+        >
+          <img
+            src="/codewithali.png"
+            className="h-6 w-auto mix-blend-screen isolate mr-2"
+            alt="CodeWithAli Logo"
+            draggable={false}
+          />
+          <p className="text-slate-600 group-hover:hidden">CodeWithAli</p>
+          <p className="text-blue hidden group-hover:inline">
+            <GradientText>CodeWithAli</GradientText>
+          </p>
+        </Link>
+      </div>
+    </div>
+  </footer>
   );
 }
 
