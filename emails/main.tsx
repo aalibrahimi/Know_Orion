@@ -10,7 +10,6 @@ import {
   Html,
   Img,
   Link,
-  Markdown,
   Preview,
   Row,
   Section,
@@ -41,67 +40,116 @@ const EmailPreview = () => {
       <Head />
 
       <Tailwind>
-        <Body className="text-black">
-          <Preview>New Client Message</Preview>
-          <Container>
-            <Heading as="h2" className="text-red-700">Client Contacted</Heading>
-            <Text className="italic text-sm text-gray-700">{`${Capitalize(data.firstName)} ${Capitalize(data.lastName)} would like to start a project.`}</Text>
+        <Body className="bg-white font-sans my-0">
+          <Preview>New project request from {Capitalize(data.firstName)} {Capitalize(data.lastName)}</Preview>
+          
+          <Container className="max-w-[600px] mx-auto">
+            {/* Modern Header with Blue Accent Bar */}
+            <Section className="pt-4">
+              <Row>
+                <Column>
+                  <Img 
+                    src="/orion_logo.png" 
+                    alt="Logo" 
+                    width="140" 
+                    height="40" 
+                  />
+                </Column>
+                <Column className="text-right">
+                  <Text className="text-blue-500 text-xs m-0">PROJECT REQUEST</Text>
+                  <Text className="text-blue-800 font-bold text-sm m-0">#PR-{Math.floor(1000 + Math.random() * 9000)}</Text>
+                </Column>
+              </Row>
+              <Hr className="border-t-4 border-blue-600 my-4 w-16 ml-0" />
+            </Section>
 
-            <Hr />
-
-            {/* Client Message */}
+            {/* Client Intro */}
             <Section>
-              <Heading as="h3" className="mb-1">Project Details</Heading>
-              <Heading as="h4" className="mb-1 inline italic text-gray-900">Project Type:</Heading>
-              <Text className="mt-0 inline text-xs italic text-gray-900">{data.projectType}</Text>
-              <Section className="bg-black/20 text-sm max-w-[600px] p-2 h-auto rounded-md m-0 mt-[5px]">
-              <Markdown
-                markdownContainerStyles={{
-                  maxWidth: "600px",
-                  overflowWrap: "break-word",
-                  marginLeft: "-20px",
-                  boxSizing: "border-box"
-                }}
-                markdownCustomStyles={{
-                  blockQuote: {color: "black", borderLeft: "4px solid #db2e2e", paddingLeft: "5px", fontSize: "12px", fontWeight: "600", lineHeight: "20px"}
-                }}
-              >{`>${data.projectDetails}`}</Markdown>
-              </Section>
+              <Heading as="h1" className="text-xl font-bold mb-0 tracking-tight text-blue-900">
+                New Project Request
+              </Heading>
+              <Text className="text-gray-700 text-sm mt-1 mb-6">
+                {Capitalize(data.firstName)} {Capitalize(data.lastName)} is looking for construction expertise.
+              </Text>
+            </Section>
+
+            {/* Project Card */}
+            <Section className="border border-blue-200 rounded p-3 mb-4 bg-blue-50">
+              <Row>
+                <Column className="w-10/12">
+                  <Heading as="h2" className="text-base font-bold m-0 text-blue-800">
+                    {data.projectType}
+                  </Heading>
+                  <Text className="text-sm text-gray-700 mt-2 mb-0">
+                    {data.projectDetails}
+                  </Text>
+                </Column>
+              </Row>
             </Section>
 
             {/* Client Details */}
+            <Section className="bg-gray-50 p-4 border-l-4 border-blue-600">
+              <Heading as="h3" className="text-sm font-bold m-0 uppercase text-blue-700">
+                Client Information
+              </Heading>
+              
+              <table className="w-full mt-2 border-collapse">
+                <tbody>
+                  <tr>
+                    <td className="py-1 text-xs text-gray-500 align-top w-20">Name</td>
+                    <td className="py-1 text-sm font-medium">
+                      {Capitalize(data.firstName)} {Capitalize(data.lastName)}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 text-xs text-gray-500 align-top">Email</td>
+                    <td className="py-1">
+                      <Link href={`mailto:${data.email}`} className="text-sm text-blue-700 no-underline">
+                        {data.email}
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-1 text-xs text-gray-500 align-top">Phone</td>
+                    <td className="py-1">
+                      <Link href={`tel:${data.phone}`} className="text-sm text-blue-700 no-underline">
+                        {data.phone}
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </Section>
+
+            {/* Action Buttons */}
+            <Section className="mt-6 mb-6">
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-sm mr-3 no-underline text-sm"
+                href="#"
+              >
+                View Details
+              </Button>
+              <Button
+                className="bg-white text-blue-700 border border-blue-600 font-medium px-6 py-3 rounded-sm no-underline text-sm"
+                href={`mailto:${data.email}`}
+              >
+                Reply
+              </Button>
+            </Section>
+
+            {/* Footer */}
+            <Hr className="border-blue-100 my-6" />
             <Section>
-              <Heading as="h3" className="mb-1">Client Details</Heading>
-              <Hr />
-              <Section className="ml-4">
-                <Row>
-                  <Column className="w-[80px] h-auto text-sm font-semibold">First Name:</Column>
-                  <Column>{Capitalize(data.firstName)}</Column>
-                </Row>
-
-                <Row>
-                  <Column className="w-[80px] h-auto text-sm font-semibold">Last Name:</Column>
-                  <Column>{Capitalize(data.lastName)}</Column>
-                </Row>
-
-                <Row>
-                  <Column className="w-[80px] h-auto text-sm font-semibold">Email:</Column>
-                  <Column>{data.email}</Column>
-                </Row>
-
-                <Row>
-                  <Column className="w-[80px] h-auto text-sm font-semibold">Phone:</Column>
-                  <Column>{data.phone}</Column>
-                </Row>
-
-              </Section>
+              <Text className="text-xs text-blue-800 m-0">
+                ©Knoz | Orion. All rights reserved.
+              </Text>
+              <Text className="text-xs text-blue-400 mt-1">
+                This email is auto-generated. Please do not reply directly.
+              </Text>
             </Section>
           </Container>
-
-          {/* <Img src="/buildingMobileframe-960x540.svg" /> */}
         </Body>
       </Tailwind>
-
     </Html>
   );
 };
