@@ -45,6 +45,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Progress } from "@/components/ui/progress"
 import { motion } from "framer-motion"
+import { Footer } from "@/MyComponents/Footer"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -692,9 +693,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true, opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, margin: "-100px" }}
+       
+        
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-2">Orion Engineering Consultants</h2>
             <p className="text-lg text-gray-400">Engineering Excellence & Innovation</p>
@@ -1461,57 +1461,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="relative flex flex-col w-full overflow-hidden justify-center items-center py-16 bg-white mt-20">
-        <ScrollContent
-          contentID="footer"
-          range={{ in: 2500, out: 3500 }}
-          class="w-full h-auto flex justify-center items-center text-sm text-gray-600 mb-6"
-          direction="left"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            © 2025 Knoz Al-Najah & Orion Engineering Consultants. All rights reserved.
-          </motion.div>
-        </ScrollContent>
-
-        <ScrollContent contentID="footer_cwa" range={{ in: 2500, out: 3500 }} class="w-full h-auto" direction="left">
-          {/* CodeWithAli Branding - Same Line */}
-          <motion.div
-            className="flex items-center justify-center gap-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <Link
-              href="https://codewithali.com/"
-              draggable={false}
-              className="font-semibold group transition-all duration-300 hover:scale-105"
-            >
-              <img
-                src="/codewithali.png"
-                className="h-10 w-auto mix-blend-screen isolate inline"
-                alt="CodeWithAli Logo"
-                draggable={false}
-              />
-              <p className="text-slate-600 text-sm inline group-hover:hidden">CodeWithAli</p>
-              <p className="text-sm hidden group-hover:inline">
-                <GradientText>CodeWithAli</GradientText>
-              </p>
-            </Link>
-          </motion.div>
-        </ScrollContent>
-      </section>
+      {/* Footerhere */}
+      <Footer />
+      
     </DynamicBackground>
   )
 }
 
-function Handshake(props) {
+function Handshake(props:any) {
   return (
     <svg
       {...props}
@@ -1530,7 +1487,7 @@ function Handshake(props) {
   )
 }
 
-function Leaf(props) {
+function Leaf(props:any) {
   return (
     <svg
       {...props}
@@ -1550,7 +1507,7 @@ function Leaf(props) {
   )
 }
 
-function Cpu(props) {
+function Cpu(props:any) {
   return (
     <svg
       {...props}
@@ -1578,7 +1535,7 @@ function Cpu(props) {
   )
 }
 
-function Mountain(props) {
+function Mountain(props:any) {
   return (
     <svg
       {...props}
