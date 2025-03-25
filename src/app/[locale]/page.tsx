@@ -610,7 +610,71 @@ export default function Home() {
         />
       </motion.div>
     </div>
+{/* Combined Unison Section - After the ORION section */}
+<motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+      className="mt-16 p-8 bg-blue-50 rounded-lg"
+    >
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative h-[400px] md:h-[500px]">
+          <Image
+            src="/orion_hero3.jpg"
+            alt="KNOZ ORION Unified"
+            fill
+            className="object-cover"
+          />
+        </div>
 
+        <div>
+          <div className="flex gap-2 items-center mb-4">
+            <span className="text-2xl font-bold text-blue-600">KNOZ</span>
+            <span className="text-2xl font-bold">|</span>
+            <span className="text-2xl font-bold text-red-600">ORION</span>
+          </div>
+          <h3 className="text-xl font-semibold mb-4 text-black">The Power of Unified Excellence</h3>
+          <p className="text-gray-600 mb-6">
+            The 2024 merger of KNOZ Construction and ORION Engineering creates a comprehensive building solutions 
+            provider unlike any other in the region. Our integrated approach eliminates traditional barriers between 
+            design and construction, delivering projects with unprecedented efficiency and innovation.
+          </p>
+          <ul className="space-y-4 mb-6">
+            <li className="flex items-start">
+              <div className="mr-2 mt-1 text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span className="text-gray-700">Seamless integration of design and construction teams</span>
+            </li>
+            <li className="flex items-start">
+              <div className="mr-2 mt-1 text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span className="text-gray-700">Reduced project timelines and fewer complications</span>
+            </li>
+            <li className="flex items-start">
+              <div className="mr-2 mt-1 text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span className="text-gray-700">Combined expertise for revolutionary building solutions</span>
+            </li>
+            <li className="flex items-start">
+              <div className="mr-2 mt-1 text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <span className="text-gray-700">Single point of accountability from concept to completion</span>
+            </li>
+          </ul>
+          <Button
+            variant="outline"
+            className="rounded-none border-black text-black bg-gradient-to-r from-blue-400 via-blue-500 to-red-400 hover:text-white"
+          >
+            Our Unified Approach
+          </Button>
+        </div>
+      </div>
+    </motion.div>
    
   </div>
 </section>
