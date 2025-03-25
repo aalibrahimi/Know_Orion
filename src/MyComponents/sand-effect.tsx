@@ -2,13 +2,13 @@
 
 import { useEffect, useRef } from "react"
 
-type RainIntensity = "light" | "medium" | "heavy"
+type SandIntensity = "light" | "medium" | "heavy"
 
-interface RainEffectProps {
-  intensity?: RainIntensity
+interface SandEffectProps {
+  intensity?: SandIntensity
 }
 
-interface Raindrop {
+interface Sanddrop {
   x: number
   y: number
   length: number
@@ -18,7 +18,7 @@ interface Raindrop {
   draw: (ctx: CanvasRenderingContext2D) => void
 }
 
-export default function RainEffect({ intensity = "medium" }: RainEffectProps) {
+export default function SandEffect({ intensity = "medium" }: SandEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function RainEffect({ intensity = "medium" }: RainEffectProps) {
     if (!ctx) return
 
     let animationFrameId: number
-    const raindrops: Raindrop[] = []
+    const raindrops: Sanddrop[] = []
 
     // Set canvas dimensions
     const resizeCanvas = () => {
@@ -41,12 +41,12 @@ export default function RainEffect({ intensity = "medium" }: RainEffectProps) {
     resizeCanvas()
 
     // Raindrop factory function
-    const createRaindrop = (): Raindrop => {
+    const createRaindrop = (): Sanddrop => {
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * -canvas.height,
         length: Math.random() * 2 + 0.5,
-        speed: Math.random() * 3 + 2,
+        speed: Math.random() * 10 + 5,
         opacity: Math.random() * 0.4 + 0.3,
         
         update() {
@@ -71,10 +71,10 @@ export default function RainEffect({ intensity = "medium" }: RainEffectProps) {
     }
 
     // Create raindrops based on intensity
-    const dropCount: Record<RainIntensity, number> = {
-      light: 100,
-      medium: 200,
-      heavy: 10000,
+    const dropCount: Record<SandIntensity, number> = {
+      light: 1500,
+      medium: 2500,
+      heavy: 5000,
     }
 
     for (let i = 0; i < dropCount[intensity]; i++) {
