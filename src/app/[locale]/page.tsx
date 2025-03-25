@@ -17,6 +17,7 @@ import { Footer } from "@/MyComponents/Footer";
 import SandEffect from "@/MyComponents/sand-effect";
 import Navbar from "@/MyComponents/navbar";
 import Contact from "@/MyComponents/Contact";
+import BackgroundFrame from "@/MyComponents/backgroundFrame";
 
 type ServiceItem = {
   title: string;
@@ -132,7 +133,7 @@ export default function Home() {
         className="relative h-screen w-full flex flex-col justify-center items-center bg-blue-300"
       >
         
-        <Image src="/construction_frame.svg" width={1000} height={1000} className="w-full h-screen absolute" alt="Construction Frame" draggable={false} />
+        <BackgroundFrame className="z-5"/>
         <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
