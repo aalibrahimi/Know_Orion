@@ -39,7 +39,8 @@ export default function Contact() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div id="contact" className="flex items-center justify-center min-h-screen">
+      <Image src="/construction_frame2.svg" width={1000} height={1000} className="w-full h-screen absolute z-10" alt="Construction Building Frame" draggable={false} />
       {/* Contact Section */}
       <section className="relative w-full overflow-hidden py-16 bg-white to-black/40">
         <ScrollContent

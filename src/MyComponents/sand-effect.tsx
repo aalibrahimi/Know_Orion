@@ -47,7 +47,7 @@ export default function SandEffect({ intensity = "medium" }: SandEffectProps) {
         y: Math.random() * -canvas.height,
         length: Math.random() * 2 + 0.5,
         speed: Math.random() * 10 + 5,
-        opacity: Math.random() * 0.4 + 0.3,
+        opacity: Math.random() * 1 + 0.75,
         
         update() {
           this.y += this.speed

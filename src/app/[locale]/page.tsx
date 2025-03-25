@@ -11,29 +11,12 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import GradientText from "@/MyComponents/GradientText";
 import Contact from "@/MyComponents/Contact";
 import { Footer } from "@/MyComponents/Footer";
 import SandEffect from "@/MyComponents/sand-effect";
-
-type NavItem = {
-  label: string;
-  href: string;
-};
+import Navbar from "@/MyComponents/navbar";
 
 type ServiceItem = {
   title: string;
@@ -50,19 +33,6 @@ type ProjectItem = {
 };
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-  const [isNavbarSolid, setIsNavbarSolid] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-      setIsNavbarSolid(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -118,13 +88,6 @@ export default function Home() {
     },
   };
 
-  const navItems: NavItem[] = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
 
   const constructionServices: ServiceItem[] = [
     {
@@ -315,76 +278,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       {/* Navbar */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
-          isNavbarSolid ? "bg-white shadow-md py-2" : "bg-transparent py-4"
-        }`}
-      >
-        <div className="container flex h-16 items-center justify-between px-4 mx-auto">
-          <motion.div
-            className="flex items-center gap-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="text-2xl font-bold flex items-center gap-2">
-              <span className="text-blue-600 font-extrabold">KNOZ</span>
-              <Separator orientation="vertical" className="h-6" />
-              <span className="text-red-600 font-medium">ORION</span>
-            </div>
-          </motion.div>
-
-          <motion.nav
-            className="hidden md:flex items-center gap-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {navItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className={`text-sm font-medium transition-colors relative group ${
-                  isNavbarSolid ? "text-gray-900" : "text-gray-900"
-                }`}
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
-              </Link>
-            ))}
-          </motion.nav>
-
-          <Button
-            variant="outline"
-            className="hidden md:flex text-white border-black bg-blue-700  "
-          >
-            Get in Touch
-          </Button>
-
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" className="text-black">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="4" x2="20" y1="12" y2="12" />
-                <line x1="4" x2="20" y1="6" y2="6" />
-                <line x1="4" x2="20" y1="18" y2="18" />
-              </svg>
-            </Button>
-          </div>
-        </div>
-      </header>
+        <Navbar />
 
       {/* Hero Section */}
-      
       <section
         id="home"
         className="relative h-screen w-full flex flex-col justify-center items-center bg-blue-300"
@@ -394,10 +290,8 @@ export default function Home() {
         <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
-          <SandEffect intensity={"heavy"} />
         </div>
         <div className="w-[50px] h-screen absolute overflow-hidden right-130">
-          <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
         </div>
@@ -430,15 +324,38 @@ export default function Home() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             variants={fadeIn}
           >
-            <Button className="px-6 py-6 rounded-none font-medium flex items-center gap-2 bg-blue-900 text-white hover:bg-gray-800 transition-all">
-              Our Services <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              className="px-6 py-6 rounded-none bg-white border-black text-black hover:bg-black hover:text-white"
-            >
-              View Projects
-            </Button>
+            <Link href="#contact">
+              <Button className="px-6 py-6 rounded-none font-medium flex items-center gap-2 bg-blue-900 text-white hover:bg-gray-800 transition-all">
+                Get Started <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="#projects">
+              <Button
+                variant="outline"
+                className="px-6 py-6 rounded-none bg-white border-black text-black hover:bg-black hover:text-white"
+              >
+                View Projects
+              </Button>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            variants={fadeIn}
+          >
+            <div className="flex justify-center items-center mt-2 gap-4">
+            <Link href="https://knoz.fly.dev/" target="_blank">
+              <div className="bg-white border-black border-2 rounded-full hover:bg-blue-400/80 object-cover w-12 h-12 flex justify-center items-center">
+                <Image src="/KnozIcon.svg" alt="Knoz Icon" width={1000} height={1000} className="w-15 h-auto" draggable={false} />
+              </div>
+            </Link>
+
+            <Link href="https://www.orionuae.com/" target="_blank">
+              <div className="bg-white border-red-500 border-2 rounded-full hover:bg-red-700/65 hover:contrast-175 object-cover w-12 h-12 flex justify-center items-center">
+                <Image src="/OrionIcon.svg" alt="Knoz Icon" width={1000} height={1000} className="w-15 h-auto" draggable={false} />
+              </div>
+            </Link>
+            </div>
           </motion.div>
         </motion.div>
 
