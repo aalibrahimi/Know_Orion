@@ -28,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import GradientText from "@/MyComponents/GradientText";
 import Contact from "@/MyComponents/Contact";
 import { Footer } from "@/MyComponents/Footer";
+import RainEffect from "@/MyComponents/sand-effect";
 
 type NavItem = {
   label: string;
@@ -387,6 +388,15 @@ export default function Home() {
         id="home"
         className="relative h-screen w-full flex flex-col justify-center items-center bg-blue-300"
       >
+        <Image src="/construction_frame.svg" width={1000} height={1000} className="w-full h-screen absolute" alt="Construction Frame" draggable={false} />
+        <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
+          <RainEffect intensity={"heavy"} />
+        </div>
+        <div className="w-[50px] h-screen absolute overflow-hidden -inset-1/5">
+          <RainEffect intensity={"heavy"} />
+        </div>
+
+
         <motion.div
           className="container mx-auto px-4 z-10 text-center"
           initial="hidden"
