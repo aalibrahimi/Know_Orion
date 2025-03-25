@@ -392,7 +392,7 @@ export default function Home() {
         <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
           <RainEffect intensity={"heavy"} />
         </div>
-        <div className="w-[50px] h-screen absolute overflow-hidden -inset-1/5">
+        <div className="w-[50px] h-screen absolute overflow-hidden">
           <RainEffect intensity={"heavy"} />
         </div>
 

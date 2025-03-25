@@ -45,13 +45,14 @@ export default function RainEffect({ intensity = "medium" }: RainEffectProps) {
       return {
         x: Math.random() * canvas.width,
         y: Math.random() * -canvas.height,
-        length: Math.random() * 5 + 1.5,
-        speed: Math.random() * 5 + 5,
+        length: Math.random() * 2 + 0.5,
+        speed: Math.random() * 3 + 2,
         opacity: Math.random() * 0.4 + 0.3,
         
         update() {
           this.y += this.speed
-
+          // Makes effect wavey --> wind effect
+          this.x += Math.sin(this.y / 50) * 0.5
           if (this.y > canvas.height) {
             this.y = Math.random() * -100
             this.x = Math.random() * canvas.width
