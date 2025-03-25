@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import * as React from "react";
 
 interface EmailContactProps {
@@ -27,6 +29,9 @@ export const EmailContact: React.FC<Readonly<EmailContactProps>> = ({
     <p style={{ fontStyle: 'italic' }}>{projectType}</p>
     <h5>Project Details</h5>
     <p style={{ fontStyle: 'italic' }}>{projectDetails}</p>
+    <a href="https://codewithali.com/" target="_blank" className="">
+      <span>Click Me</span>
+    </a>
     </>
   );
 };

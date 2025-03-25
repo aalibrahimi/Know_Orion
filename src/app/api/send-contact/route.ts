@@ -11,8 +11,8 @@ export async function POST(req: any) {
     const { FirstName, LastName, email, phone, projectType, projectDetails } = content;
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Knoz&Orion Website <unfold@codewithali.com>',
-      to: ['blazehunterhp@gmail.com', 'aalibrahimi0@gmail.com'],
+      from: 'Knoz&Orion Website <mailer@codewithali.com>',
+      to: ['blazehunterhp@gmail.com'], // Knozalnajah@gmail.com
       subject: 'Client Contact Incoming',
       react: EmailContact({ FirstName, LastName, email, phone, projectType, projectDetails }) as React.ReactElement,
     });
