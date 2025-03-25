@@ -1,8 +1,6 @@
-// components/Navbar.jsx
 "use client";
-
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Separator } from "@/components/ui/separator";
@@ -16,16 +14,35 @@ type NavItem = {
 export default function Navbar() {
   const [scrollY, setScrollY] = useState(0);
   const [isNavbarSolid, setIsNavbarSolid] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       setIsNavbarSolid(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu when window resizes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   const navItems: NavItem[] = [
     { label: "Home", href: "#home" },
@@ -75,7 +92,6 @@ export default function Navbar() {
             </Link>
           </div>
         </motion.div>
-
         <motion.nav
           className="hidden md:flex items-center gap-8"
           initial={{ opacity: 0 }}
@@ -97,18 +113,22 @@ export default function Navbar() {
             </Link>
           ))}
         </motion.nav>
-
-        <Link href="mailto:Knozalnajah@gmail.com">
+        <Link href="mailto:Knozalnajah@gmail.com" className="hidden md:block">
           <Button
             variant="outline"
-            className="hidden md:flex text-white border-black bg-blue-700  "
+            className="text-white border-black bg-blue-700"
           >
             Get in Touch
           </Button>
         </Link>
-
         <div className="md:hidden">
-          <Button variant="ghost" size="icon" className="text-black">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-black"
+            onClick={toggleMenu}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -120,13 +140,62 @@ export default function Navbar() {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
+              {isMenuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </>
+              ) : (
+                <>
+                  <line x1="4" x2="20" y1="12" y2="12" />
+                  <line x1="4" x2="20" y1="6" y2="6" />
+                  <line x1="4" x2="20" y1="18" y2="18" />
+                </>
+              )}
             </svg>
           </Button>
         </div>
       </div>
+      
+      {/* Mobile Menu Dropdown */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: "auto" }}
+            exit={{ opacity: 0, y: -10, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white shadow-lg overflow-hidden"
+          >
+            <div className="container mx-auto px-4 py-4">
+              <nav className="flex flex-col space-y-4">
+                {navItems.map((item, index) => (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    onClick={closeMenu}
+                    className="text-gray-900 font-medium text-lg py-2 border-b border-gray-100 hover:text-blue-600 transition-colors duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link 
+                  href="mailto:Knozalnajah@gmail.com" 
+                  onClick={closeMenu}
+                  className="mt-2"
+                >
+                  <Button
+                    variant="outline"
+                    className="w-full text-white border-black bg-blue-700"
+                  >
+                    Get in Touch
+                  </Button>
+                </Link>
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
