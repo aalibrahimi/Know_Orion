@@ -130,7 +130,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative h-screen w-full flex flex-col justify-center items-center bg-blue-300"
+      className="relative min-h-screen w-full flex flex-col justify-center items-center bg-blue-300 px-4 py-16 md:py-0"
       >
         
         <BackgroundFrame className="z-5"/>
@@ -209,61 +209,40 @@ export default function Home() {
 
 
   {/* Stats indicators */}
-  <motion.div 
-      className="flex flex-wrap justify-center gap-8 mt-12"
-      variants={fadeIn}
-      transition={{ delay: 0.4 }}
-    >
-      <div className="flex flex-col items-center">
-        <span className="text-3xl font-bold text-blue-700">45+</span>
-        <span className="text-sm text-gray-600">Years Experience</span>
-      </div>
-      <div className="flex flex-col items-center">
-        <span className="text-3xl font-bold text-red-700">200+</span>
-        <span className="text-sm text-gray-600">Projects Completed</span>
-      </div>
-      <div className="flex flex-col items-center">
-        <span className="text-3xl font-bold text-gray-800">350+</span>
-        <span className="text-sm text-gray-600">Team Members</span>
-      </div>
-    </motion.div>
+   <motion.div 
+    className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-8 sm:mt-12"
+    variants={fadeIn}
+    transition={{ delay: 0.4 }}
+  >
+    <div className="flex flex-col items-center px-2">
+      <span className="text-2xl sm:text-3xl font-bold text-blue-700">45+</span>
+      <span className="text-xs sm:text-sm text-gray-600 text-center">Years Experience</span>
+    </div>
+    <div className="flex flex-col items-center px-2">
+      <span className="text-2xl sm:text-3xl font-bold text-red-700">200+</span>
+      <span className="text-xs sm:text-sm text-gray-600 text-center">Projects Completed</span>
+    </div>
+    <div className="flex flex-col items-center px-2">
+      <span className="text-2xl sm:text-3xl font-bold text-gray-800">350+</span>
+      <span className="text-xs sm:text-sm text-gray-600 text-center">Team Members</span>
+    </div>
+  </motion.div>
 
 
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer"
-          onClick={scrollToContent}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: 1,
-            y: [0, 10, 0],
-            transition: {
-              y: {
-                repeat: Number.POSITIVE_INFINITY,
-                duration: 1.5,
-                ease: "easeInOut",
-              },
-              opacity: { duration: 1, delay: 1 },
-            },
-          }}
-        >
-          <span className="text-white text-md mb-2">Scroll to explore</span>
-          <ChevronDown className="h-5 w-5 text-gray-400" />
-        </motion.div>
+      
       </section>
 
       {/* About Section */}
-     {/* Enhanced About Section with Company Details */}
-<section id="about" className="py-20 md:py-32 bg-white">
-  <div className="container mx-auto px-4">
-    {/* Section heading */}
-    <div className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+  
+      <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
+    {/* Section heading with better spacing */}
+    <div className="text-center mb-8 sm:mb-12 md:mb-16">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
         <span className="text-blue-600">Two companies</span>,
         <span className="text-red-600"> one vision</span>
       </h2>
-      <p className="text-gray-600 max-w-2xl mx-auto">
+      <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2">
         A powerful synergy of construction and engineering excellence, delivering integrated solutions for the most complex building challenges.
       </p>
     </div>
@@ -382,8 +361,8 @@ export default function Home() {
       transition={{ duration: 0.6 }}
       className="mt-16 p-8 bg-blue-50 rounded-lg"
     >
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="relative h-[400px] md:h-[500px]">
+      <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-8 sm:mb-12 md:mb-16">
+        <div className="relative h-[400px] md:h-[500px] ">
           <Image
             src="/orion_hero3.jpg"
             alt="KNOZ ORION Unified"
@@ -444,26 +423,27 @@ export default function Home() {
 </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-                Featured Projects
-              </h2>
-              <p className="text-gray-600 max-w-xl">
-                A showcase of our most innovative and impactful construction and
-                engineering projects.
-              </p>
-            </div>
-            <div className="mt-6 md:mt-0">
-              <Button className="bg-black hover:bg-gray-800 text-white">
-                View All Projects <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+      <section id="projects" className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 md:mb-12">
+      <div>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-black">
+          Featured Projects
+        </h2>
+        <p className="text-sm sm:text-base text-gray-600 max-w-xl">
+          A showcase of our most innovative and impactful construction and
+          engineering projects.
+        </p>
+      </div>
+      <div className="mt-4 md:mt-0">
+        <Button className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-6">
+          View All Projects <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+        </Button>
+      </div>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
