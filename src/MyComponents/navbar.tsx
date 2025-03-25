@@ -2,16 +2,45 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { useLocale, useTranslations } from "next-intl";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Globe } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type NavItem = {
   label: string;
   href: string;
 };
 
+interface Language {
+  code: string;
+  name: string;
+  flag?: string;
+}
+
+const languages: Language[] = [
+  { code: "en", name: "English", flag: "🇺🇸" },
+  { code: "ar", name: "العربية", flag: "ar" },
+];
+
 export default function Navbar() {
+  const t = useTranslations("NavBar");
+  const pathname = usePathname();
+  const locale = useLocale();
+  const [currentLanguage, setCurrentLanguage] = useState<Language>(
+    languages[0]
+  );
+
   const [scrollY, setScrollY] = useState(0);
   const [isNavbarSolid, setIsNavbarSolid] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,11 +74,30 @@ export default function Navbar() {
   };
 
   const navItems: NavItem[] = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+    { label: t("routes.home"), href: "#home" },
+    { label: t("routes.about"), href: "#about" },
+    { label: t("routes.projects"), href: "#projects" },
+    { label: t("routes.contact"), href: "#contact" },
   ];
+
+  useEffect(() => {
+    const matchedLanguage =
+      languages.find((lang) => lang.code === locale) || languages[0];
+    setCurrentLanguage(matchedLanguage);
+  }, [locale]);
+
+  const changeLanguage = (language: Language) => {
+    // Change language while staying on current path
+    // router.replace(pathname, {locale: language.code})
+    if (language.code === locale) return;
+
+    window.location.href = `/${language.code}${pathname === "/" ? "" : pathname} `;
+
+    // router.push(pathname, {locale: language.code})
+    // setCurrentLanguage(language)
+    // Here you would typically call your i18n library's function to change the locale
+    // For example: i18n.changeLanguage(language.code);
+  };
 
   return (
     <header
@@ -74,7 +122,7 @@ export default function Navbar() {
                   height={1000}
                   className="w-10 h-auto inline mb-1"
                 />
-                <p className="inline ml-1">KNOZ</p>
+                <p className="inline ml-1">{t("company.knoz")}</p>
               </span>
             </Link>
             <Separator orientation="vertical" className="h-8 w-0.5" />
@@ -87,7 +135,7 @@ export default function Navbar() {
                   height={1000}
                   className="w-8 h-auto inline"
                 />
-                <p className="inline ml-1">ORION</p>
+                <p className="inline ml-1">{t("company.orion")}</p>
               </span>
             </Link>
           </div>
@@ -113,18 +161,52 @@ export default function Navbar() {
             </Link>
           ))}
         </motion.nav>
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="flex items-center gap-1 px-2 py-1 rounded-md text-black hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+              <Globe className="h-4 w-4" />
+              <span className="hidden sm:inline-block">
+                {currentLanguage.flag}
+              </span>
+              <span className="sr-only">{t("labelSwitchLang")}</span>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="end"
+            className="bg-white dark:bg-gray-950 text-black dark:text-white"
+          >
+            <DropdownMenuLabel>{t("labelSelectLang")}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {languages.map((language) => (
+              <DropdownMenuItem
+                key={language.code}
+                className={cn(
+                  "cursor-pointer flex items-center gap-2",
+                  currentLanguage.code === language.code &&
+                    "font-medium bg-gray-100 dark:bg-gray-800"
+                )}
+                onClick={() => changeLanguage(language)}
+              >
+                <span className="text-base">{language.flag}</span>
+                {language.name}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
         <Link href="mailto:Knozalnajah@gmail.com" className="hidden md:block">
           <Button
             variant="outline"
             className="text-white border-black bg-blue-700"
           >
-            Get in Touch
+            {t("btn")}
           </Button>
         </Link>
         <div className="md:hidden">
-          <Button 
-            variant="ghost" 
-            size="icon" 
+          <Button
+            variant="ghost"
+            size="icon"
             className="text-black"
             onClick={toggleMenu}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -156,7 +238,7 @@ export default function Navbar() {
           </Button>
         </div>
       </div>
-      
+
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -179,8 +261,8 @@ export default function Navbar() {
                     {item.label}
                   </Link>
                 ))}
-                <Link 
-                  href="mailto:Knozalnajah@gmail.com" 
+                <Link
+                  href="mailto:Knozalnajah@gmail.com"
                   onClick={closeMenu}
                   className="mt-2"
                 >
@@ -188,7 +270,7 @@ export default function Navbar() {
                     variant="outline"
                     className="w-full text-white border-black bg-blue-700"
                   >
-                    Get in Touch
+                    {t("btn")}
                   </Button>
                 </Link>
               </nav>

@@ -22,6 +22,7 @@ import ScrollContent from "./scrollContent";
 import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
 import { useFormDataStore } from "@/stores/store";
+import { useTranslations } from "next-intl";
 
 interface Props {
   scrollToTop?: boolean | false;
@@ -30,12 +31,9 @@ interface Props {
   btnText?: string;
 }
 
-export default function Contact({
-  scrollToTop,
-  header,
-  desc,
-  btnText,
-}: Props) {
+export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
+  const t = useTranslations("ContactPage");
+
   const {
     FirstName,
     setFirstName,
@@ -162,14 +160,13 @@ export default function Contact({
 
       setStatus({
         type: "success",
-        message: "Thank You for reaching out!",
+        message: t("status.succMsg"),
       });
     } catch (error) {
       console.error("Error submitting form:", error);
       setStatus({
         type: "error",
-        message:
-          "There was an error submitting your message. Please try again.",
+        message: t("status.errMsg"),
       });
     } finally {
       setIsSubmitting(false);
@@ -178,281 +175,298 @@ export default function Contact({
 
   return (
     <div id="contact" className="flex items-center justify-center min-h-screen">
-      <Image src="/building_frame.svg" width={1000} height={1000} className="w-full h-screen absolute z-5" alt="Construction Building Frame" draggable={false} />
+      <Image
+        src="/building_frame.svg"
+        width={1000}
+        height={1000}
+        className="w-full h-screen absolute z-5"
+        alt="Construction Building Frame"
+        draggable={false}
+      />
       <section className="relative w-full overflow-hidden py-16 bg-white to-black/40">
-      <div className="container mx-auto px-4">
-        {/* Section Header - Centered */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          // variants={fadeIn}
-          className="text-center max-w-2xl mx-auto mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-black">
-            {header}
-          </h2>
-          <p className="text-gray-600">
-            {desc}
-          </p>
-        </motion.div>
+        <div className="container mx-auto px-4">
+          {/* Section Header - Centered */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            // variants={fadeIn}
+            className="text-center max-w-2xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-black">
+              {header}
+            </h2>
+            <p className="text-gray-600">{desc}</p>
+          </motion.div>
 
-        {/* Contact Content */}
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Form Column */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="w-full lg:w-3/5 z-10"
-            >
-              <form onSubmit={handleSubmit} className="h-full">
-                <Card className="bg-white text-black shadow-xl border-0 rounded-xl overflow-hidden h-full">
-                  <CardHeader className="pb-2 pt-6">
-                    <CardTitle className="text-xl">Get in Touch</CardTitle>
-                    <CardDescription className="text-gray-600">
-                      Fill out the form below and our team will contact you shortly
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {/* Name Fields - Responsive */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Contact Content */}
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-8">
+              {/* Form Column */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="w-full lg:w-3/5 z-10"
+              >
+                <form onSubmit={handleSubmit} className="h-full">
+                  <Card className="bg-white text-black shadow-xl border-0 rounded-xl overflow-hidden h-full">
+                    <CardHeader className="pb-2 pt-6">
+                      <CardTitle className="text-xl">
+                        {t("form.header")}
+                      </CardTitle>
+                      <CardDescription className="text-gray-600">
+                        {t("form.desc")}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      {/* Name Fields - Responsive */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <label
+                            htmlFor="firstName"
+                            className="text-xs font-medium text-gray-700"
+                          >
+                            {t("form.fName.label")}
+                          </label>
+                          <Input
+                            id="firstName"
+                            value={formData.FirstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder={t("form.fName.placeholder")}
+                            className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <label
+                            htmlFor="lastName"
+                            className="text-xs font-medium text-gray-700"
+                          >
+                            {t("form.lName.label")}
+                          </label>
+                          <Input
+                            id="lastName"
+                            value={formData.LastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder={t("form.lName.placeholder")}
+                            className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          />
+                        </div>
+                      </div>
+
                       <div className="space-y-1">
                         <label
-                          htmlFor="firstName"
+                          htmlFor="email"
                           className="text-xs font-medium text-gray-700"
                         >
-                          First Name
+                          {t("form.email.label")}
                         </label>
                         <Input
-                          id="firstName"
-                          value={formData.FirstName}
-                          onChange={(e) => setFirstName(e.target.value)}
-                          placeholder="John"
+                          id="email"
+                          value={formData.email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          type="email"
+                          placeholder={t("form.email.placeholder")}
                           className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                         />
                       </div>
+
+                      {/* Phone & Project Type - Responsive */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <label
+                            htmlFor="phone"
+                            className="text-xs font-medium text-gray-700"
+                          >
+                            {t("form.phone.label")}
+                          </label>
+                          <Input
+                            id="phone"
+                            value={formData.phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            placeholder={t("form.phone.placeholder")}
+                            className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <label
+                            htmlFor="projectType"
+                            className="text-xs font-medium text-gray-700"
+                          >
+                            {t("form.projectType.label")}
+                          </label>
+                          <select
+                            id="projectType"
+                            className="h-10 w-full rounded-md border border-blue-300 text-gray-900 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                            onChange={(e) => setProjectType(e.target.value)}
+                          >
+                            <option value="">
+                              {t("form.projectType.options.1")}
+                            </option>
+                            <option value="Commercial Construction">
+                              {t("form.projectType.options.2")}
+                            </option>
+                            <option value="Residential Development">
+                              {t("form.projectType.options.3")}
+                            </option>
+                            <option value="Infrastructure Project">
+                              {t("form.projectType.options.4")}
+                            </option>
+                            <option value="Engineering Consultation">
+                              {t("form.projectType.options.5")}
+                            </option>
+                            <option value="Other">
+                              {t("form.projectType.options.6")}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+
                       <div className="space-y-1">
                         <label
-                          htmlFor="lastName"
+                          htmlFor="message"
                           className="text-xs font-medium text-gray-700"
                         >
-                          Last Name
+                          {t("form.projectDetails.label")}
                         </label>
-                        <Input
-                          id="lastName"
-                          value={formData.LastName}
-                          onChange={(e) => setLastName(e.target.value)}
-                          placeholder="Doe"
-                          className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                        <Textarea
+                          id="message"
+                          value={formData.projectDetails}
+                          onChange={(e) => setProjectDetails(e.target.value)}
+                          placeholder={t("form.projectDetails.placeholder")}
+                          className="border-blue-300 min-h-24 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
                         />
                       </div>
-                    </div>
-
-                    <div className="space-y-1">
-                      <label
-                        htmlFor="email"
-                        className="text-xs font-medium text-gray-700"
-                      >
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        value={formData.email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        type="email"
-                        placeholder="john@example.com"
-                        className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                      />
-                    </div>
-
-                    {/* Phone & Project Type - Responsive */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <div className="space-y-1">
-                        <label
-                          htmlFor="phone"
-                          className="text-xs font-medium text-gray-700"
+                    </CardContent>
+                    <CardFooter className="flex flex-col sm:flex-row items-center justify-between pt-0 pb-6 px-6 gap-4">
+                      {/* Status Messages */}
+                      {status.type && (
+                        <div
+                          className={`p-3 rounded-lg text-sm w-full ${
+                            status.type === "success"
+                              ? "bg-green-50 text-green-800"
+                              : "bg-red-50 text-red-800"
+                          }`}
                         >
-                          Phone Number
-                        </label>
-                        <Input
-                          id="phone"
-                          value={formData.phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+1 (555) 000-0000"
-                          className="h-10 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <label
-                          htmlFor="projectType"
-                          className="text-xs font-medium text-gray-700"
-                        >
-                          Project Type
-                        </label>
-                        <select
-                          id="projectType"
-                          className="h-10 w-full rounded-md border border-blue-300 text-gray-900 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                          onChange={(e) => setProjectType(e.target.value)}
-                        >
-                          <option value="">Select Project Type</option>
-                          <option value="Commercial Construction">
-                            Commercial Construction
-                          </option>
-                          <option value="Residential Development">
-                            Residential Development
-                          </option>
-                          <option value="Infrastructure Project">
-                            Infrastructure Project
-                          </option>
-                          <option value="Engineering Consultation">
-                            Engineering Consultation
-                          </option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="space-y-1">
-                      <label
-                        htmlFor="message"
-                        className="text-xs font-medium text-gray-700"
-                      >
-                        Project Details
-                      </label>
-                      <Textarea
-                        id="message"
-                        value={formData.projectDetails}
-                        onChange={(e) => setProjectDetails(e.target.value)}
-                        placeholder="Tell us about your project..."
-                        className="border-blue-300 min-h-24 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
-                      />
-                    </div>
-                  </CardContent>
-                  <CardFooter className="flex flex-col sm:flex-row items-center justify-between pt-0 pb-6 px-6 gap-4">
-                    {/* Status Messages */}
-                    {status.type && (
-                      <div
-                        className={`p-3 rounded-lg text-sm w-full ${
-                          status.type === "success"
-                            ? "bg-green-50 text-green-800"
-                            : "bg-red-50 text-red-800"
-                        }`}
-                      >
-                        {status.message}
-                      </div>
-                    )}
-                    <motion.button
-                      className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium shadow-md hover:shadow-blue-900/20 transition-all text-sm w-full sm:w-auto"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      {isSubmitting ? (
-                        <span className="flex items-center justify-center">
-                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                          Sending...
-                        </span>
-                      ) : (
-                        <span className="flex items-center justify-center">
-                          <Send className="mr-2 h-5 w-5" />
-                          {btnText ? `${btnText}` : "Send Inquiry"}
-                        </span>
+                          {status.message}
+                        </div>
                       )}
-                    </motion.button>
-                  </CardFooter>
-                </Card>
-              </form>
-            </motion.div>
+                      <motion.button
+                        className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium shadow-md hover:shadow-blue-900/20 transition-all text-sm w-full sm:w-auto"
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {isSubmitting ? (
+                          <span className="flex items-center justify-center">
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            {t("btnLoading")}
+                          </span>
+                        ) : (
+                          <span className="flex items-center justify-center">
+                            <Send className="mr-2 h-5 w-5" />
+                            {btnText ? `${btnText}` : "Send Inquiry"}
+                          </span>
+                        )}
+                      </motion.button>
+                    </CardFooter>
+                  </Card>
+                </form>
+              </motion.div>
 
-            {/* Contact Info Column */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="w-full lg:w-2/5 z-10"
-            >
-              <div className="space-y-4 h-full flex flex-col">
-                <motion.div
-                  className="bg-white rounded-2xl overflow-hidden border border-blue-300 shadow-xl p-6 flex-1"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex flex-col space-y-6">
-                    <h3 className="font-bold text-lg text-black/80">
-                      Contact Information
-                    </h3>
+              {/* Contact Info Column */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="w-full lg:w-2/5 z-10"
+              >
+                <div className="space-y-4 h-full flex flex-col">
+                  <motion.div
+                    className="bg-white rounded-2xl overflow-hidden border border-blue-300 shadow-xl p-6 flex-1"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="flex flex-col space-y-6">
+                      <h3 className="font-bold text-lg text-black/80">
+                        {t("sideCard.title")}
+                      </h3>
 
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-blue-50 rounded-full">
-                        <MapPin className="h-5 w-5 text-blue-600" />
+                      <div className="flex items-start gap-4">
+                        <div className="p-3 bg-blue-50 rounded-full">
+                          <MapPin className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-sm text-black/80">
+                            {t("sideCard.info.1.title")}
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            {t("sideCard.info.1.desc")}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-medium text-sm text-black/80">
-                          Our Headquarters
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          123 Construction Avenue, Dubai, UAE
-                        </p>
+
+                      <div className="flex items-start gap-4">
+                        <div className="p-3 bg-blue-50 rounded-full">
+                          <Mail className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-sm text-black/80">
+                            {t("sideCard.info.2.title")}
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            {t("sideCard.info.2.desc")}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-4">
+                        <div className="p-3 bg-blue-50 rounded-full">
+                          <Phone className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-sm text-black/80">
+                            {t("sideCard.info.3.title")}
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            {t("sideCard.info.3.desc")}
+                          </p>
+                        </div>
                       </div>
                     </div>
+                  </motion.div>
 
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-blue-50 rounded-full">
-                        <Mail className="h-5 w-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-sm text-black/80">
-                          Email Address
-                        </p>
-                        <p className="text-sm text-gray-600">
-                          info@knozorion.com
-                        </p>
+                  <motion.div
+                    className="bg-white rounded-2xl overflow-hidden border border-blue-300 shadow-xl"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src="/orion_hero1.jpg"
+                        alt="Map"
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                        <div className="p-4 text-white">
+                          <p className="font-bold">
+                            {t("sideCard.imgCard.title")}
+                          </p>
+                          <p className="text-sm">
+                            {t("sideCard.imgCard.extra")}
+                          </p>
+                        </div>
                       </div>
                     </div>
-
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-blue-50 rounded-full">
-                        <Phone className="h-5 w-5 text-blue-600" />
-                      </div>
-                      <div>
-                        <p className="font-medium text-sm text-black/80">
-                          Phone Number
-                        </p>
-                        <p className="text-sm text-gray-600">+971 4 123 4567</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="bg-white rounded-2xl overflow-hidden border border-blue-300 shadow-xl"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src="/orion_hero1.jpg"
-                      alt="Map"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                      <div className="p-4 text-white">
-                        <p className="font-bold">Visit Us</p>
-                        <p className="text-sm">Dubai, United Arab Emirates</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
-};
+}

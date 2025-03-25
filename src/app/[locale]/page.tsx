@@ -8,6 +8,7 @@ import {
   Mail,
   Phone,
   ExternalLink,
+  ArrowLeft,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +19,9 @@ import SandEffect from "@/MyComponents/sand-effect";
 import Navbar from "@/MyComponents/navbar";
 import Contact from "@/MyComponents/Contact";
 import BackgroundFrame from "@/MyComponents/backgroundFrame";
+import { useLocale, useTranslations } from "next-intl";
+import { isRtlLang } from "rtl-detect";
+import AboutPage from "@/MyComponents/about";
 
 type ServiceItem = {
   title: string;
@@ -34,6 +38,13 @@ type ProjectItem = {
 };
 
 export default function Home() {
+  const t = useTranslations("HomePage");
+  const p = useTranslations("Projects");
+  const c = useTranslations("ContactPage");
+
+  const locale = useLocale();
+  let isRTL = isRtlLang(locale);
+
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -61,63 +72,33 @@ export default function Home() {
     },
   };
 
-  const slideFromLeft = {
-    hidden: { x: -50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.6,
-      },
-    },
-  };
-
-  const slideFromRight = {
-    hidden: { x: 50, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.6,
-      },
-    },
-  };
-
-
-  
   const projects: ProjectItem[] = [
     {
-      title: "Azure Tower",
-      location: "Dubai, UAE",
-      category: "Commercial",
-      year: 2023,
+      title: p("project.1.title"),
+      location: p("project.1.location"),
+      category: p("project.1.category"),
+      year: Number(p("project.1.year")),
       image: "/hero_building.jpg",
     },
     {
-      title: "Riverside Residences",
-      location: "Abu Dhabi, UAE",
-      category: "Residential",
-      year: 2022,
+      title: p("project.2.title"),
+      location: p("project.2.location"),
+      category: p("project.2.category"),
+      year: Number(p("project.2.year")),
       image: "/orion_hero1.jpg",
     },
     {
-      title: "Central Business District",
-      location: "Riyadh, KSA",
-      category: "Infrastructure",
-      year: 2024,
+      title: p("project.3.title"),
+      location: p("project.3.location"),
+      category: p("project.3.category"),
+      year: Number(p("project.3.year")),
       image: "/orion_hero2.jpg",
     },
     {
-      title: "Green Valley Complex",
-      location: "Dubai, UAE",
-      category: "Residential",
-      year: 2023,
+      title: p("project.4.title"),
+      location: p("project.4.location"),
+      category: p("project.4.category"),
+      year: Number(p("project.4.year")),
       image: "/orion_hero3.jpg",
     },
   ];
@@ -125,15 +106,14 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       {/* Navbar */}
-        <Navbar />
+      <Navbar />
 
       {/* Hero Section */}
       <section
         id="home"
-      className="relative min-h-screen w-full flex flex-col justify-center items-center bg-blue-300 px-4 py-16 md:py-0"
+        className="relative min-h-screen w-full flex flex-col justify-center items-center bg-blue-300 px-4 py-16 md:py-0"
       >
-        
-        <BackgroundFrame className="z-5"/>
+        <BackgroundFrame className="z-5" />
         <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
@@ -142,7 +122,6 @@ export default function Home() {
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
         </div>
-
 
         <motion.div
           className="container mx-auto px-4 z-10 text-center"
@@ -154,17 +133,17 @@ export default function Home() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
             variants={fadeIn}
           >
-            <span className="text-blue-600">Building</span> the future,
+            <span className="text-blue-600">{t("title.1")}</span> {t("title.2")}
             <br />
-            <span className="text-red-600">together</span>.
+            <span className="text-red-600">{t("title.3")}</span>
+            {t("title.4")}
           </motion.h1>
 
           <motion.p
             className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10"
             variants={fadeIn}
           >
-            A strategic merger of two construction industry leaders, creating
-            unparalleled expertise in building solutions.
+            {t("titleDesc")}
           </motion.p>
 
           <motion.div
@@ -173,7 +152,16 @@ export default function Home() {
           >
             <Link href="#contact">
               <Button className="px-6 py-6 rounded-none font-medium flex items-center gap-2 bg-blue-900 text-white hover:bg-gray-800 transition-all">
-                Get Started <ArrowRight className="h-4 w-4" />
+                {t("btn1")}
+                {isRTL ? (
+                  <>
+                    <ArrowLeft className="h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
               </Button>
             </Link>
             <Link href="#projects">
@@ -181,7 +169,7 @@ export default function Home() {
                 variant="outline"
                 className="px-6 py-6 rounded-none bg-white border-black text-black hover:bg-black hover:text-white"
               >
-                View Projects
+                {t("btn2")}
               </Button>
             </Link>
           </motion.div>
@@ -191,259 +179,103 @@ export default function Home() {
             variants={fadeIn}
           >
             <div className="flex justify-center items-center mt-2 gap-4">
-            <Link href="https://knoz.fly.dev/" target="_blank">
-              <div className="bg-white border-black border-2 rounded-full hover:bg-blue-400/80 object-cover w-12 h-12 flex justify-center items-center">
-                <Image src="/KnozIcon.svg" alt="Knoz Icon" width={1000} height={1000} className="w-15 h-auto" draggable={false} />
-              </div>
-            </Link>
+              <Link href="https://knoz.fly.dev/" target="_blank">
+                <div className="bg-white border-black border-2 rounded-full hover:bg-blue-400/80 object-cover w-12 h-12 flex justify-center items-center">
+                  <Image
+                    src="/KnozIcon.svg"
+                    alt="Knoz Icon"
+                    width={1000}
+                    height={1000}
+                    className="w-15 h-auto"
+                    draggable={false}
+                  />
+                </div>
+              </Link>
 
-            <Link href="https://www.orionuae.com/" target="_blank">
-              <div className="bg-white border-red-500 border-2 rounded-full hover:bg-red-700/65 hover:contrast-175 object-cover w-12 h-12 flex justify-center items-center">
-                <Image src="/OrionIcon.svg" alt="Knoz Icon" width={1000} height={1000} className="w-15 h-auto" draggable={false} />
-              </div>
-            </Link>
+              <Link href="https://www.orionuae.com/" target="_blank">
+                <div className="bg-white border-red-500 border-2 rounded-full hover:bg-red-700/65 hover:contrast-175 object-cover w-12 h-12 flex justify-center items-center">
+                  <Image
+                    src="/OrionIcon.svg"
+                    alt="Knoz Icon"
+                    width={1000}
+                    height={1000}
+                    className="w-15 h-auto"
+                    draggable={false}
+                  />
+                </div>
+              </Link>
             </div>
           </motion.div>
         </motion.div>
 
-
-
-  {/* Stats indicators */}
-   <motion.div 
-    className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-8 sm:mt-12"
-    variants={fadeIn}
-    transition={{ delay: 0.4 }}
-  >
-    <div className="flex flex-col items-center px-2">
-      <span className="text-2xl sm:text-3xl font-bold text-blue-700">45+</span>
-      <span className="text-xs sm:text-sm text-gray-600 text-center">Years Experience</span>
-    </div>
-    <div className="flex flex-col items-center px-2">
-      <span className="text-2xl sm:text-3xl font-bold text-red-700">200+</span>
-      <span className="text-xs sm:text-sm text-gray-600 text-center">Projects Completed</span>
-    </div>
-    <div className="flex flex-col items-center px-2">
-      <span className="text-2xl sm:text-3xl font-bold text-gray-800">350+</span>
-      <span className="text-xs sm:text-sm text-gray-600 text-center">Team Members</span>
-    </div>
-  </motion.div>
-
-
-      
+        {/* Stats indicators */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-4 sm:gap-8 mt-8 sm:mt-12"
+          variants={fadeIn}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="flex flex-col items-center px-2">
+            <span className="text-2xl sm:text-3xl font-bold text-blue-700">
+              {t("stats.exp.nr")}
+            </span>
+            <span className="text-xs sm:text-sm text-gray-600 text-center">
+              {t("stats.exp.txt")}
+            </span>
+          </div>
+          <div className="flex flex-col items-center px-2">
+            <span className="text-2xl sm:text-3xl font-bold text-red-700">
+              {t("stats.projects.nr")}
+            </span>
+            <span className="text-xs sm:text-sm text-gray-600 text-center">
+              {t("stats.projects.txt")}
+            </span>
+          </div>
+          <div className="flex flex-col items-center px-2">
+            <span className="text-2xl sm:text-3xl font-bold text-gray-800">
+              {t("stats.members.nr")}
+            </span>
+            <span className="text-xs sm:text-sm text-gray-600 text-center">
+              {t("stats.members.txt")}
+            </span>
+          </div>
+        </motion.div>
       </section>
 
       {/* About Section */}
-  
-      <section id="about" className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
-    {/* Section heading with better spacing */}
-    <div className="text-center mb-8 sm:mb-12 md:mb-16">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
-        <span className="text-blue-600">Two companies</span>,
-        <span className="text-red-600"> one vision</span>
-      </h2>
-      <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2">
-        A powerful synergy of construction and engineering excellence, delivering integrated solutions for the most complex building challenges.
-      </p>
-    </div>
-
-    {/* Two-column layout for about section */}
-    <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={slideFromLeft}
-        className="relative h-[400px] md:h-[500px]"
-      >
-        <Image
-          src="/orion_hero1.jpg"
-          alt="Construction site"
-          fill
-          className="object-cover"
-        />
-      </motion.div>
-
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={slideFromRight}
-      >
-        <div className="flex gap-2 items-center mb-4">
-          <span className="text-2xl font-bold text-blue-600">KNOZ</span>
-          <span className="text-xl text-gray-700">Construction</span>
-        </div>
-        <p className="text-gray-600 mb-6">
-          Founded in 1995, KNOZ Construction has established itself as a premier construction firm in the Middle East. Specializing in commercial and residential developments, KNOZ has built a reputation for architectural excellence and timely project delivery.
-        </p>
-        <ul className="space-y-2 mb-6">
-          <li className="flex items-start">
-            <div className="mr-2 mt-1 text-blue-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <span className="text-gray-700">25+ years of construction experience</span>
-          </li>
-          <li className="flex items-start">
-            <div className="mr-2 mt-1 text-blue-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <span className="text-gray-700">150+ residential and commercial projects</span>
-          </li>
-          <li className="flex items-start">
-            <div className="mr-2 mt-1 text-blue-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <span className="text-gray-700">Operations across UAE, Saudi Arabia, and Qatar</span>
-          </li>
-        </ul>
-      </motion.div>
-    </div>
-
-    {/* ORION section - columns reversed */}
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={slideFromLeft}
-        className="order-2 md:order-1"
-      >
-        <div className="flex gap-2 items-center mb-4">
-          <span className="text-2xl font-bold text-red-600">ORION</span>
-          <span className="text-xl text-gray-700">Engineering</span>
-        </div>
-        <p className="text-gray-600 mb-6">
-          Since 2005, ORION Engineering has been at the forefront of structural engineering and innovative building solutions. With a team of expert engineers and cutting-edge technology, ORION specializes in sustainable design and complex infrastructure projects.
-        </p>
-        <ul className="space-y-2 mb-6">
-          <li className="flex items-start">
-            <div className="mr-2 mt-1 text-red-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <span className="text-gray-700">20+ years of engineering excellence</span>
-          </li>
-          <li className="flex items-start">
-            <div className="mr-2 mt-1 text-red-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <span className="text-gray-700">15+ award-winning infrastructure designs</span>
-          </li>
-          <li className="flex items-start">
-            <div className="mr-2 mt-1 text-red-600">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <span className="text-gray-700">Industry leaders in sustainable building solutions</span>
-          </li>
-        </ul>
-      </motion.div>
-
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={slideFromRight}
-        className="relative h-[400px] md:h-[500px] order-1 md:order-2"
-      >
-        <Image
-          src="/orion_hero2.jpg"
-          alt="Engineering work"
-          fill
-          className="object-cover"
-        />
-      </motion.div>
-    </div>
-{/* Combined Unison Section - After the ORION section */}
-<motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className="mt-16 p-8 bg-blue-50 rounded-lg"
-    >
-      <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-8 sm:mb-12 md:mb-16">
-        <div className="relative h-[400px] md:h-[500px] ">
-          <Image
-            src="/orion_hero3.jpg"
-            alt="KNOZ ORION Unified"
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        <div>
-          <div className="flex gap-2 items-center mb-4">
-            <span className="text-2xl font-bold text-blue-600">KNOZ</span>
-            <span className="text-2xl font-bold">|</span>
-            <span className="text-2xl font-bold text-red-600">ORION</span>
-          </div>
-          <h3 className="text-xl font-semibold mb-4 text-black">The Power of Unified Excellence</h3>
-          <p className="text-gray-600 mb-6">
-            The 2024 merger of KNOZ Construction and ORION Engineering creates a comprehensive building solutions 
-            provider unlike any other in the region. Our integrated approach eliminates traditional barriers between 
-            design and construction, delivering projects with unprecedented efficiency and innovation.
-          </p>
-          <ul className="space-y-4 mb-6">
-            <li className="flex items-start">
-              <div className="mr-2 mt-1 text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              <span className="text-gray-700">Seamless integration of design and construction teams</span>
-            </li>
-            <li className="flex items-start">
-              <div className="mr-2 mt-1 text-red-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              <span className="text-gray-700">Reduced project timelines and fewer complications</span>
-            </li>
-            <li className="flex items-start">
-              <div className="mr-2 mt-1 text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              <span className="text-gray-700">Combined expertise for revolutionary building solutions</span>
-            </li>
-            <li className="flex items-start">
-              <div className="mr-2 mt-1 text-red-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              <span className="text-gray-700">Single point of accountability from concept to completion</span>
-            </li>
-          </ul>
-          <Button
-            variant="outline"
-            className="rounded-none border-black text-black bg-gradient-to-r from-blue-400 via-blue-500 to-red-400 hover:text-white"
-          >
-            Our Unified Approach
-          </Button>
-        </div>
-      </div>
-    </motion.div>
-   
-  </div>
-</section>
+      <AboutPage />
 
       {/* Projects Section */}
-      <section id="projects" className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 md:mb-12">
-      <div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-black">
-          Featured Projects
-        </h2>
-        <p className="text-sm sm:text-base text-gray-600 max-w-xl">
-          A showcase of our most innovative and impactful construction and
-          engineering projects.
-        </p>
-      </div>
-      <div className="mt-4 md:mt-0">
-        <Button className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-6">
-          View All Projects <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-        </Button>
-      </div>
-    </div>
+      <section
+        id="projects"
+        className="py-12 sm:py-16 md:py-20 lg:py-32 bg-white"
+      >
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 md:mb-12">
+            <div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-black">
+                {p("title")}
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl">
+                {p("desc")}
+              </p>
+            </div>
+            <div className="mt-4 md:mt-0">
+              <Button className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-6">
+                {p("btn")}
+                {isRTL ? (
+                  <>
+                    <ArrowLeft className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                  </>
+                ) : (
+                  <>
+                    <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
 
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -479,7 +311,16 @@ export default function Home() {
                         size="sm"
                         className="mt-4 bg-transparent border-white text-white hover:bg-white hover:text-black"
                       >
-                        View Project <ExternalLink className="ml-1 h-3 w-3" />
+                        {p("innerbtn")}
+                        {isRTL ? (
+                          <>
+                            <ExternalLink className="ml-1 h-3 w-3 rotate-270" />
+                          </>
+                        ) : (
+                          <>
+                            <ExternalLink className="ml-1 h-3 w-3" />
+                          </>
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -492,10 +333,10 @@ export default function Home() {
 
       {/* Contact Section */}
 
-     <Contact header="Contact Our Team" desc="Let's build something extraordinary together" btnText="Submit Inquiery" />
+      <Contact header={c("header")} desc={c("desc")} btnText={c("submitBtn")} />
 
       {/* Footer */}
-     <Footer />
+      <Footer />
     </main>
   );
 }
