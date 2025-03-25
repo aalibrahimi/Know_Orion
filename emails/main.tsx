@@ -18,6 +18,8 @@ import {
   Text,
 } from '@react-email/components';
 import Capitalize from "@/MyComponents/capitalize";
+import { useLocale } from "next-intl";
+import { getLangDir } from "rtl-detect";
 
 // React Email Components: https://react.email/components
 
@@ -31,8 +33,11 @@ const data = {
 };
 
 const EmailPreview = () => {
+  const locale = useLocale();
+  const direction = getLangDir(locale);
+  
   return (
-    <Html>
+    <Html lang={locale} dir={direction}>
       <Head />
 
       <Tailwind>
