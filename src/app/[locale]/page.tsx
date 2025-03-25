@@ -144,10 +144,11 @@ export default function Home() {
                   alt="Knoz Logo"
                   width={100}
                   height={100}
+                  draggable={false}
                   className="h-auto w-15"
                 />
                 <span className="hidden md:inline-block font-bold text-xl pl-[10px]">
-                  Knoz Al
+                  <Link href="https://knoz.fly.dev/" target="_blank">Knoz Al</Link>
                   <span
                     className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full gap-4"
                     style={{ width: scrollY > 100 ? "100%" : "0%" }}
@@ -162,10 +163,11 @@ export default function Home() {
                 alt="Orion Logo"
                 width={100}
                 height={100}
+                draggable={false}
                 className="h-auto w-10"
               />
               <span className="hidden md:inline-block font-bold text-xl">
-                Orion Engineering
+                <Link href="https://www.orionuae.com/" target="_blank">Orion Engineering</Link>
                 <span
                   className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"
                   style={{ width: scrollY > 100 ? "100%" : "0%" }}
@@ -174,14 +176,17 @@ export default function Home() {
             </div>
 
             <nav className="hidden md:flex items-center gap-8">
-              {["About Us", "Vision", "Services", "Projects", "Contact"].map(
+              {[
+                { title: "About Us", url: "#knoz_section" },
+                { title: "Contact", url: "#contact_section" },
+              ].map(
                 (item, index) => (
                   <Link
                     key={index}
-                    href={`#${item.toLowerCase().replace(" ", "-")}`}
-                    className="text-lg font-medium text-white hover:text-white/80 transition-colors relative group"
+                    href={item.url}
+                    className="text-lg font-bold text-white hover:text-white/80 transition-colors relative group"
                   >
-                    {item}
+                    {item.title}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 )
@@ -280,12 +285,11 @@ export default function Home() {
       </section>
 
       {/* Knoz Section */}
-      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 ">
+      <section id="knoz_section" className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 ">
         <ScrollContent
           contentID="knoz_title"
           range={{ in: 500, out: 1500 }}
           class="text-5xl font-bold mb-16 text-center w-full "
-          direction="left"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-2">Knoz Al-Najah</h2>
           <p className="text-lg text-gray-400">Building Excellence Since 1995</p>
@@ -447,9 +451,8 @@ export default function Home() {
       <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 bg-gradient-to-b from-transparent to-black/20">
         <ScrollContent
           contentID="orion_title"
-          range={{ in: 1500, out: 2500 }}
+          range={{ in: 1500, out: 2800 }}
           class="text-5xl font-bold mb-16 text-center w-full"
-          direction="right"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-2">Orion Engineering Consultants</h2>
           <p className="text-lg text-gray-400">Engineering Excellence & Innovation</p>
@@ -458,7 +461,7 @@ export default function Home() {
         <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6">
           <ScrollContent
             contentID="orion_bg"
-            range={{ in: 1500, out: 2500 }}
+            range={{ in: 1500, out: 2800 }}
             class="w-full h-auto"
             direction="left"
           >
@@ -508,7 +511,7 @@ export default function Home() {
 
           <ScrollContent
             contentID="orion_content"
-            range={{ in: 1500, out: 2500 }}
+            range={{ in: 1500, out: 2800 }}
             class="w-full h-auto"
             direction="right"
           >
@@ -611,12 +614,11 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 bg-gradient-to-b from-black/20 to-black/40">
+      <section id="contact_section" className="relative p-15 min-h-screen w-full overflow-hidden flex flex-col justify-center items-center py-24 bg-gradient-to-b from-black/20 to-black/40">
         <ScrollContent
           contentID="contact_title"
-          range={{ in: 2500, out: 3500 }}
+          range={{ in: 2700, out: 4000 }}
           class="text-5xl font-bold mb-16 text-center w-full"
-          direction="left"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-2">Contact Our Team</h2>
           <p className="text-lg text-gray-400">Let's build something extraordinary together</p>
@@ -625,7 +627,7 @@ export default function Home() {
         <div className="container mx-auto grid md:grid-cols-2 gap-10 px-6">
           <ScrollContent
             contentID="contact_form"
-            range={{ in: 2500, out: 3500 }}
+            range={{ in: 2700, out: 4000 }}
             class="w-full h-auto"
             direction="left"
           >
@@ -686,7 +688,7 @@ export default function Home() {
 
           <ScrollContent
             contentID="contact_info"
-            range={{ in: 2500, out: 3500 }}
+            range={{ in: 2700, out: 4000 }}
             class="w-full h-auto"
             direction="right"
           >
@@ -741,7 +743,8 @@ export default function Home() {
                     ))}
                   </div>
                   
-                  <div className="pt-4 border-t border-gray-800">
+                  <br />
+                  {/* <div className="pt-4 border-t border-gray-800">
                     <h4 className="font-semibold mb-2">Business Hours</h4>
                     <div className="grid grid-cols-2 gap-2 text-sm text-gray-400">
                       <p>Monday - Friday:</p>
@@ -751,7 +754,7 @@ export default function Home() {
                       <p>Sunday:</p>
                       <p>Closed</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               
@@ -762,10 +765,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <section className="absolute flex flex-col p-15 h-10 w-full overflow-hidden justify-center items-center bottom-[100px]">
+      <section className="absolute flex flex-col p-15 h-10 w-full overflow-hidden justify-center items-center bottom-[50px] lg:bottom-[0px]">
         <ScrollContent
           contentID="footer"
-          range={{ in: 2500, out: 3500 }}
+          range={{ in: 2700, out: 4000 }}
           class="w-full h-auto flex justify-center items-center text-sm text-gray-300"
           direction="left"
         >
@@ -775,7 +778,7 @@ export default function Home() {
 
         <ScrollContent
           contentID="footer_cwa"
-          range={{ in: 2500, out: 3500 }}
+          range={{ in: 2700, out: 4000 }}
           class="w-full h-auto"
           direction="left"
         >
