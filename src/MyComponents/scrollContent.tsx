@@ -13,8 +13,8 @@ interface Props {
 }
 
 const ScrollContent = (props: Props) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const [progress, setProgress] = useState(0);
+    const [hasAnimated, setHasAnimated] = useState(false);
+    const [isInView, setIsInView] = useState(false);
     const elementRef = useRef<HTMLDivElement>(null);
     const [windowWidth, setWindowWidth] = useState(0);
     
@@ -30,18 +30,15 @@ const ScrollContent = (props: Props) => {
       const handleScroll = () => {
         if (!elementRef.current) return;
         
-        // Calculate progress within range with improved smoothing
-        const total = props.range.out - props.range.in;
-        const current = window.scrollY - props.range.in;
+        // Check if element is in viewport
+        const elementTop = elementRef.current.getBoundingClientRect().top;
+        const elementVisible = elementTop < window.innerHeight * 0.75;
         
-        // Use easeOutCubic easing function for smoother animation
-        let newProgress = Math.min(1, Math.max(0, current / total));
-        
-        // Apply easing function to make animation feel more polished
-        newProgress = 1 - Math.pow(1 - newProgress, 3);
-        
-        setProgress(newProgress);
-        setIsVisible(window.scrollY >= props.range.in && window.scrollY <= props.range.out);
+        if (elementVisible && !hasAnimated) {
+          // Start animation when element comes into view for the first time
+          setIsInView(true);
+          setHasAnimated(true);
+        }
       };
       
       // Initial check
@@ -56,14 +53,10 @@ const ScrollContent = (props: Props) => {
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("resize", handleResize);
       };
-    }, [props.contentID, props.range]);
+    }, [hasAnimated, props.contentID]);
 
-    // Calculate transform values - use full viewport width for initial position
+    // Calculate initial position based on direction
     const startPosition = props.direction === 'right' ? windowWidth : -windowWidth;
-    const endPosition = 0;
-    
-    // Linear interpolation between start and end positions based on progress
-    const translateX = startPosition + (endPosition - startPosition) * progress;
     
     return (
       <div 
@@ -71,9 +64,11 @@ const ScrollContent = (props: Props) => {
         ref={elementRef}
         className={`${props.class} will-change-transform`}
         style={{
-          opacity: isVisible ? progress : 0,
-          transform: props.direction ? `translateX(${translateX}px)` : '',
-          transition: "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
+          opacity: hasAnimated ? 1 : 0,
+          transform: hasAnimated 
+            ? 'translateX(0)' 
+            : props.direction ? `translateX(${startPosition}px)` : '',
+          transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
         }}
       >
         {props.children}
