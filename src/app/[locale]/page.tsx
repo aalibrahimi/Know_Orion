@@ -384,10 +384,12 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
+      
       <section
         id="home"
         className="relative h-screen w-full flex flex-col justify-center items-center bg-blue-300"
       >
+        
         <Image src="/construction_frame.svg" width={1000} height={1000} className="w-full h-screen absolute" alt="Construction Frame" draggable={false} />
         <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
           <RainEffect intensity={"heavy"} />
@@ -484,68 +486,130 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 md:py-32 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideFromLeft}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                <span className="text-blue-600">Two companies</span>,
-                <br />
-                <span className="text-red-600">one vision</span>
-              </h2>
-              <p className="text-gray-600 mb-6">
-                <span className="font-semibold text-blue-600">
-                  Knoz Construction
-                </span>{" "}
-                and
-                <span className="font-semibold text-red-600">
-                  {" "}
-                  Orion Engineering
-                </span>{" "}
-                have joined forces to create a unified company that combines
-                decades of expertise in construction and engineering. With our
-                combined strengths, we're setting new standards in the industry.
-              </p>
-              <div className="flex gap-8 mb-8">
-                <div>
-                  <p className="text-3xl font-bold text-blue-600">45+</p>
-                  <p className="text-gray-500">Years Combined Experience</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-red-600">200+</p>
-                  <p className="text-gray-500">Projects Completed</p>
-                </div>
-              </div>
-              <Button
-                variant="outline"
-                className="rounded-none border-black text-black  text-white"
-              >
-                Learn More About Us
-              </Button>
-            </motion.div>
+     {/* Enhanced About Section with Company Details */}
+<section id="about" className="py-20 md:py-32 bg-white">
+  <div className="container mx-auto px-4">
+    {/* Section heading */}
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <span className="text-blue-600">Two companies</span>,
+        <span className="text-red-600"> one vision</span>
+      </h2>
+      <p className="text-gray-600 max-w-2xl mx-auto">
+        A powerful synergy of construction and engineering excellence, delivering integrated solutions for the most complex building challenges.
+      </p>
+    </div>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideFromRight}
-              className="relative h-[400px] md:h-[500px]"
-            >
-              <Image
-                src="/orion_hero1.jpg"
-                alt="Construction site"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+    {/* Two-column layout for about section */}
+    <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={slideFromLeft}
+        className="relative h-[400px] md:h-[500px]"
+      >
+        <Image
+          src="/orion_hero1.jpg"
+          alt="Construction site"
+          fill
+          className="object-cover"
+        />
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={slideFromRight}
+      >
+        <div className="flex gap-2 items-center mb-4">
+          <span className="text-2xl font-bold text-blue-600">KNOZ</span>
+          <span className="text-xl text-gray-700">Construction</span>
         </div>
-      </section>
+        <p className="text-gray-600 mb-6">
+          Founded in 1995, KNOZ Construction has established itself as a premier construction firm in the Middle East. Specializing in commercial and residential developments, KNOZ has built a reputation for architectural excellence and timely project delivery.
+        </p>
+        <ul className="space-y-2 mb-6">
+          <li className="flex items-start">
+            <div className="mr-2 mt-1 text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span className="text-gray-700">25+ years of construction experience</span>
+          </li>
+          <li className="flex items-start">
+            <div className="mr-2 mt-1 text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span className="text-gray-700">150+ residential and commercial projects</span>
+          </li>
+          <li className="flex items-start">
+            <div className="mr-2 mt-1 text-blue-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span className="text-gray-700">Operations across UAE, Saudi Arabia, and Qatar</span>
+          </li>
+        </ul>
+      </motion.div>
+    </div>
+
+    {/* ORION section - columns reversed */}
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={slideFromLeft}
+        className="order-2 md:order-1"
+      >
+        <div className="flex gap-2 items-center mb-4">
+          <span className="text-2xl font-bold text-red-600">ORION</span>
+          <span className="text-xl text-gray-700">Engineering</span>
+        </div>
+        <p className="text-gray-600 mb-6">
+          Since 2005, ORION Engineering has been at the forefront of structural engineering and innovative building solutions. With a team of expert engineers and cutting-edge technology, ORION specializes in sustainable design and complex infrastructure projects.
+        </p>
+        <ul className="space-y-2 mb-6">
+          <li className="flex items-start">
+            <div className="mr-2 mt-1 text-red-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span className="text-gray-700">20+ years of engineering excellence</span>
+          </li>
+          <li className="flex items-start">
+            <div className="mr-2 mt-1 text-red-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span className="text-gray-700">15+ award-winning infrastructure designs</span>
+          </li>
+          <li className="flex items-start">
+            <div className="mr-2 mt-1 text-red-600">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span className="text-gray-700">Industry leaders in sustainable building solutions</span>
+          </li>
+        </ul>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={slideFromRight}
+        className="relative h-[400px] md:h-[500px] order-1 md:order-2"
+      >
+        <Image
+          src="/orion_hero2.jpg"
+          alt="Engineering work"
+          fill
+          className="object-cover"
+        />
+      </motion.div>
+    </div>
+
+   
+  </div>
+</section>
 
       {/* Projects Section */}
       <section id="projects" className="py-20 md:py-32 bg-white">

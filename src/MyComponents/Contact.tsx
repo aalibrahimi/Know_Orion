@@ -89,7 +89,7 @@ export default function Contact() {
                         <Input
                           id="firstName"
                           placeholder="John"
-                          className="h-9 border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                         />
                       </div>
                       <div className="space-y-1">
@@ -99,7 +99,7 @@ export default function Contact() {
                         <Input
                           id="lastName"
                           placeholder="Doe"
-                          className="h-9 border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                         />
                       </div>
                     </div>
@@ -112,7 +112,7 @@ export default function Contact() {
                         id="email"
                         type="email"
                         placeholder="john@example.com"
-                        className="h-9 border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                        className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                       />
                     </div>
 
@@ -124,7 +124,7 @@ export default function Contact() {
                         <Input
                           id="phone"
                           placeholder="+1 (555) 000-0000"
-                          className="h-9 border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                         />
                       </div>
                       <div className="space-y-1">
@@ -151,13 +151,13 @@ export default function Contact() {
                       <Textarea
                         id="message"
                         placeholder="Tell us about your project..."
-                        className="border-gray-300 min-h-20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                        className="border-blue-300 min-h-20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                       />
                     </div>
                   </CardContent>
                   <CardFooter className="flex flex-row items-center justify-between pt-0 pb-4 px-6">
                     <div className="flex items-center gap-2">
-                      <input type="checkbox" id="subscribe" className="rounded border-gray-300 text-blue-600" />
+                      <input type="checkbox" id="subscribe" className="rounded border-gray-300 text-blue-600 bg-blue-50 " />
                       <label htmlFor="subscribe" className="text-xs text-gray-600">
                         Subscribe to newsletter
                       </label>
@@ -188,7 +188,7 @@ export default function Contact() {
                 className="space-y-4"
               >
                 <motion.div
-                  className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-xl p-6"
+                  className="bg-white rounded-2xl overflow-hidden border border-blue-300 shadow-xl p-6"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -228,7 +228,7 @@ export default function Contact() {
                 </motion.div>
 
                 <motion.div
-                  className="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-xl"
+                  className="bg-white rounded-2xl overflow-hidden border border-blue-300 shadow-xl"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
