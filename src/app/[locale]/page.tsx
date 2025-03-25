@@ -104,7 +104,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white" dir={isRTL ? "rtl" : "ltr"}>
       {/* Navbar */}
       <Navbar />
 
@@ -114,11 +114,11 @@ export default function Home() {
         className="relative min-h-screen w-full flex flex-col justify-center items-center bg-blue-300 px-4 py-16 md:py-0"
       >
         <BackgroundFrame className="z-5" />
-        <div className="w-[50px] h-screen absolute overflow-hidden inset-1/5 top-0">
+        <div className={`w-[50px] h-screen absolute overflow-hidden ${isRTL ? 'right-1/5' : 'inset-1/5'} top-0`}>
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
         </div>
-        <div className="w-[50px] h-screen absolute overflow-hidden right-130">
+        <div className={`w-[50px] h-screen absolute overflow-hidden ${isRTL ? 'left-130' : 'right-130'}`}>
           <SandEffect intensity={"heavy"} />
           <SandEffect intensity={"heavy"} />
         </div>
@@ -154,13 +154,9 @@ export default function Home() {
               <Button className="px-6 py-6 rounded-none font-medium flex items-center gap-2 bg-blue-900 text-white hover:bg-gray-800 transition-all">
                 {t("btn1")}
                 {isRTL ? (
-                  <>
-                    <ArrowLeft className="h-4 w-4" />
-                  </>
+                  <ArrowLeft className="h-4 w-4" />
                 ) : (
-                  <>
-                    <ArrowRight className="h-4 w-4" />
-                  </>
+                  <ArrowRight className="h-4 w-4" />
                 )}
               </Button>
             </Link>
@@ -260,16 +256,12 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-4 md:mt-0">
-              <Button className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-6">
+              <Button className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-6 flex items-center">
                 {p("btn")}
                 {isRTL ? (
-                  <>
-                    <ArrowLeft className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-                  </>
+                  <ArrowLeft className={`${isRTL ? 'mr-2' : 'ml-2'} h-3 w-3 sm:h-4 sm:w-4`} />
                 ) : (
-                  <>
-                    <ArrowRight className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-                  </>
+                  <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-3 w-3 sm:h-4 sm:w-4`} />
                 )}
               </Button>
             </div>
@@ -309,17 +301,13 @@ export default function Home() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="mt-4 bg-transparent border-white text-white hover:bg-white hover:text-black"
+                        className="mt-4 bg-transparent border-white text-white hover:bg-white hover:text-black flex items-center"
                       >
                         {p("innerbtn")}
                         {isRTL ? (
-                          <>
-                            <ExternalLink className="ml-1 h-3 w-3 rotate-270" />
-                          </>
+                          <ExternalLink className={`${isRTL ? 'mr-1' : 'ml-1'} h-3 w-3`} />
                         ) : (
-                          <>
-                            <ExternalLink className="ml-1 h-3 w-3" />
-                          </>
+                          <ExternalLink className={`${isRTL ? 'mr-1' : 'ml-1'} h-3 w-3`} />
                         )}
                       </Button>
                     </div>
@@ -332,7 +320,6 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-
       <Contact header={c("header")} desc={c("desc")} btnText={c("submitBtn")} />
 
       {/* Footer */}
