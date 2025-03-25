@@ -13,10 +13,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Contact from "@/MyComponents/Contact";
 import { Footer } from "@/MyComponents/Footer";
 import SandEffect from "@/MyComponents/sand-effect";
 import Navbar from "@/MyComponents/navbar";
+import Contact from "@/MyComponents/Contact";
 
 type ServiceItem = {
   title: string;
@@ -511,7 +511,7 @@ export default function Home() {
 
       {/* Contact Section */}
 
-     <Contact />
+     <Contact header="Contact Our Team" desc="Let's build something extraordinary together" btnText="Submit Inquiery" />
 
       {/* Footer */}
      <Footer />

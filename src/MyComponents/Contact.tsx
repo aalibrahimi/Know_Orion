@@ -1,15 +1,110 @@
-"use client"
+"use client";
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion"
-import { MapPin, Phone, Mail } from "lucide-react"
-import { motion } from "motion/react"
-import ScrollContent from "./scrollContent"
-import Image from "next/image"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@radix-ui/react-accordion";
+import { MapPin, Phone, Mail, Loader2, Send } from "lucide-react";
+import { motion } from "motion/react";
+import ScrollContent from "./scrollContent";
+import Image from "next/image";
+import { FormEvent, useEffect, useState } from "react";
+import { useFormDataStore } from "@/stores/store";
 
-export default function Contact() {
+interface Props {
+  scrollToTop?: boolean | false;
+  header?: string;
+  desc?: string;
+  btnText?: string;
+}
+
+export default function Contact({
+  scrollToTop,
+  header,
+  desc,
+  btnText,
+}: Props) {
+  const {
+    FirstName,
+    setFirstName,
+    LastName,
+    setLastName,
+    email,
+    setEmail,
+    phone,
+    setPhone,
+    projectType,
+    setProjectType,
+    projectDetails,
+    setProjectDetails,
+  } = useFormDataStore();
+  const formData = {
+    FirstName,
+    LastName,
+    email,
+    phone,
+    projectType,
+    projectDetails,
+  };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
+
+  useEffect(() => {
+    if (scrollToTop) {
+      scrollTo({ top: 0 });
+    }
+
+    setIsMounted(true);
+
+    // Check for reduced motion preference
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setIsReducedMotion(mediaQuery.matches);
+
+    const handleMediaChange = () => {
+      setIsReducedMotion(mediaQuery.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaChange);
+    };
+  }, []);
+
+  // Apply conditional animation based on device capability and user preference
+  const getAnimationProps = (delay = 0) => {
+    if (!isMounted || isReducedMotion) {
+      return {}; // No animation on SSR or when reduced motion is preferred
+    }
+
+    return {
+      initial: { opacity: 0, y: 10 },
+      whileInView: { opacity: 1, y: 0 },
+      viewport: { once: true },
+      transition: { duration: 0.3, delay },
+    };
+  };
+
   const slideFromLeft = {
     hidden: { x: -100, opacity: 0 },
     visible: {
@@ -22,7 +117,7 @@ export default function Contact() {
         duration: 0.6,
       },
     },
-  }
+  };
 
   const slideFromRight = {
     hidden: { x: 100, opacity: 0 },
@@ -36,11 +131,61 @@ export default function Contact() {
         duration: 0.6,
       },
     },
-  }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/send-contact", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.RESEND_KEY}`,
+          "Content-Type": "application/json",
+        },
+        // Need to send content to API
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setProjectType("");
+      setProjectDetails("");
+
+      setStatus({
+        type: "success",
+        message: "Thank You for reaching out!",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setStatus({
+        type: "error",
+        message:
+          "There was an error submitting your message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div id="contact" className="flex items-center justify-center min-h-screen">
-      <Image src="/construction_frame2.svg" width={1000} height={1000} className="w-full h-screen absolute z-10" alt="Construction Building Frame" draggable={false} />
+      <Image
+        src="/construction_frame2.svg"
+        width={1000}
+        height={1000}
+        className="w-full h-screen absolute z-10"
+        alt="Construction Building Frame"
+        draggable={false}
+      />
       {/* Contact Section */}
       <section className="relative w-full overflow-hidden py-16 bg-white to-black/40">
         <ScrollContent
@@ -55,8 +200,12 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-1 text-black">Contact Our Team</h2>
-            <p className="text-base text-gray-400">Let's build something extraordinary together</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-1 text-black">
+              {header}
+            </h2>
+            <p className="text-base text-gray-400">
+              {desc}
+            </p>
           </motion.div>
         </ScrollContent>
 
@@ -73,108 +222,177 @@ export default function Contact() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={slideFromLeft}
+                {...getAnimationProps(0.1)}
               >
-                <Card className="bg-white text-black shadow-xl border-0 rounded-xl overflow-hidden">
-                  <CardHeader className="pb-2 pt-4">
-                    <CardTitle className="text-xl">Get in Touch</CardTitle>
-                    <CardDescription className="text-gray-600">
-                      Fill out the form below and our team will contact you shortly
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="space-y-1">
-                        <label htmlFor="firstName" className="text-xs font-medium text-gray-700">
-                          First Name
-                        </label>
-                        <Input
-                          id="firstName"
-                          placeholder="John"
-                          className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <label htmlFor="lastName" className="text-xs font-medium text-gray-700">
-                          Last Name
-                        </label>
-                        <Input
-                          id="lastName"
-                          placeholder="Doe"
-                          className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                        />
-                      </div>
-                    </div>
+                {/* FORM */}
+                <div className="grid grid-cols-1 gap-8">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <Card className="bg-white text-black shadow-xl border-0 rounded-xl overflow-hidden">
+                      <CardHeader className="pb-2 pt-4">
+                        <CardTitle className="text-xl">Get in Touch</CardTitle>
+                        <CardDescription className="text-gray-600">
+                          Fill out the form below and our team will contact you
+                          shortly
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        {/* Name Field */}
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="space-y-1">
+                            <label
+                              htmlFor="firstName"
+                              className="text-xs font-medium text-gray-700"
+                            >
+                              First Name
+                            </label>
+                            <Input
+                              id="firstName"
+                              value={formData.FirstName}
+                              onChange={(e) => setFirstName(e.target.value)}
+                              placeholder="John"
+                              className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                            />
+                          </div>
+                          <div className="space-y-1">
+                            <label
+                              htmlFor="lastName"
+                              className="text-xs font-medium text-gray-700"
+                            >
+                              Last Name
+                            </label>
+                            <Input
+                              id="lastName"
+                              value={formData.LastName}
+                              onChange={(e) => setLastName(e.target.value)}
+                              placeholder="Doe"
+                              className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                            />
+                          </div>
+                        </div>
 
-                    <div className="space-y-1">
-                      <label htmlFor="email" className="text-xs font-medium text-gray-700">
-                        Email Address
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                      />
-                    </div>
+                        <div className="space-y-1">
+                          <label
+                            htmlFor="email"
+                            className="text-xs font-medium text-gray-700"
+                          >
+                            Email Address
+                          </label>
+                          <Input
+                            id="email"
+                            value={formData.email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            placeholder="john@example.com"
+                            className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                          />
+                        </div>
 
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="space-y-1">
-                        <label htmlFor="phone" className="text-xs font-medium text-gray-700">
-                          Phone Number
-                        </label>
-                        <Input
-                          id="phone"
-                          placeholder="+1 (555) 000-0000"
-                          className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <label htmlFor="projectType" className="text-xs font-medium text-gray-700">
-                          Project Type
-                        </label>
-                        <select
-                          id="projectType"
-                          className="h-9 w-full rounded-md   border border-blue-300 text-gray-900 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                        >
-                          <option>Commercial Construction</option>
-                          <option>Residential Development</option>
-                          <option>Infrastructure Project</option>
-                          <option>Engineering Consultation</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
-                    </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="space-y-1">
+                            <label
+                              htmlFor="phone"
+                              className="text-xs font-medium text-gray-700"
+                            >
+                              Phone Number
+                            </label>
+                            <Input
+                              id="phone"
+                              value={formData.phone}
+                              onChange={(e) => setPhone(e.target.value)}
+                              placeholder="+1 (555) 000-0000"
+                              className="h-9 border-blue-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                            />
+                          </div>
+                          <div className="space-y-1">
+                            <label
+                              htmlFor="projectType"
+                              className="text-xs font-medium text-gray-700"
+                            >
+                              Project Type
+                            </label>
+                            <select
+                              id="projectType"
+                              className="h-9 w-full rounded-md   border border-blue-300 text-gray-900 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                              onChange={(e) => setProjectType(e.target.value)}
+                            >
+                              <option value="">Select Project Type</option>
+                              <option value="Commercial Construction">
+                                Commercial Construction
+                              </option>
+                              <option value="Residential Development">
+                                Residential Development
+                              </option>
+                              <option value="Infrastructure Project">
+                                Infrastructure Project
+                              </option>
+                              <option value="Engineering Consultation">
+                                Engineering Consultation
+                              </option>
+                              <option value="Other">Other</option>
+                            </select>
+                          </div>
+                        </div>
 
-                    <div className="space-y-1">
-                      <label htmlFor="message" className="text-xs font-medium text-gray-700">
-                        Project Details
-                      </label>
-                      <Textarea
-                        id="message"
-                        placeholder="Tell us about your project..."
-                        className="border-blue-300 min-h-20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                      />
-                    </div>
-                  </CardContent>
-                  <CardFooter className="flex flex-row items-center justify-between pt-0 pb-4 px-6">
-                    <div className="flex items-center gap-2">
+                        <div className="space-y-1">
+                          <label
+                            htmlFor="message"
+                            className="text-xs font-medium text-gray-700"
+                          >
+                            Project Details
+                          </label>
+                          <Textarea
+                            id="message"
+                            value={formData.projectDetails}
+                            onChange={(e) => setProjectDetails(e.target.value)}
+                            placeholder="Tell us about your project..."
+                            className="border-blue-300 min-h-20 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
+                          />
+                        </div>
+                      </CardContent>
+                      <CardFooter className="flex flex-row items-center justify-between pt-0 pb-4 px-6">
+                        {/* Status Messages */}
+                        {status.type && (
+                          <div
+                            className={`p-4 rounded-lg ${
+                              status.type === "success"
+                                ? "bg-green-50 text-green-800"
+                                : "bg-red-50 text-red-800"
+                            }`}
+                          >
+                            {status.message}
+                          </div>
+                        )}
+                        {/* <div className="flex items-center gap-2">
                       <input type="checkbox" id="subscribe" className="rounded border-gray-300 text-blue-600 bg-blue-50 " />
                       <label htmlFor="subscribe" className="text-xs text-gray-600">
                         Subscribe to newsletter
                       </label>
-                    </div>
-                    <motion.button
-                      className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-5 rounded-lg font-medium shadow-md hover:shadow-blue-900/20 transition-all text-sm"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Submit Inquiry
-                    </motion.button>
-                  </CardFooter>
-                </Card>
+                    </div> */}
+                        <motion.button
+                          className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-5 rounded-lg font-medium shadow-md hover:shadow-blue-900/20 transition-all text-sm"
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <Send className="mr-2 h-5 w-5 inline" />
+                              {btnText ? `${btnText}` : "Send Inquiery"}
+                            </>
+                          )}
+                        </motion.button>
+                      </CardFooter>
+                    </Card>
+                  </form>
+                </div>
               </motion.div>
             </ScrollContent>
 
+            {/* More Info */}
             <ScrollContent
               contentID="contact_info"
               range={{ in: 2500, out: 3500 }}
@@ -194,34 +412,46 @@ export default function Contact() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex flex-col space-y-4">
-                    <h3 className="font-bold text-lg text-black/80">Contact Information</h3>
-                    
+                    <h3 className="font-bold text-lg text-black/80">
+                      Contact Information
+                    </h3>
+
                     <div className="flex items-start gap-3">
                       <div className="p-2 bg-blue-50 rounded-full">
                         <MapPin className="h-4 w-4 text-blue-600" />
                       </div>
                       <div>
-                        <p className="font-medium text-sm text-black/80">Our Headquarters</p>
-                        <p className="text-sm text-black/80">123 Construction Avenue, Dubai, UAE</p>
+                        <p className="font-medium text-sm text-black/80">
+                          Our Headquarters
+                        </p>
+                        <p className="text-sm text-black/80">
+                          123 Construction Avenue, Dubai, UAE
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <div className="p-2 bg-blue-50 rounded-full">
                         <Mail className="h-4 w-4 text-blue-600" />
                       </div>
                       <div>
-                        <p className="font-medium text-sm text-black/80">Email Address</p>
-                        <p className="text-gray-600 text-sm ">info@knozorion.com</p>
+                        <p className="font-medium text-sm text-black/80">
+                          Email Address
+                        </p>
+                        <p className="text-gray-600 text-sm ">
+                          info@knozorion.com
+                        </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-start gap-3">
                       <div className="p-2 bg-blue-50 rounded-full">
                         <Phone className="h-4 w-4 text-blue-600" />
                       </div>
                       <div>
-                        <p className="font-medium text-sm text-black/80">Phone Number</p>
+                        <p className="font-medium text-sm text-black/80">
+                          Phone Number
+                        </p>
                         <p className="text-gray-600 text-sm">+971 4 123 4567</p>
                       </div>
                     </div>
@@ -234,11 +464,11 @@ export default function Contact() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="relative h-40 w-full">
-                    <Image 
-                      src="/orion_hero1.jpg" 
-                      alt="Map" 
-                      fill 
-                      className="object-cover" 
+                    <Image
+                      src="/orion_hero1.jpg"
+                      alt="Map"
+                      fill
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                       <div className="p-4 text-white">
@@ -254,5 +484,5 @@ export default function Contact() {
         </div>
       </section>
     </div>
-  )
+  );
 }
