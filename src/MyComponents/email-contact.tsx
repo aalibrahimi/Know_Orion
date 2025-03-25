@@ -1,5 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
+import {
+  Body,
+  Button,
+  Container,
+  Head,
+  Hr,
+  Html,
+  Img,
+  Link,
+  Preview,
+  Section,
+  Tailwind,
+  Text,
+} from '@react-email/components';
 import * as React from "react";
 
 interface EmailContactProps {
@@ -20,18 +32,17 @@ export const EmailContact: React.FC<Readonly<EmailContactProps>> = ({
   projectDetails
 }) => {
   return (
-    <>
-    <h3 style={{ color: '#e94a4a' }}>A User/Client Contacted!</h3>
-    <h5>Client Name: {FirstName} {LastName}</h5>
-    <h5>Client Email: {email}</h5>
-    <h5>Client Phone: {phone}</h5>
-    <h5>Project Type</h5>
-    <p style={{ fontStyle: 'italic' }}>{projectType}</p>
-    <h5>Project Details</h5>
-    <p style={{ fontStyle: 'italic' }}>{projectDetails}</p>
-    <a href="https://codewithali.com/" target="_blank" className="">
-      <span>Click Me</span>
-    </a>
-    </>
+    <Html lang='en'>
+      <Head />
+
+      <Tailwind>
+        <Body>
+          <Text className="text-2xl font-bold text-red-700">Client Contacted</Text>
+          <Hr className="mb-[20px]" />
+          <Link href="https://codewithali.com/" className="bg-red-400 rounded-lg p-2 text-black">Click me</Link>
+        </Body>
+      </Tailwind>
+
+    </Html>
   );
 };
