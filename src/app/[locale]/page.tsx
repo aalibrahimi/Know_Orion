@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "@/components/ui/badge"
+import GradientText from "@/MyComponents/GradientText"
 
 type NavItem = {
   label: string;
@@ -203,28 +204,28 @@ export default function Home() {
       location: "Dubai, UAE",
       category: "Commercial",
       year: 2023,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/hero_building.jpg",
     },
     {
       title: "Riverside Residences",
       location: "Abu Dhabi, UAE",
       category: "Residential",
       year: 2022,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/orion_hero1.jpg",
     },
     {
       title: "Central Business District",
       location: "Riyadh, KSA",
       category: "Infrastructure",
       year: 2024,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/orion_hero2.jpg",
     },
     {
       title: "Green Valley Complex",
       location: "Dubai, UAE",
       category: "Residential",
       year: 2023,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/orion_hero3.jpg",
     },
   ];
 
@@ -270,7 +271,7 @@ export default function Home() {
             ))}
           </motion.nav>
 
-          <Button variant="outline" className="hidden md:flex border-black text-black hover:bg-black hover:text-white">
+          <Button variant="outline" className="hidden md:flex text-white border-black bg-blue-700  ">
             Get in Touch
           </Button>
 
@@ -297,7 +298,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen w-full flex flex-col justify-center items-center bg-gray-50">
+      <section id="home" className="relative h-screen w-full flex flex-col justify-center items-center bg-blue-300">
         <motion.div
           className="container mx-auto px-4 z-10 text-center"
           initial="hidden"
@@ -316,12 +317,12 @@ export default function Home() {
           </motion.p>
 
           <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center" variants={fadeIn}>
-            <Button className="px-6 py-6 rounded-none font-medium flex items-center gap-2 bg-black text-white hover:bg-gray-800 transition-all">
+            <Button className="px-6 py-6 rounded-none font-medium flex items-center gap-2 bg-blue-900 text-white hover:bg-gray-800 transition-all">
               Our Services <ArrowRight className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
-              className="px-6 py-6 rounded-none border-black text-black hover:bg-black hover:text-white"
+              className="px-6 py-6 rounded-none bg-white border-black text-black hover:bg-black hover:text-white"
             >
               View Projects
             </Button>
@@ -384,7 +385,7 @@ export default function Home() {
               </div>
               <Button
                 variant="outline"
-                className="rounded-none border-black text-black hover:bg-black hover:text-white"
+                className="rounded-none border-black text-black  text-white"
               >
                 Learn More About Us
               </Button>
@@ -398,7 +399,7 @@ export default function Home() {
               className="relative h-[400px] md:h-[500px]"
             >
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/orion_hero1.jpg"
                 alt="Construction site"
                 fill
                 className="object-cover"
@@ -414,7 +415,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">Featured Projects</h2>
               <p className="text-gray-600 max-w-xl">
                 A showcase of our most innovative and impactful construction and engineering projects.
               </p>
@@ -470,118 +471,96 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-32 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideFromLeft}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
-              <p className="text-gray-600 mb-8">
-                Ready to start your next project? Contact us today to discuss how we can bring your vision to life.
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="h-5 w-5 text-blue-600 mt-1" />
-                  <div>
-                    <h3 className="font-medium">Our Headquarters</h3>
-                    <p className="text-gray-600">123 Construction Avenue, Dubai, UAE</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Mail className="h-5 w-5 text-blue-600 mt-1" />
-                  <div>
-                    <h3 className="font-medium">Email Us</h3>
-                    <p className="text-gray-600">info@knozorion.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <Phone className="h-5 w-5 text-blue-600 mt-1" />
-                  <div>
-                    <h3 className="font-medium">Call Us</h3>
-                    <p className="text-gray-600">+971 4 123 4567</p>
-                  </div>
-                </div>
+     {/* Contact Section */}
+<section id="contact" className="py-20 md:py-32 bg-white ">
+  <div className="container mx-auto px-4">
+    <div className="max-w-6xl mx-auto ">
+      <div className="flex flex-col md:flex-row ">
+        {/* Left Column - Form */}
+        <div className="w-full md:w-2/3 pr-0 md:pr-16">
+          <h2 className="text-3xl font-bold mb-2 text-black">Contact Us</h2>
+          <div className="h-1 w-20 bg-blue-600 mb-8"></div>
+          
+          <form className="space-y-8 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+              <label className="block">
+                <span className="text-zinc-500 text-sm uppercase tracking-wide">First Name</span>
+                <input 
+                  type="text" 
+                  className="mt-1 block w-full bg-gray-50  rounded p-3 focus:ring-1 focus:ring-blue-600 focus:outline-none border border-blue-900" 
+                />
+              </label>
+              
+              <label className="block">
+                <span className="text-zinc-500 text-sm uppercase tracking-wide">Last Name</span>
+                <input 
+                  type="text" 
+                  className="mt-1 block w-full bg-gray-50  rounded p-3 focus:ring-1 focus:ring-blue-600  focus:outline-none border border-blue-900"
+                />
+              </label>
+            </div>
+            
+            <label className="block">
+              <span className="text-zinc-500 text-sm uppercase tracking-wide">Email</span>
+              <input 
+                type="email" 
+                className="mt-1 block w-full bg-gray-50 rounded p-3 focus:ring-1 focus:ring-blue-600 focus:outline-none border border-blue-900"
+              />
+            </label>
+            
+            <label className="block">
+              <span className="text-zinc-500 text-sm uppercase tracking-wide">Message</span>
+              <textarea 
+                rows={5} 
+                className="mt-1 block w-full bg-gray-50 rounded p-3 focus:ring-1 focus:ring-blue-600 focus:outline-none resize-none border border-blue-900"
+              ></textarea>
+            </label>
+            
+            <div>
+              <Button className="px-8 py-3 bg-black text-white hover:bg-zinc-800 transition-colors rounded-none">
+                Send Message
+              </Button>
+            </div>
+          </form>
+        </div>
+        
+        {/* Right Column - Info */}
+        <div className="w-full md:w-1/3 mt-16 md:mt-0 border-t md:border-t-0 md:border-l border-black pt-8 md:pt-0 md:pl-16">
+          <div className="sticky top-32">
+            <h3 className="text-lg font-bold text-blue-600 mb-3">KNOZ</h3>
+            <h3 className="text-lg font-bold text-red-600 mb-6">ORION</h3>
+            
+            <div className="space-y-8 text-sm">
+              <div>
+                <p className="text-zinc-400 uppercase tracking-wide mb-1">Address</p>
+                <p className="font-medium text-black">123 Construction Avenue</p>
+                <p className="font-medium text-black">Dubai, UAE</p>
               </div>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={slideFromRight}
-            >
-              <Card className="border-none shadow-lg">
-                <CardHeader>
-                  <CardTitle>Send us a message</CardTitle>
-                  <CardDescription>Fill out the form below and we'll get back to you shortly.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <form className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <label htmlFor="firstName" className="text-sm font-medium">
-                          First Name
-                        </label>
-                        <input
-                          id="firstName"
-                          className="w-full p-2 border border-gray-300 rounded-sm"
-                          placeholder="John"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="lastName" className="text-sm font-medium">
-                          Last Name
-                        </label>
-                        <input
-                          id="lastName"
-                          className="w-full p-2 border border-gray-300 rounded-sm"
-                          placeholder="Doe"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        className="w-full p-2 border border-gray-300 rounded-sm"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="message" className="text-sm font-medium">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        className="w-full p-2 border border-gray-300 rounded-sm"
-                        placeholder="Tell us about your project..."
-                      ></textarea>
-                    </div>
-
-                    <Button className="w-full rounded-none bg-black text-white hover:bg-gray-800">Send Message</Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </motion.div>
+              
+              <div>
+                <p className="text-zinc-400 uppercase tracking-wide mb-1">Contact</p>
+                <p className="font-medium text-black">info@knozorion.com</p>
+                <p className="font-medium text-black">+971 4 123 4567</p>
+              </div>
+              
+            
+            </div>
+            
+            <div className="mt-12 pt-6 border-t border-gray-100">
+              <Button variant="outline" className="py-3 px-3 text-blue-600 bg-blue-200 transition-colors flex items-center gap-2 hover:bg-blue-300">
+                <MapPin className="h-5 w-5" />
+                <span>View on Map</span>
+              </Button>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Footer */}
-      <footer className="py-12 bg-black text-white">
+      <footer className="pt-5 bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
@@ -591,54 +570,31 @@ export default function Home() {
               <p className="text-gray-400">Building excellence through innovation and expertise.</p>
             </div>
 
-            <div>
-              <h4 className="text-lg font-medium mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                {["About Us", "Services", "Projects", "Contact"].map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      href={`#${item.toLowerCase().replace(" ", "-")}`}
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+  
 
-            <div>
-              <h4 className="text-lg font-medium mb-4">Services</h4>
-              <ul className="space-y-2">
-                {[
-                  "Commercial Construction",
-                  "Residential Development",
-                  "Infrastructure",
-                  "Structural Engineering",
-                  "Sustainable Design",
-                ].map((item, index) => (
-                  <li key={index}>
-                    <Link href="#" className="text-gray-400 hover:text-white transition-colors">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            
 
-            <div>
-              <h4 className="text-lg font-medium mb-4">Contact</h4>
-              <address className="not-italic text-gray-400 space-y-2">
-                <p>123 Construction Avenue</p>
-                <p>Dubai, UAE</p>
-                <p>info@knozorion.com</p>
-                <p>+971 4 123 4567</p>
-              </address>
-            </div>
+           
           </div>
 
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+          <div className=" border-gray-800   text-center text-gray-400">
             <p>&copy; {new Date().getFullYear()} KNOZ | ORION. All rights reserved.</p>
+            <Link
+                 href="https://codewithali.com/"
+                 draggable={false}
+                 className="font-semibold group transition-all duration-300 hover:scale-105"
+               >
+                 <img
+                   src="/codewithali.png"
+                   className="h-13 w-auto mix-blend-screen isolate inline"
+                   alt="CodeWithAli Logo"
+                   draggable={false}
+                 />
+                 <p className="text-slate-600 text-lg inline group-hover:hidden">CodeWithAli</p>
+                 <p className="text-blue hidden group-hover:inline">
+                   <GradientText>CodeWithAli</GradientText>
+                 </p>
+               </Link>
           </div>
         </div>
       </footer>
