@@ -33,7 +33,7 @@ const data = {
 };
 
 const EmailPreview = () => {
-  const locale = useLocale();
+  const locale = "en"
   const direction = getLangDir(locale);
   
   return (
