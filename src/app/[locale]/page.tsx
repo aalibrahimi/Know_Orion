@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-import { useEffect, useState, useRef } from "react"
-import LoadingAnimation from "@/components/loading-animation"
-import DynamicBackground from "@/MyComponents/dynamic-background"
-import ScrollContent from "@/MyComponents/scrollContent"
-import { Link } from "@/i18n/navigation"
+import { useEffect, useState, useRef } from "react";
+import LoadingAnimation from "@/components/loading-animation";
+import DynamicBackground from "@/MyComponents/dynamic-background";
+import ScrollContent from "@/MyComponents/scrollContent";
+import { Link } from "@/i18n/navigation";
 import {
-
   Mail,
   MapPin,
   Phone,
@@ -16,99 +15,97 @@ import {
   Twitter,
   Instagram,
   Linkedin,
-} from "lucide-react"
-import Image from "next/image"
+} from "lucide-react";
+import Image from "next/image";
 
 // Import shadcn components
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
-
-import { motion } from "framer-motion"
-import { Footer } from "@/MyComponents/Footer"
-import Navbar from "@/MyComponents/navbar"
-import KnozSection from "@/MyComponents/KnozSection"
-import OrionSection from "@/MyComponents/OrionSection"
-import MergerBenefitsSection from "@/MyComponents/MergerBenefitsSection"
-import Contact from "@/MyComponents/Contact"
-
+import { motion } from "framer-motion";
+import { Footer } from "@/MyComponents/Footer";
+import Navbar from "@/MyComponents/navbar";
+import KnozSection from "@/MyComponents/KnozSection";
+import OrionSection from "@/MyComponents/OrionSection";
+import MergerBenefitsSection from "@/MyComponents/MergerBenefitsSection";
+import Contact from "@/MyComponents/Contact";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [scrollY, setScrollY] = useState(0)
-  const [activeHeadline, setActiveHeadline] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
+  const [activeHeadline, setActiveHeadline] = useState(0);
   const headlines = [
     "Building the future together",
     "Two visions, one powerful mission",
     "Excellence in construction, redefined",
-  ]
-  const heroRef = useRef(null)
-  const [isNavbarSolid, setIsNavbarSolid] = useState(false)
-  const [sectionInView, setSectionInView] = useState("")
+  ];
+  const heroRef = useRef(null);
+  const [isNavbarSolid, setIsNavbarSolid] = useState(false);
+  const [sectionInView, setSectionInView] = useState("");
 
   useEffect(() => {
     // Simulate loading time
     const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2500)
+      setIsLoading(false);
+    }, 2500);
 
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      setScrollY(window.scrollY);
 
       // Change headline based on scroll position
-      const scrollPosition = window.scrollY
+      const scrollPosition = window.scrollY;
       if (scrollPosition < 300) {
-        setActiveHeadline(0)
+        setActiveHeadline(0);
       } else if (scrollPosition < 600) {
-        setActiveHeadline(1)
+        setActiveHeadline(1);
       } else {
-        setActiveHeadline(2)
+        setActiveHeadline(2);
       }
 
       // Make navbar solid after scrolling
-      setIsNavbarSolid(scrollPosition > 50)
+      setIsNavbarSolid(scrollPosition > 50);
 
       // Determine which section is in view
       if (scrollPosition < window.innerHeight) {
-        setSectionInView("hero")
+        setSectionInView("hero");
       } else if (scrollPosition < window.innerHeight * 2) {
-        setSectionInView("knoz")
+        setSectionInView("knoz");
       } else if (scrollPosition < window.innerHeight * 3) {
-        setSectionInView("orion")
+        setSectionInView("orion");
       } else {
-        setSectionInView("contact")
+        setSectionInView("contact");
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     // Headline rotation timer
     const headlineTimer = setInterval(() => {
       if (window.scrollY < 100) {
         // Only auto-rotate when near top
-        setActiveHeadline((prev) => (prev + 1) % headlines.length)
+        setActiveHeadline((prev) => (prev + 1) % headlines.length);
       }
-    }, 4000)
+    }, 4000);
 
     return () => {
-      clearTimeout(timer)
-      clearInterval(headlineTimer)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      clearTimeout(timer);
+      clearInterval(headlineTimer);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
       behavior: "smooth",
-    })
-  }
+    });
+  };
 
   if (isLoading) {
-    return <LoadingAnimation />
+    return <LoadingAnimation />;
   }
 
-  const parallaxOffset = scrollY * 0.5
-  const opacityValue = Math.max(0, 1 - scrollY / 700)
+  const parallaxOffset = scrollY * 0.5;
+  const opacityValue = Math.max(0, 1 - scrollY / 700);
 
   // Animation variants
   const fadeIn = {
@@ -118,7 +115,7 @@ export default function Home() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -128,7 +125,7 @@ export default function Home() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const slideFromLeft = {
     hidden: { x: -100, opacity: 0 },
@@ -142,7 +139,7 @@ export default function Home() {
         duration: 0.8,
       },
     },
-  }
+  };
 
   const slideFromRight = {
     hidden: { x: 100, opacity: 0 },
@@ -156,7 +153,7 @@ export default function Home() {
         duration: 0.8,
       },
     },
-  }
+  };
 
   return (
     <DynamicBackground>
@@ -199,7 +196,7 @@ export default function Home() {
           ))}
         </div>
         {/* Navbar */}
-          <Navbar />
+        <Navbar />
 
         {/* Hero Content */}
         <motion.div
@@ -215,7 +212,9 @@ export default function Home() {
                 className="text-5xl md:text-7xl font-bold text-white transition-all duration-1000 absolute left-0 right-0"
                 style={{
                   opacity: activeHeadline === index ? 1 : 0,
-                  transform: `translateY(${activeHeadline === index ? 0 : 100}px)`,
+                  transform: `translateY(${
+                    activeHeadline === index ? 0 : 100
+                  }px)`,
                 }}
                 variants={fadeIn}
               >
@@ -232,11 +231,14 @@ export default function Home() {
             }}
             variants={fadeIn}
           >
-            A strategic merger of two construction industry leaders, creating unparalleled expertise and innovation in
-            building solutions.
+            A strategic merger of two construction industry leaders, creating
+            unparalleled expertise and innovation in building solutions.
           </motion.p>
 
-          <motion.div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12" variants={fadeIn}>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+            variants={fadeIn}
+          >
             <Button className="px-8 py-6 rounded-full font-bold flex items-center gap-2 bg-white text-black hover:bg-white/90 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
               Discover Our Vision <ArrowRight className="h-5 w-5" />
             </Button>
@@ -249,7 +251,10 @@ export default function Home() {
           </motion.div>
 
           {/* Social Media Icons */}
-          <motion.div className="flex justify-center gap-6 mt-8" variants={fadeIn}>
+          <motion.div
+            className="flex justify-center gap-6 mt-8"
+            variants={fadeIn}
+          >
             {[
               { icon: <Facebook className="h-5 w-5" />, name: "Facebook" },
               { icon: <Twitter className="h-5 w-5" />, name: "Twitter" },
@@ -297,17 +302,15 @@ export default function Home() {
       <KnozSection />
 
       {/* Orion Section */}
-     <OrionSection />
+      <OrionSection />
 
       <MergerBenefitsSection />
 
-        {/* Contact Section */}
-          <Contact />
+      {/* Contact Section */}
+      <Contact />
 
       {/* Footerhere */}
       <Footer />
-      
     </DynamicBackground>
-  )
+  );
 }
-
