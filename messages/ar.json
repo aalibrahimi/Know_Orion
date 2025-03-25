@@ -1,224 +1,224 @@
 {
   "HomePage": {
     "title": {
-      "1": "Building",
-      "2": "the future,",
-      "3": "together",
+      "1": "بناء",
+      "2": "المستقبل،",
+      "3": "معًا",
       "4": "."
     },
-    "titleDesc": "A strategic merger of two construction industry leaders, creating unparalleled expertise in building solutions.",
-    "btn1": "Get Started",
-    "btn2": "View Projects",
+    "titleDesc": "اندماج استراتيجي بين اثنين من رواد صناعة البناء، مما يخلق خبرة لا مثيل لها في حلول البناء.",
+    "btn1": "ابدأ الآن",
+    "btn2": "عرض المشاريع",
     "stats": {
       "exp": {
-        "nr": "45+",
-        "txt": "Years Experience"
+        "nr": "+45",
+        "txt": "سنوات من الخبرة"
       },
       "projects": {
-        "nr": "200+",
-        "txt": "Projects Completed"
+        "nr": "+200",
+        "txt": "مشروع منجز"
       },
       "members": {
-        "nr": "350+",
-        "txt": "Team Members"
+        "nr": "+350",
+        "txt": "عضو في الفريق"
       }
     }
   },
   "Projects": {
-    "title": "Featured Projects",
-    "desc": "A showcase of our most innovative and impactful construction and engineering projects.",
-    "btn": "View All Projects",
-    "innerbtn": "View Project",
+    "title": "مشاريع مميزة",
+    "desc": "عرض لأكثر مشاريعنا ابتكارًا وتأثيرًا في البناء والهندسة.",
+    "btn": "عرض جميع المشاريع",
+    "innerbtn": "عرض المشروع",
     "project": {
       "1": {
-        "title": "Azure Tower",
-        "location": "Dubai, UAE",
-        "category": "Commercial",
+        "title": "برج أزور",
+        "location": "دبي، الإمارات العربية المتحدة",
+        "category": "تجاري",
         "year": "2023"
       },
       "2": {
-        "title": "Riverside Residences",
-        "location": "Abu Dhabi, UAE",
-        "category": "Residential",
+        "title": "مساكن ريفرسايد",
+        "location": "أبو ظبي، الإمارات العربية المتحدة",
+        "category": "سكني",
         "year": "2022"
       },
       "3": {
-        "title": "Central Business District",
-        "location": "Riyadh, KSA",
-        "category": "Infrastructure",
+        "title": "منطقة الأعمال المركزية",
+        "location": "الرياض، المملكة العربية السعودية",
+        "category": "بنية تحتية",
         "year": "2024"
       },
       "4": {
-        "title": "Green Valley Complex",
-        "location": "Dubai, UAE",
-        "category": "Residential",
+        "title": "مجمع الوادي الأخضر",
+        "location": "دبي، الإمارات العربية المتحدة",
+        "category": "سكني",
         "year": "2023"
       }
     }
   },
   "AboutPage": {
     "title": {
-      "1": "Two companies",
-      "2": "one vision"
+      "1": "شركتان",
+      "2": "رؤية واحدة"
     },
-    "titleDesc": "A powerful synergy of construction and engineering excellence, delivering integrated solutions for the most complex building challenges.",
+    "titleDesc": "تضافر قوي للتميز في البناء والهندسة، وتقديم حلول متكاملة لأكثر تحديات البناء تعقيدًا.",
     "knozSection": {
       "title": {
-        "1": "KNOZ",
-        "2": "Construction"
+        "1": "كنوز",
+        "2": "للإنشاءات"
       },
-      "desc": "Founded in 1995, KNOZ Construction has established itself as a premier construction firm in the Middle East. Specializing in commercial and residential developments, KNOZ has built a reputation for architectural excellence and timely project  delivery.",
+      "desc": "تأسست شركة كنوز للإنشاءات في عام 1995، وأصبحت شركة بناء رائدة في الشرق الأوسط. متخصصة في التطويرات التجارية والسكنية، بنت كنوز سمعة للتميز المعماري وتسليم المشاريع في الوقت المحدد.",
       "stats": {
         "exp": {
-          "nr": "25+",
-          "txt": "years of construction experience"
+          "nr": "+25",
+          "txt": "سنة من خبرة البناء"
         },
         "projects": {
-          "nr": "150+",
-          "txt": "residential and commercial projects"
+          "nr": "+150",
+          "txt": "مشروع سكني وتجاري"
         },
-        "info": "Operations across UAE, Saudi Arabia, and Qatar"
+        "info": "عمليات في الإمارات والسعودية وقطر"
       }
     },
     "orionSection": {
       "title": {
-        "1": "ORION",
-        "2": "Engineering"
+        "1": "أوريون",
+        "2": "للهندسة"
       },
-      "desc": "Since 2005, ORION Engineering has been at the forefront of structural engineering and innovative building solutions. With a team of expert engineers and cutting-edge technology, ORION specializes in sustainable design and complex infrastructure projects.",
+      "desc": "منذ عام 2005، كانت أوريون للهندسة في طليعة الهندسة الإنشائية وحلول البناء المبتكرة. مع فريق من المهندسين الخبراء والتكنولوجيا المتطورة، تتخصص أوريون في التصميم المستدام ومشاريع البنية التحتية المعقدة.",
       "stats": {
         "exp": {
-          "nr": "20+",
-          "txt": "years of engineering excellence"
+          "nr": "+20",
+          "txt": "سنة من التميز الهندسي"
         },
         "designs": {
-          "nr": "50+",
-          "txt": "award-winning infrastructure designs"
+          "nr": "+50",
+          "txt": "تصميم بنية تحتية حائز على جوائز"
         },
-        "info": "Industry leaders in sustainable building solutions"
+        "info": "رواد الصناعة في حلول البناء المستدام"
       }
     },
     "knozOrionSection": {
-      "subtitle": "The Power of Unified Excellence",
-      "desc": "The 2024 merger of KNOZ Construction and ORION Engineering creates a comprehensive building solutions provider unlike any other in the region. Our integrated approach eliminates traditional barriers between design and construction, delivering projects with unprecedented efficiency and innovation.",
+      "subtitle": "قوة التميز الموحد",
+      "desc": "يخلق اندماج كنوز للإنشاءات وأوريون للهندسة في عام 2024 مزودًا شاملًا لحلول البناء لا مثيل له في المنطقة. ينهي نهجنا المتكامل الحواجز التقليدية بين التصميم والبناء، مما يؤدي إلى تنفيذ المشاريع بكفاءة وابتكار غير مسبوقين.",
       "stats": {
-        "1": "Seamless integration of design and construction teams",
-        "2": "Reduced project timelines and fewer complications",
-        "3": "Combined expertise for revolutionary building solutions",
-        "4": "Single point of accountability from concept to completion",
-        "btn": "Our Unified Approach"
+        "1": "تكامل سلس بين فرق التصميم والبناء",
+        "2": "تقليل الجداول الزمنية للمشاريع وتقليل المضاعفات",
+        "3": "خبرة مشتركة لحلول بناء ثورية",
+        "4": "نقطة مساءلة واحدة من المفهوم إلى الإنجاز",
+        "btn": "نهجنا الموحد"
       }
     }
   },
   "ContactPage": {
-    "header": "Contact Our Team",
-    "desc": "Let's build something extraordinary together",
-    "submitBtn": "Submit Inquiery",
-    "btnLoading": "Sending...",
+    "header": "تواصل مع فريقنا",
+    "desc": "لنبني شيئًا استثنائيًا معًا",
+    "submitBtn": "إرسال الاستفسار",
+    "btnLoading": "جاري الإرسال...",
     "status": {
-      "succMsg": "Thank You for reaching out!",
-      "errMsg": "There was an error submitting your message. Please try again."
+      "succMsg": "شكرًا لتواصلك معنا!",
+      "errMsg": "حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى."
     },
     "sideCard": {
-      "title": "Contact Information",
+      "title": "معلومات الاتصال",
       "info": {
         "1": {
-          "title": "Our Headquarters",
-          "desc": "123 Construction Avenue, Dubai, UAE"
+          "title": "مقرنا الرئيسي",
+          "desc": "123 شارع الإنشاءات، دبي، الإمارات العربية المتحدة"
         },
         "2": {
-          "title": "Email Address",
+          "title": "البريد الإلكتروني",
           "desc": "info@knozorion.com"
         },
         "3": {
-          "title": "Phone Number",
+          "title": "رقم الهاتف",
           "desc": "+971 4 123 4567"
         }
       },
       "imgCard": {
-        "title": "Visit Us",
-        "extra": "Dubai, United Arab Emirates"
+        "title": "زورنا",
+        "extra": "دبي، الإمارات العربية المتحدة"
       }
     },
     "form": {
-      "header": "Get in Touch",
-      "desc": "Fill out the form below and our team will contact you shortly",
+      "header": "تواصل معنا",
+      "desc": "املأ النموذج أدناه وسيتصل بك فريقنا قريبًا",
       "fName": {
-        "label": "First Name",
-        "placeholder": "John"
+        "label": "الاسم الأول",
+        "placeholder": "محمد"
       },
       "lName": {
-        "label": "Last Name",
-        "placeholder": "Doe"
+        "label": "اسم العائلة",
+        "placeholder": "أحمد"
       },
       "email": {
-        "label": "Email Address",
-        "placeholder": "john@example.com"
+        "label": "البريد الإلكتروني",
+        "placeholder": "mohammed@example.com"
       },
       "phone": {
-        "label": "Phone Number",
-        "placeholder": "+1 (555) 000-0000"
+        "label": "رقم الهاتف",
+        "placeholder": "+971 (55) 000-0000"
       },
       "projectType": {
-        "label": "Project Type",
+        "label": "نوع المشروع",
         "options": {
-          "1": "Select Project Type",
-          "2": "Commercial Construction",
-          "3": "Residential Development",
-          "4": "Infrastructure Project",
-          "5": "Engineering Consultation",
-          "6": "Other"
+          "1": "اختر نوع المشروع",
+          "2": "بناء تجاري",
+          "3": "تطوير سكني",
+          "4": "مشروع بنية تحتية",
+          "5": "استشارة هندسية",
+          "6": "أخرى"
         }
       },
       "projectDetails": {
-        "label": "Project Details",
-        "placeholder": "Tell us about your project..."
+        "label": "تفاصيل المشروع",
+        "placeholder": "أخبرنا عن مشروعك..."
       }
     }
   },
   "NavBar": {
     "company": {
-      "knoz": "KNOZ",
-      "orion": "ORION"
+      "knoz": "كنوز",
+      "orion": "أوريون"
     },
-    "btn": "Get in Touch",
-    "labelSwitchLang": "Switch Language",
-    "labelSelectLang": "Select Language",
-    "labelLang": "Language",
+    "btn": "تواصل معنا",
+    "labelSwitchLang": "تغيير اللغة",
+    "labelSelectLang": "اختر اللغة",
+    "labelLang": "اللغة",
     "routes": {
-      "home": "Home",
-      "about": "About",
-      "projects": "Projects",
-      "contact": "Contact"
+      "home": "الرئيسية",
+      "about": "من نحن",
+      "projects": "المشاريع",
+      "contact": "اتصل بنا"
     }
   },
   "Footer": {
-    "rights": "All rights reserved.",
-    "customLink": "Github",
-    "cwaMark": "Designed By",
+    "rights": "جميع الحقوق محفوظة.",
+    "customLink": "جيثب",
+    "cwaMark": "تصميم بواسطة",
     "nav": {
       "company": {
-        "title": "Company",
+        "title": "الشركة",
         "links": {
-          "1": "About",
-          "2": "Careers",
-          "3": "Contact"
+          "1": "من نحن",
+          "2": "وظائف",
+          "3": "اتصل بنا"
         }
       },
       "resources": {
-        "title": "Resources",
+        "title": "الموارد",
         "links": {
-          "1": "Blog",
-          "2": "Documentation",
-          "3": "Help Center"
+          "1": "المدونة",
+          "2": "الوثائق",
+          "3": "مركز المساعدة"
         }
       },
       "legal": {
-        "title": "Legal",
+        "title": "قانوني",
         "links": {
-          "1": "Privacy Policy",
-          "2": "Terms of Service",
-          "3": "Cookie Policy"
+          "1": "سياسة الخصوصية",
+          "2": "شروط الخدمة",
+          "3": "سياسة ملفات تعريف الارتباط"
         }
       }
     }
