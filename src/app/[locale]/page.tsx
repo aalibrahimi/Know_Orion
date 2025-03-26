@@ -204,7 +204,7 @@ export default function Home() {
             <span className="text-2xl sm:text-3xl font-bold text-blue-700">
               {t("stats.exp.nr")}
             </span>
-            <span className="text-xs sm:text-sm text-gray-600 text-center">
+            <span className="text-xs sm:text-sm text-gray-500 text-center font-bold">
               {t("stats.exp.txt")}
             </span>
           </div>
@@ -212,7 +212,7 @@ export default function Home() {
             <span className="text-2xl sm:text-3xl font-bold text-red-700">
               {t("stats.projects.nr")}
             </span>
-            <span className="text-xs sm:text-sm text-gray-600 text-center">
+            <span className="text-xs sm:text-sm text-gray-500 text-center font-bold">
               {t("stats.projects.txt")}
             </span>
           </div>
@@ -220,7 +220,7 @@ export default function Home() {
             <span className="text-2xl sm:text-3xl font-bold text-gray-800">
               {t("stats.members.nr")}
             </span>
-            <span className="text-xs sm:text-sm text-gray-600 text-center">
+            <span className="text-xs sm:text-sm text-gray-500 text-center z-10 font-bold">
               {t("stats.members.txt")}
             </span>
           </div>

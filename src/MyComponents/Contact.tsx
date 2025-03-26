@@ -23,6 +23,7 @@ import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
 import { useFormDataStore } from "@/stores/store";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface Props {
   scrollToTop?: boolean | false;
@@ -442,13 +443,16 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="relative h-48 w-full">
+                   <div className="relative h-48 w-full">
+                      <Link href="https://knoz.codewithali.com" target="_blank" className="block relative h-full w-full">
                       <Image
-                        src="/orion_hero1.jpg"
+                        src="/knozy.jpg"
                         alt="Map"
                         fill
                         className="object-cover"
                       />
+                    
+                     
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                         <div className="p-4 text-white">
                           <p className="font-bold">
@@ -459,6 +463,7 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
                           </p>
                         </div>
                       </div>
+                      </Link>
                     </div>
                   </motion.div>
                 </div>

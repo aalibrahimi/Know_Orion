@@ -151,3 +151,7 @@
 
 
 /* background rather then component image */
+::selection {
+  background: rgb(131, 178, 255);
+  color: rgb(0, 28, 64)
+}
