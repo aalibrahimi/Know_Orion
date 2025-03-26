@@ -45,7 +45,7 @@ const AboutPage = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
             <span className="text-blue-600">{t('title.1')}</span>,
             <span className="text-red-600">{t('title.2')}</span>,
-            <span className="text-sky-900">Alpha</span>
+       
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2">
             {t('titleDesc')}

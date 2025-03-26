@@ -125,7 +125,7 @@ export default function Home() {
           >
             <span className="text-blue-600">{t("title.1")}</span> {t("title.2")}
             <br />
-            <span className="text-red-600">{t("title.3")}</span>
+            <span className="text-red-500">{t("title.3")}</span>
             {t("title.4")}
           </motion.h1>
 
