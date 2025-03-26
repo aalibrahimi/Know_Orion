@@ -364,6 +364,7 @@ const AboutPage = () => {
         </div>
 
         {/* Combined Unison Section - Now including Alpha */}
+        {/* Combined Unison Section - Now including Alpha */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -372,15 +373,6 @@ const AboutPage = () => {
           className="mt-16 p-8 bg-blue-50 rounded-lg"
         >
           <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center mb-8 sm:mb-12 md:mb-16">
-            <div className="relative h-[400px] md:h-[500px] ">
-              <Image
-                src="/orion_hero3.jpg"
-                alt="KNOZ ORION Alpha Unified"
-                fill
-                className="object-cover"
-              />
-            </div>
-
             <div>
               <div className="flex gap-2 items-center mb-4">
                 <span className="text-2xl font-bold text-blue-600">{t('knozSection.title.1')}</span>
@@ -523,6 +515,15 @@ const AboutPage = () => {
               >
                 {t('knozOrionSection.stats.btn')}
               </Button>
+            </div>
+            
+            <div className="relative h-[400px] md:h-[500px] ">
+              <Image
+                src="/orion_hero3.jpg"
+                alt="KNOZ ORION Alpha Unified"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </motion.div>
