@@ -27,32 +27,31 @@
   "Projects": {
     "title": "Featured Projects",
     "desc": "A showcase of our most innovative and impactful construction and engineering projects.",
-    "btn": "View All Projects",
     "innerbtn": "View Project",
     "project": {
       "1": {
-        "title": "Azure Tower",
+        "title": "Doha Towers",
         "location": "Dubai, UAE",
-        "category": "Commercial",
-        "year": "2023"
+        "category": "Hospitality",
+        "year": "2019"
       },
       "2": {
-        "title": "Riverside Residences",
-        "location": "Abu Dhabi, UAE",
+        "title": "Mashhoom Villa II",
+        "location": "Dubai, UAE",
         "category": "Residential",
         "year": "2022"
       },
       "3": {
-        "title": "Central Business District",
-        "location": "Riyadh, KSA",
-        "category": "Infrastructure",
-        "year": "2024"
+        "title": "Karbala Oil Refinery Civil Works",
+        "location": "Karbala, Iraq",
+        "category": "Oil & Gas",
+        "year": "2018"
       },
       "4": {
-        "title": "Green Valley Complex",
-        "location": "Dubai, UAE",
-        "category": "Residential",
-        "year": "2023"
+        "title": "Marshes Restoration Water Infrastructure",
+        "location": "Southern Iraq Marshlands",
+        "category": "Environmental",
+        "year": "2011"
       }
     }
   },
@@ -99,14 +98,31 @@
       }
     },
     "knozOrionSection": {
-      "subtitle": "The Power of Unified Excellence",
-      "desc": "The 2024 merger of KNOZ Construction and ORION Engineering creates a comprehensive building solutions provider unlike any other in the region. Our integrated approach eliminates traditional barriers between design and construction, delivering projects with unprecedented efficiency and innovation.",
+      "subtitle": "A Complete Construction & Consulting Partnership",
+      "desc": "Together, we offer a comprehensive solution combining construction expertise, engineering excellence, and strategic consulting services. Our unique alliance delivers exceptional value through integrated project management, sustainable practices, and innovative solutions for complex challenges.",
       "stats": {
         "1": "Seamless integration of design and construction teams",
         "2": "Reduced project timelines and fewer complications",
         "3": "Combined expertise for revolutionary building solutions",
         "4": "Single point of accountability from concept to completion",
+        "5": "Strategic consulting for sustainable development and innovation",
+        "6": "Expertise in Oil & Gas, Chemical & Petroleum sectors",
         "btn": "Our Unified Approach"
+      }
+    },
+    "alphaSection": {
+      "title": {
+        "1": "Alpha",
+        "2": "Consulting Corp"
+      },
+      "desc": "We support economic development in regions where we operate while protecting natural resources. Our joint ventures include refineries and energy projects, many with humanitarian funding. We've completed over 50 major infrastructure projects across multiple countries, building facilities that address specific local requirements.",
+      "stats": {
+        "1": "Completed JV projects including Ufa Refinery (190,000 BPD) and 35+ Bitumen Production Units",
+        "2": "Installation of utility-scale solar PV power plants for sustainable development",
+        "3": "Strategic partnerships in Oil & Gas, Chemical & Petroleum sectors",
+        "4": "Research & Development with humanitarian-funded project experience",
+        "5": "Current active supplier for US Government and international agencies",
+        "6": "Expertise in water treatment with over 50 completed water treatment units"
       }
     }
   },
@@ -179,7 +195,8 @@
   "NavBar": {
     "company": {
       "knoz": "KNOZ",
-      "orion": "ORION"
+      "orion": "ORION",
+      "alpha": "Alpha Consulting"
     },
     "btn": "Get in Touch",
     "labelSwitchLang": "Switch Language",

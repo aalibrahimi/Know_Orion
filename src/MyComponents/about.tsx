@@ -266,11 +266,11 @@ const AboutPage = () => {
     variants={slideFromRight}
   >
     <div className="flex gap-2 items-center mb-4">
-      <span className="text-2xl font-bold text-sky-900">Alpha</span>
-      <span className="text-xl text-gray-700">Consulting Corp</span>
+      <span className="text-2xl font-bold text-sky-900">{t('alphaSection.title.1')}</span>
+      <span className="text-xl text-gray-700">{t('alphaSection.title.2')}</span>
     </div>
     <p className="text-gray-600 mb-6">
-      We support economic development in regions where we operate while protecting natural resources. Our joint ventures include refineries and energy projects, many with humanitarian funding. We've completed over 50 major infrastructure projects across multiple countries, building facilities that address specific local requirements.
+      {t('alphaSection.desc')}
     </p>
     <ul className="space-y-2 mb-6">
       <li className="flex items-start">
@@ -290,7 +290,7 @@ const AboutPage = () => {
           </svg>
         </div>
         <span className="text-gray-700">
-          Completed JV projects including Ufa Refinery (190,000 BPD) and 35+ Bitumen Production Units
+          {t('alphaSection.stats.1')}
         </span>
       </li>
       <li className="flex items-start">
@@ -310,7 +310,7 @@ const AboutPage = () => {
           </svg>
         </div>
         <span className="text-gray-700">
-          Installation of utility-scale solar PV power plants for sustainable development
+          {t('alphaSection.stats.2')}
         </span>
       </li>
       <li className="flex items-start">
@@ -330,7 +330,7 @@ const AboutPage = () => {
           </svg>
         </div>
         <span className="text-gray-700">
-          Strategic partnerships in Oil & Gas, Chemical & Petroleum sectors
+          {t('alphaSection.stats.3')}
         </span>
       </li>
       <li className="flex items-start">
@@ -350,7 +350,7 @@ const AboutPage = () => {
           </svg>
         </div>
         <span className="text-gray-700">
-          Research & Development with humanitarian-funded project experience
+          {t('alphaSection.stats.4')}
         </span>
       </li>
       <li className="flex items-start">
@@ -370,7 +370,7 @@ const AboutPage = () => {
           </svg>
         </div>
         <span className="text-gray-700">
-          Current active supplier for US Government and international agencies
+          {t('alphaSection.stats.5')}
         </span>
       </li>
       <li className="flex items-start">
@@ -390,7 +390,7 @@ const AboutPage = () => {
           </svg>
         </div>
         <span className="text-gray-700">
-          Expertise in water treatment with over 50 completed water treatment units
+          {t('alphaSection.stats.6')}
         </span>
       </li>
     </ul>
@@ -412,13 +412,13 @@ const AboutPage = () => {
                 <span className="text-2xl font-bold text-black">|</span>
                 <span className="text-2xl font-bold text-red-600">{t('orionSection.title.1')}</span>
                 <span className="text-2xl font-bold text-black">|</span>
-                <span className="text-2xl font-bold text-sky-900">Alpha</span>
+                <span className="text-2xl font-bold text-sky-900">{t('alphaSection.title.1')}</span>
               </div>
               <h3 className="text-xl font-semibold mb-4 text-black">
-                A Complete Construction & Consulting Partnership
+                {t('knozOrionSection.subtitle')}
               </h3>
               <p className="text-gray-600 mb-6">
-                Together, we offer a comprehensive solution combining construction expertise, engineering excellence, and strategic consulting services. Our unique alliance delivers exceptional value through integrated project management, sustainable practices, and innovative solutions for complex challenges.
+                {t('knozOrionSection.desc')}
               </p>
               <ul className="space-y-4 mb-6">
                 <li className="flex items-start">
@@ -519,7 +519,7 @@ const AboutPage = () => {
                     </svg>
                   </div>
                   <span className="text-gray-700">
-                    Strategic consulting for sustainable development and innovation
+                  {t('knozOrionSection.stats.5')}
                   </span>
                 </li>
                 <li className="flex items-start">
@@ -539,7 +539,7 @@ const AboutPage = () => {
                     </svg>
                   </div>
                   <span className="text-gray-700">
-                    Expertise in Oil & Gas, Chemical & Petroleum sectors
+                  {t('knozOrionSection.stats.6')}
                   </span>
                 </li>
               </ul>

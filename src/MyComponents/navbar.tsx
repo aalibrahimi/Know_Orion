@@ -112,33 +112,50 @@ export default function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="text-2xl font-bold flex items-center gap-2">
-            <Link href="https://knoz.codewithali.com/" target="_blank">
-              <span className="text-blue-600 font-extrabold flex justify-center items-center hover:scale-105 transition-transform duration-300">
+          <section className="text-2xl font-bold block">
+            {/* First Row */}
+            <div className="flex items-center gap-2">
+              <Link href="https://knoz.codewithali.com/" target="_blank">
+                <span className="text-blue-600 font-extrabold flex justify-center items-center hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/knoz.png"
+                    alt="Knoz Logo"
+                    width={1000}
+                    height={1000}
+                    className="w-10 h-auto inline mb-1"
+                  />
+                  <p className="inline ml-1">{t("company.knoz")}</p>
+                </span>
+              </Link>
+              <Separator orientation="vertical" className="h-8 w-0.5" />
+              <Link href="https://www.orionuae.com/" target="_blank">
+                <span className="text-red-600 font-medium flex justify-center items-center hover:scale-105 transition-transform duration-300">
+                  <Image
+                    src="/orion_logo.png"
+                    alt="Orion Logo"
+                    width={1000}
+                    height={1000}
+                    className="w-8 h-auto inline"
+                  />
+                  <p className="inline ml-1">{t("company.orion")}</p>
+                </span>
+              </Link>
+            </div>
+
+            {/* Second Row */}
+            <div className="flex items-center justify-center">
+              <span className="text-sky-950 font-bold flex justify-center items-center hover:scale-105 transition-transform duration-300">
                 <Image
-                  src="/knoz.png"
-                  alt="Knoz Logo"
+                  src="/alpha_logo.png"
+                  alt="Alpha Logo"
                   width={1000}
                   height={1000}
-                  className="w-10 h-auto inline mb-1"
+                  className="w-10 h-auto inline"
                 />
-                <p className="inline ml-1">{t("company.knoz")}</p>
+                <p className="inline ml-1">{t('company.alpha')}</p>
               </span>
-            </Link>
-            <Separator orientation="vertical" className="h-8 w-0.5" />
-            <Link href="https://www.orionuae.com/" target="_blank">
-              <span className="text-red-600 font-medium flex justify-center items-center hover:scale-105 transition-transform duration-300">
-                <Image
-                  src="/orion_logo.png"
-                  alt="Orion Logo"
-                  width={1000}
-                  height={1000}
-                  className="w-8 h-auto inline"
-                />
-                <p className="inline ml-1">{t("company.orion")}</p>
-              </span>
-            </Link>
-          </div>
+            </div>
+          </section>
         </motion.div>
         <motion.nav
           className="hidden md:flex items-center gap-8"

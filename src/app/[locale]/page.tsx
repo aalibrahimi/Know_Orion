@@ -25,6 +25,7 @@ type ProjectItem = {
   category: string;
   year: number;
   image: string;
+  url: string;
 };
 
 export default function Home() {
@@ -68,28 +69,32 @@ export default function Home() {
       location: p("project.1.location"),
       category: p("project.1.category"),
       year: Number(p("project.1.year")),
-      image: "/hero_building.jpg",
+      image: "/orion_project2.jpg",
+      url: "https://www.orionuae.com/projects/doha-towers?type=2"
     },
     {
       title: p("project.2.title"),
       location: p("project.2.location"),
       category: p("project.2.category"),
       year: Number(p("project.2.year")),
-      image: "/orion_hero1.jpg",
+      image: "/orion_project.jpg",
+      url: "https://www.orionuae.com/projects/mashhoom-villa-ii?type=6"
     },
     {
       title: p("project.3.title"),
       location: p("project.3.location"),
       category: p("project.3.category"),
       year: Number(p("project.3.year")),
-      image: "/orion_hero2.jpg",
+      image: "/pumpjack.png",
+      url: "https://knoz.codewithali.com/en/projects?project=karbala-refinery"
     },
     {
       title: p("project.4.title"),
       location: p("project.4.location"),
       category: p("project.4.category"),
       year: Number(p("project.4.year")),
-      image: "/orion_hero3.jpg",
+      image: "/shipImage.png",
+      url: "https://knoz.codewithali.com/en/projects?project=marshes-restoration"
     },
   ];
 
@@ -190,6 +195,19 @@ export default function Home() {
                   />
                 </div>
               </Link>
+
+              <Link href="#">
+                <div className="bg-transparent rounded-full hover:bg-blue-400/65 hover:contrast-175 object-cover w-14 h-14 flex justify-center items-center">
+                  <Image
+                    src="/alpha_logo.png"
+                    alt="Knoz Icon"
+                    width={1000}
+                    height={1000}
+                    className="w-15 h-auto"
+                    draggable={false}
+                  />
+                </div>
+              </Link>
             </div>
           </motion.div>
         </motion.div>
@@ -245,16 +263,6 @@ export default function Home() {
                 {p("desc")}
               </p>
             </div>
-            <div className="mt-4 md:mt-0">
-              <Button className="bg-black hover:bg-gray-800 text-white text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-6 flex items-center">
-                {p("btn")}
-                {isRTL ? (
-                  <ArrowLeft className={`${isRTL ? 'mr-2' : 'ml-2'} h-3 w-3 sm:h-4 sm:w-4`} />
-                ) : (
-                  <ArrowRight className={`${isRTL ? 'mr-2' : 'ml-2'} h-3 w-3 sm:h-4 sm:w-4`} />
-                )}
-              </Button>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -267,7 +275,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group cursor-pointer"
               >
-                <div className="h-[300px] md:h-[350px] bg-gray-100 relative overflow-hidden">
+                <div className="h-[300px] md:h-[350px] bg-gray-100 relative overflow-hidden hover:cursor-default">
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -288,18 +296,20 @@ export default function Home() {
                         </p>
                         <p className="text-white/80 text-sm">{project.year}</p>
                       </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="mt-4 bg-transparent border-white text-white hover:bg-white hover:text-black flex items-center"
-                      >
-                        {p("innerbtn")}
-                        {isRTL ? (
-                          <ExternalLink className={`${isRTL ? 'mr-1' : 'ml-1'} h-3 w-3`} />
-                        ) : (
-                          <ExternalLink className={`${isRTL ? 'mr-1' : 'ml-1'} h-3 w-3`} />
-                        )}
-                      </Button>
+                      <Link href={project.url} target="_blank">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="mt-4 bg-transparent border-white text-white hover:bg-white hover:text-black hover:cursor-pointer flex items-center"
+                        >
+                          {p("innerbtn")}
+                          {isRTL ? (
+                            <ExternalLink className={`${isRTL ? 'mr-1' : 'ml-1'} h-3 w-3`} />
+                          ) : (
+                            <ExternalLink className={`${isRTL ? 'mr-1' : 'ml-1'} h-3 w-3`} />
+                          )}
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
