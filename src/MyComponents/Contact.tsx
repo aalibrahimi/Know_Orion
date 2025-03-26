@@ -304,19 +304,19 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
                             <option value="">
                               {t("form.projectType.options.1")}
                             </option>
-                            <option value="Commercial Construction">
+                            <option value={`${t("form.projectType.options.2")}`}>
                               {t("form.projectType.options.2")}
                             </option>
-                            <option value="Residential Development">
+                            <option value={`${t("form.projectType.options.3")}`}>
                               {t("form.projectType.options.3")}
                             </option>
-                            <option value="Infrastructure Project">
+                            <option value={`${t("form.projectType.options.4")}`}>
                               {t("form.projectType.options.4")}
                             </option>
-                            <option value="Engineering Consultation">
+                            <option value={`${t("form.projectType.options.5")}`}>
                               {t("form.projectType.options.5")}
                             </option>
-                            <option value="Other">
+                            <option value={`${t("form.projectType.options.6")}`}>
                               {t("form.projectType.options.6")}
                             </option>
                           </select>

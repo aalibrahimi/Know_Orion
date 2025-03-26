@@ -3,10 +3,6 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  ChevronDown,
-  MapPin,
-  Mail,
-  Phone,
   ExternalLink,
   ArrowLeft,
 } from "lucide-react";
@@ -22,12 +18,6 @@ import BackgroundFrame from "@/MyComponents/backgroundFrame";
 import { useLocale, useTranslations } from "next-intl";
 import { isRtlLang } from "rtl-detect";
 import AboutPage from "@/MyComponents/about";
-
-type ServiceItem = {
-  title: string;
-  description: string;
-  icon?: React.ReactNode;
-};
 
 type ProjectItem = {
   title: string;
@@ -175,7 +165,7 @@ export default function Home() {
             variants={fadeIn}
           >
             <div className="flex justify-center items-center mt-2 gap-4">
-              <Link href="https://knoz.fly.dev/" target="_blank">
+              <Link href="https://knoz.codewithali.com/" target="_blank">
                 <div className="bg-white border-black border-2 rounded-full hover:bg-blue-400/80 object-cover w-12 h-12 flex justify-center items-center">
                   <Image
                     src="/KnozIcon.svg"

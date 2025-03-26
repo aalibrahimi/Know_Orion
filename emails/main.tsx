@@ -17,7 +17,6 @@ import {
   Text,
 } from '@react-email/components';
 import Capitalize from "@/MyComponents/capitalize";
-import { useLocale } from "next-intl";
 import { getLangDir } from "rtl-detect";
 
 // React Email Components: https://react.email/components
@@ -49,10 +48,10 @@ const EmailPreview = () => {
               <Row>
                 <Column>
                   <Img 
-                    src="/orion_logo.png" 
+                    src="https://knoz.codewithali.com/knoz.png"
                     alt="Logo" 
-                    width="140" 
-                    height="40" 
+                    width="50"
+                    height="35" 
                   />
                 </Column>
                 <Column className="text-right">
@@ -119,22 +118,6 @@ const EmailPreview = () => {
                   </tr>
                 </tbody>
               </table>
-            </Section>
-
-            {/* Action Buttons */}
-            <Section className="mt-6 mb-6">
-              <Button
-                className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-sm mr-3 no-underline text-sm"
-                href="#"
-              >
-                View Details
-              </Button>
-              <Button
-                className="bg-white text-blue-700 border border-blue-600 font-medium px-6 py-3 rounded-sm no-underline text-sm"
-                href={`mailto:${data.email}`}
-              >
-                Reply
-              </Button>
             </Section>
 
             {/* Footer */}
