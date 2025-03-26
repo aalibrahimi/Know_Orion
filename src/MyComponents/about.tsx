@@ -44,7 +44,8 @@ const AboutPage = () => {
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
             <span className="text-blue-600">{t('title.1')}</span>,
-            <span className="text-red-600">{t('title.2')}</span>
+            <span className="text-red-600">{t('title.2')}</span>,
+            <span className="text-sky-900">Alpha</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-2">
             {t('titleDesc')}
@@ -147,7 +148,7 @@ const AboutPage = () => {
         </div>
 
         {/* ORION section - columns reversed */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -241,7 +242,128 @@ const AboutPage = () => {
             />
           </motion.div>
         </div>
-        {/* Combined Unison Section - After the ORION section */}
+
+        {/* Alpha Consulting section */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideFromLeft}
+            className="relative h-[400px] md:h-[500px]"
+          >
+            <Image
+              src="/orion_about1.jpg"
+              alt="Alpha Consulting"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideFromRight}
+          >
+            <div className="flex gap-2 items-center mb-4">
+              <span className="text-2xl font-bold text-sky-900">Alpha</span>
+              <span className="text-xl text-gray-700">Consulting Corp</span>
+            </div>
+            <p className="text-gray-600 mb-6">
+              We aim to support long-term economic growth, social stability, prosperity and
+              progress in the regions where we operate, as well as caring for the
+              environment and ensuring sustainable use of natural resources. Alpha Consulting Corp 
+              brings decades of industry expertise to every project we undertake. Our team of 
+              expert consultants specializes in creating integrated solutions that optimize operational 
+              efficiency while maintaining the highest standards of environmental stewardship.
+            </p>
+            <ul className="space-y-2 mb-6">
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 text-sky-900">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Strategic partnerships in Oil & Gas and Chemicals
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 text-sky-900">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Research & Development and New Technologies
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 text-sky-900">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Construction and Heavy Industrial Equipment Manufacturing
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 text-sky-900">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Sustainable resource management and environmental compliance
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+        </div>
+
+        {/* Combined Unison Section - Now including Alpha */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -253,7 +375,7 @@ const AboutPage = () => {
             <div className="relative h-[400px] md:h-[500px] ">
               <Image
                 src="/orion_hero3.jpg"
-                alt="KNOZ ORION Unified"
+                alt="KNOZ ORION Alpha Unified"
                 fill
                 className="object-cover"
               />
@@ -264,12 +386,14 @@ const AboutPage = () => {
                 <span className="text-2xl font-bold text-blue-600">{t('knozSection.title.1')}</span>
                 <span className="text-2xl font-bold text-black">|</span>
                 <span className="text-2xl font-bold text-red-600">{t('orionSection.title.1')}</span>
+                <span className="text-2xl font-bold text-black">|</span>
+                <span className="text-2xl font-bold text-sky-900">Alpha</span>
               </div>
               <h3 className="text-xl font-semibold mb-4 text-black">
-                {t('knozOrionSection.subtitle')}
+                A Complete Construction & Consulting Partnership
               </h3>
               <p className="text-gray-600 mb-6">
-                {t('knozOrionSection.desc')}
+                Together, we offer a comprehensive solution combining construction expertise, engineering excellence, and strategic consulting services. Our unique alliance delivers exceptional value through integrated project management, sustainable practices, and innovative solutions for complex challenges.
               </p>
               <ul className="space-y-4 mb-6">
                 <li className="flex items-start">
@@ -352,10 +476,50 @@ const AboutPage = () => {
                   {t('knozOrionSection.stats.4')}
                   </span>
                 </li>
+                <li className="flex items-start">
+                  <div className="mr-2 mt-1 text-sky-900">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">
+                    Strategic consulting for sustainable development and innovation
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <div className="mr-2 mt-1 text-sky-900">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <span className="text-gray-700">
+                    Expertise in Oil & Gas, Chemical & Petroleum sectors
+                  </span>
+                </li>
               </ul>
               <Button
                 variant="outline"
-                className="rounded-none border-black text-black bg-gradient-to-r from-blue-400 via-blue-500 to-red-400 hover:text-white"
+                className="rounded-none border-black text-black bg-gradient-to-r from-sky-900 via-blue-500 to-red-500 hover:text-white"
               >
                 {t('knozOrionSection.stats.btn')}
               </Button>
