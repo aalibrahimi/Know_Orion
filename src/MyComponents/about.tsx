@@ -242,128 +242,161 @@ const AboutPage = () => {
             />
           </motion.div>
         </div>
+{/* Alpha Consulting section */}
+<div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-100px" }}
+    variants={slideFromLeft}
+    className="relative h-[400px] md:h-[500px]"
+  >
+    <Image
+      src="/orion_about1.jpg"
+      alt="Alpha Consulting"
+      fill
+      className="object-cover"
+    />
+  </motion.div>
 
-        {/* Alpha Consulting section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={slideFromLeft}
-            className="relative h-[400px] md:h-[500px]"
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-100px" }}
+    variants={slideFromRight}
+  >
+    <div className="flex gap-2 items-center mb-4">
+      <span className="text-2xl font-bold text-sky-900">Alpha</span>
+      <span className="text-xl text-gray-700">Consulting Corp</span>
+    </div>
+    <p className="text-gray-600 mb-6">
+      We support economic development in regions where we operate while protecting natural resources. Our joint ventures include refineries and energy projects, many with humanitarian funding. We've completed over 50 major infrastructure projects across multiple countries, building facilities that address specific local requirements.
+    </p>
+    <ul className="space-y-2 mb-6">
+      <li className="flex items-start">
+        <div className="mr-2 mt-1 text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            <Image
-              src="/orion_about1.jpg"
-              alt="Alpha Consulting"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={slideFromRight}
-          >
-            <div className="flex gap-2 items-center mb-4">
-              <span className="text-2xl font-bold text-sky-900">Alpha</span>
-              <span className="text-xl text-gray-700">Consulting Corp</span>
-            </div>
-            <p className="text-gray-600 mb-6">
-              We aim to support long-term economic growth, social stability, prosperity and
-              progress in the regions where we operate, as well as caring for the
-              environment and ensuring sustainable use of natural resources. Alpha Consulting Corp 
-              brings decades of industry expertise to every project we undertake. Our team of 
-              expert consultants specializes in creating integrated solutions that optimize operational 
-              efficiency while maintaining the highest standards of environmental stewardship.
-            </p>
-            <ul className="space-y-2 mb-6">
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-sky-900">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <span className="text-gray-700">
-                  Strategic partnerships in Oil & Gas and Chemicals
-                </span>
-              </li>
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-sky-900">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <span className="text-gray-700">
-                  Research & Development and New Technologies
-                </span>
-              </li>
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-sky-900">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <span className="text-gray-700">
-                  Construction and Heavy Industrial Equipment Manufacturing
-                </span>
-              </li>
-              <li className="flex items-start">
-                <div className="mr-2 mt-1 text-sky-900">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                </div>
-                <span className="text-gray-700">
-                  Sustainable resource management and environmental compliance
-                </span>
-              </li>
-            </ul>
-          </motion.div>
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </div>
+        <span className="text-gray-700">
+          Completed JV projects including Ufa Refinery (190,000 BPD) and 35+ Bitumen Production Units
+        </span>
+      </li>
+      <li className="flex items-start">
+        <div className="mr-2 mt-1 text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span className="text-gray-700">
+          Installation of utility-scale solar PV power plants for sustainable development
+        </span>
+      </li>
+      <li className="flex items-start">
+        <div className="mr-2 mt-1 text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span className="text-gray-700">
+          Strategic partnerships in Oil & Gas, Chemical & Petroleum sectors
+        </span>
+      </li>
+      <li className="flex items-start">
+        <div className="mr-2 mt-1 text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span className="text-gray-700">
+          Research & Development with humanitarian-funded project experience
+        </span>
+      </li>
+      <li className="flex items-start">
+        <div className="mr-2 mt-1 text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span className="text-gray-700">
+          Current active supplier for US Government and international agencies
+        </span>
+      </li>
+      <li className="flex items-start">
+        <div className="mr-2 mt-1 text-sky-900">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <span className="text-gray-700">
+          Expertise in water treatment with over 50 completed water treatment units
+        </span>
+      </li>
+    </ul>
+  </motion.div>
+</div>
 
-        {/* Combined Unison Section - Now including Alpha */}
         {/* Combined Unison Section - Now including Alpha */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
