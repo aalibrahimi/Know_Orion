@@ -62,7 +62,7 @@ const AboutPage = () => {
             className="relative h-[400px] md:h-[500px]"
           >
             <Image
-              src="/orion_hero1.jpg"
+              src="/knozy.jpg"
               alt="Construction site"
               fill
               className="object-cover"
@@ -252,7 +252,7 @@ const AboutPage = () => {
     className="relative h-[400px] md:h-[500px]"
   >
     <Image
-      src="/orion_about1.jpg"
+      src="/consultingFirm.jfif"
       alt="Alpha Consulting"
       fill
       className="object-cover"
