@@ -113,7 +113,7 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
         >
           <div className="text-2xl font-bold flex items-center gap-2">
-            <Link href="https://knoz.fly.dev/" target="_blank">
+            <Link href="https://knoz.codewithali.com/" target="_blank">
               <span className="text-blue-600 font-extrabold flex justify-center items-center hover:scale-105 transition-transform duration-300">
                 <Image
                   src="/knoz.png"
