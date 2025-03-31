@@ -415,9 +415,15 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
                         <div>
                           <p className="font-medium text-sm text-black/80">
                             {t("sideCard.info.2.title")}
+            
                           </p>
                           <p className="text-sm text-gray-600">
                             {t("sideCard.info.2.desc")}
+                          </p>
+                          {/* contact number 2 */}
+                      
+                          <p className="text-sm text-gray-600">
+                            {t("sideCard.info.4.desc")}
                           </p>
                         </div>
                       </div>
@@ -430,8 +436,16 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
                           <p className="font-medium text-sm text-black/80">
                             {t("sideCard.info.3.title")}
                           </p>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 ">
                             {t("sideCard.info.3.desc")}
+                            <br />
+                            {t("sideCard.info.5.title")}
+                            <br />
+                            {t("sideCard.info.5.desc")}
+                            <br /><br />
+                            {t("sideCard.info.6.title")}
+                            <br />
+                            {t("sideCard.info.6.desc")}
                           </p>
                         </div>
                       </div>

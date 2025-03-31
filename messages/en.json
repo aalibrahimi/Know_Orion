@@ -147,9 +147,22 @@
           "desc": "Knozalnajah@gmail.com"
         },
         "3": {
-          "title": "Phone Number",
+          "title": "General Manager Saad",
           "desc": "+964 783 607 7135"
+        },
+        "4": {
+        
+          "desc": "alaa.knozorion@gmail.com"
+        },
+        "5": {
+          "title"  : "Vice President Alaa",
+          "desc": "+964 785 449 3888"
+        },
+        "6": {
+          "title"  : "Consulting Manager",
+          "desc": "+408 429 0401"
         }
+        
       },
       "imgCard": {
       "title": "Visit Us",
