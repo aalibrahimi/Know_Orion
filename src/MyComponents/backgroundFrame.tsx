@@ -22,14 +22,12 @@ export default function BackgroundFrame({ className = "" }: BackgroundFrameProps
     window.addEventListener("resize", handleResize);
     
     // Update image source based on window width
-    if (windowWidth >= 1920) {
+    if (windowWidth >= 1444) {
       setFrameImageSrc("/constructionHDframe-1920x1080.svg");
-    } else if (windowWidth >= 1280) {
-      setFrameImageSrc("/constructionHDframe2-1280x720.svg");
-    } else if (windowWidth >= 960) {
+    } else if (windowWidth <= 1080) {
       setFrameImageSrc("/constructionMobileframe-960x540.svg");
     } else {
-      setFrameImageSrc("/construction_frame.svg");
+      setFrameImageSrc("/constructionMobileframe-960x540.svg");
     }
 
     // Clean up
@@ -41,8 +39,8 @@ export default function BackgroundFrame({ className = "" }: BackgroundFrameProps
       className={`absolute inset-0 w-full h-full ${className}`} 
       style={{ 
         backgroundImage: `url(${frameImageSrc})`,
-        backgroundPosition: 'bottom center',
-        backgroundSize: 'cover',
+        backgroundPosition: 'bottom',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat'
       }}
       aria-hidden="true"

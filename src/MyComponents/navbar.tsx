@@ -30,7 +30,7 @@ interface Language {
 
 const languages: Language[] = [
   { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "ar", name: "العربية", flag: "ar" },
+  { code: "ar", name: "العربية", flag: "🇮🇶" },
 ];
 
 export default function Navbar() {
