@@ -175,16 +175,16 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
   };
 
   return (
-    <div id="contact" className="flex items-center justify-center min-h-screen">
-      <Image
+    <div id="contact" className="flex items-center justify-center min-h-screen bg-[url('/building_frame.svg')] bg-no-repeat bg-contain bg-bottom">
+      {/* <Image
         src="/building_frame.svg"
         width={1000}
         height={1000}
         className="w-full h-screen absolute z-5"
         alt="Construction Building Frame"
         draggable={false}
-      />
-      <section className="relative w-full overflow-hidden py-16 bg-white to-black/40">
+      /> */}
+      <section className="relative w-full overflow-hidden py-16 bg-transparent to-black/40">
         <div className="container mx-auto px-4">
           {/* Section Header - Centered */}
           <motion.div
