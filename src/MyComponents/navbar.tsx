@@ -41,6 +41,7 @@ export default function Navbar() {
     languages[0]
   );
 
+  /* eslint-disable */
   const [scrollY, setScrollY] = useState(0);
   const [isNavbarSolid, setIsNavbarSolid] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

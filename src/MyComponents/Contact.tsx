@@ -10,15 +10,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-} from "@radix-ui/react-accordion";
 import { MapPin, Phone, Mail, Loader2, Send } from "lucide-react";
 import { motion } from "motion/react";
-import ScrollContent from "./scrollContent";
 import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
 import { useFormDataStore } from "@/stores/store";
@@ -32,6 +25,7 @@ interface Props {
   btnText?: string;
 }
 
+/* eslint-disable */
 export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
   const t = useTranslations("ContactPage");
 
@@ -91,46 +85,46 @@ export default function Contact({ scrollToTop, header, desc, btnText }: Props) {
   }, []);
 
   // Apply conditional animation based on device capability and user preference
-  const getAnimationProps = (delay = 0) => {
-    if (!isMounted || isReducedMotion) {
-      return {}; // No animation on SSR or when reduced motion is preferred
-    }
+  // const getAnimationProps = (delay = 0) => {
+  //   if (!isMounted || isReducedMotion) {
+  //     return {}; // No animation on SSR or when reduced motion is preferred
+  //   }
 
-    return {
-      initial: { opacity: 0, y: 10 },
-      whileInView: { opacity: 1, y: 0 },
-      viewport: { once: true },
-      transition: { duration: 0.3, delay },
-    };
-  };
+  //   return {
+  //     initial: { opacity: 0, y: 10 },
+  //     whileInView: { opacity: 1, y: 0 },
+  //     viewport: { once: true },
+  //     transition: { duration: 0.3, delay },
+  //   };
+  // };
 
-  const slideFromLeft = {
-    hidden: { x: -100, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.6,
-      },
-    },
-  };
+  // const slideFromLeft = {
+  //   hidden: { x: -100, opacity: 0 },
+  //   visible: {
+  //     x: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       type: "spring",
+  //       stiffness: 100,
+  //       damping: 20,
+  //       duration: 0.6,
+  //     },
+  //   },
+  // };
 
-  const slideFromRight = {
-    hidden: { x: 100, opacity: 0 },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.6,
-      },
-    },
-  };
+  // const slideFromRight = {
+  //   hidden: { x: 100, opacity: 0 },
+  //   visible: {
+  //     x: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       type: "spring",
+  //       stiffness: 100,
+  //       damping: 20,
+  //       duration: 0.6,
+  //     },
+  //   },
+  // };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

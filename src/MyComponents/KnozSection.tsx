@@ -106,7 +106,7 @@ export default function KnozSection() {
                 <CardContent className="space-y-6">
                   <p className="leading-relaxed text-gray-700">
                     For over three decades, Knoz Al-Najah has been at the forefront of the Middle Eastern construction
-                    industry, delivering iconic structures that define the region's skyline. Our commitment to
+                    industry, delivering iconic structures that define the region&apos;s skyline. Our commitment to
                     quality, innovation, and client satisfaction has established us as the partner of choice for
                     complex, high-profile projects.
                   </p>
@@ -252,7 +252,7 @@ export default function KnozSection() {
                 <Zap className="h-4 w-4 text-blue-600" />
                 <AlertTitle className="font-semibold">Leadership Recognition</AlertTitle>
                 <AlertDescription className="text-blue-700">
-                  Knoz Al-Najah was awarded "Construction Company of the Year" three consecutive times (2022-2024)
+                  Knoz Al-Najah was awarded &quot;Construction Company of the Year&quot; three consecutive times (2022-2024)
                 </AlertDescription>
               </Alert>
 

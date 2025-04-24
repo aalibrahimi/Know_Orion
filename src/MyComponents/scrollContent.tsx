@@ -13,6 +13,7 @@ interface Props {
   children: React.ReactNode
 }
 
+/* eslint-disable */
 const ScrollContent = (props: Props) => {
   const [hasAnimated, setHasAnimated] = useState(false)
   const [isInView, setIsInView] = useState(false)

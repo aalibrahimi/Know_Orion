@@ -34,14 +34,14 @@ export default function Home() {
   const c = useTranslations("ContactPage");
 
   const locale = useLocale();
-  let isRTL = isRtlLang(locale);
+  const isRTL = isRtlLang(locale);
 
-  const scrollToContent = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToContent = () => {
+  //   window.scrollTo({
+  //     top: window.innerHeight,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   // Animation variants
   const fadeIn = {

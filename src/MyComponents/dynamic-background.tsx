@@ -29,25 +29,25 @@ export default function DynamicBackground({ children }: DynamicBackgroundProps) 
   ]
 
   // Company text content
-  const companyContent = [
-    {
-      title: "Knoz Al Najjah",
-      subtitle: "Iraq's Leading Construction Company",
-      description:
-        "Founded in 2010, delivering complex construction projects across multiple sectors including commercial, residential, energy, and infrastructure.",
-    },
-    {
-      title: "Orion Engineering Consultants",
-      subtitle: "Excellence in Architecture & Engineering",
-      description:
-        "Providing comprehensive and specialist services of the highest quality in Architecture, Engineering, Planning, Construction Supervision and Project Management.",
-    },
-    {
-      title: "Two Companies, One Vision",
-      subtitle: "Engineering & Construction Excellence",
-      description: "Combining decades of experience to deliver exceptional projects across the Middle East and Iraq.",
-    },
-  ]
+  // const companyContent = [
+  //   {
+  //     title: "Knoz Al Najjah",
+  //     subtitle: "Iraq's Leading Construction Company",
+  //     description:
+  //       "Founded in 2010, delivering complex construction projects across multiple sectors including commercial, residential, energy, and infrastructure.",
+  //   },
+  //   {
+  //     title: "Orion Engineering Consultants",
+  //     subtitle: "Excellence in Architecture & Engineering",
+  //     description:
+  //       "Providing comprehensive and specialist services of the highest quality in Architecture, Engineering, Planning, Construction Supervision and Project Management.",
+  //   },
+  //   {
+  //     title: "Two Companies, One Vision",
+  //     subtitle: "Engineering & Construction Excellence",
+  //     description: "Combining decades of experience to deliver exceptional projects across the Middle East and Iraq.",
+  //   },
+  // ]
 
   // Update active section based on which section is in view
   useEffect(() => {

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useRef } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { Separator } from "@/components/ui/separator"
 import { Card } from "@/components/ui/card"
@@ -143,7 +143,7 @@ const AboutSection = () => {
                     <h3 className="text-2xl font-bold text-white">Orion Engineering</h3>
                   </div>
                   <p className="text-white/80 mb-6">
-                    Orion Engineering brings 20 years of innovative engineering solutions specializing in infrastructure projects, industrial facilities, and sustainable building techniques that push the boundaries of what's possible.
+                    Orion Engineering brings 20 years of innovative engineering solutions specializing in infrastructure projects, industrial facilities, and sustainable building techniques that push the boundaries of what&apos;s possible.
                   </p>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="border-t border-white/20 pt-4">
