@@ -34,14 +34,14 @@ export default function Home() {
   const c = useTranslations("ContactPage");
 
   const locale = useLocale();
-  let isRTL = isRtlLang(locale);
+  const isRTL = isRtlLang(locale);
 
-  const scrollToContent = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToContent = () => {
+  //   window.scrollTo({
+  //     top: window.innerHeight,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   // Animation variants
   const fadeIn = {
@@ -109,13 +109,17 @@ export default function Home() {
         className="relative min-h-screen w-full flex flex-col justify-center items-center bg-blue-300 px-4 py-16 md:py-0"
       >
         <BackgroundFrame className="z-5" />
-        <div className={`w-[50px] h-screen absolute overflow-hidden ${isRTL ? 'right-1/5' : 'inset-1/5'} top-0`}>
+        <div className={`w-[50px] h-screen absolute overflow-hidden top-0 ${isRTL ? 'right-1/12 md:right-1/8 md:top-0 lg:right-1/6 lg:top-0' : 'inset-1/12 md:inset-1/8 md:top-0 lg:inset-1/6 lg:top-0'}`}>
           <SandEffect intensity={"heavy"} />
-          <SandEffect intensity={"heavy"} />
+          <span className="hidden md:block">
+            <SandEffect intensity={"heavy"} />
+          </span>
         </div>
-        <div className={`w-[50px] h-screen absolute overflow-hidden ${isRTL ? 'left-130' : 'right-130'}`}>
+        <div className={`w-[50px] h-screen absolute overflow-hidden top-0 ${isRTL ? 'left-1/12 md:left-1/8 md:top-0 lg:left-1/6 lg:top-0' : 'right-1/12 md:right-1/8 md:top-0 lg:right-1/6 lg:top-0'}`}>
           <SandEffect intensity={"heavy"} />
-          <SandEffect intensity={"heavy"} />
+          <span className="hidden md:block">
+            <SandEffect intensity={"heavy"} />
+          </span>
         </div>
 
         <motion.div

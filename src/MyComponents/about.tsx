@@ -53,7 +53,7 @@ const AboutPage = () => {
         </div>
 
         {/* Two-column layout for about section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 overflow-x-clip">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -148,7 +148,7 @@ const AboutPage = () => {
         </div>
 
         {/* ORION section - columns reversed */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16 overflow-x-clip">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -243,7 +243,7 @@ const AboutPage = () => {
           </motion.div>
         </div>
 {/* Alpha Consulting section */}
-<div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+<div className="grid md:grid-cols-2 gap-12 items-center mb-16 overflow-x-clip">
   <motion.div
     initial="hidden"
     whileInView="visible"

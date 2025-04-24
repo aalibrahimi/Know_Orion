@@ -30,7 +30,7 @@ interface Language {
 
 const languages: Language[] = [
   { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "ar", name: "العربية", flag: "ar" },
+  { code: "ar", name: "العربية", flag: "🇮🇶" },
 ];
 
 export default function Navbar() {
@@ -41,6 +41,7 @@ export default function Navbar() {
     languages[0]
   );
 
+  /* eslint-disable */
   const [scrollY, setScrollY] = useState(0);
   const [isNavbarSolid, setIsNavbarSolid] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
